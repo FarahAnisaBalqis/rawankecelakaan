@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HalamanData as ModelsHalamanData;
+use App\Models\Tematik;
 use CreateHalamanDataTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -17,7 +18,7 @@ class HalamanData extends Controller
     public function index()
     {
         return view("halaman-data",[
-            'data' =>ModelsHalamanData::all()
+            'data' =>ModelsHalamanData::with('tematik')->get()
         ]);
     }
 
@@ -28,7 +29,8 @@ class HalamanData extends Controller
      */
     public function create()
     {
-        return view('tambah-data');
+        $tematik = Tematik::all();
+        return view('tambah-data',['tematik'=>$tematik]);
     }
 
     /**
@@ -46,8 +48,8 @@ class HalamanData extends Controller
         }
         ModelsHalamanData::create([
             'alamat'=>$request->alamat,
-            'jumlah_kecelakaan_tunggal'=>$request->tunggal,
-            'jumlah_kecelakaan_ganda'=>$request->ganda,
+            'tematik_id'=>$request->kecamatan,
+            'jumlah_kecelakaan'=>$request->jumlah,
             'gambar'=> $fileName,
             'long'=>$request->long,
             'lat'=>$request->lat
@@ -77,9 +79,11 @@ class HalamanData extends Controller
      */
     public function edit($id)
     {
+        $tematik = Tematik::all();
         return view('edit',[
-            'data' => ModelsHalamanData::find($id),
+            'data' => ModelsHalamanData::with('tematik')->find($id),
             'id' =>$id,
+            'tematik'=>$tematik,
         ]);
     }
 

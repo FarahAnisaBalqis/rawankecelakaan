@@ -31,7 +31,13 @@ Route::get('/detail-map/{id}', [App\Http\Controllers\HalamanData::class, 'show']
 Route::get('/halaman-tematik', [App\Http\Controllers\TematikController::class, 'index'])->name('halaman tematik');
 Route::get('/tambah-tematik', [App\Http\Controllers\TematikController::class, 'create'])->name('tambah tematik');
 Route::post('/input-tematik', [App\Http\Controllers\TematikController::class, 'store'])->name('data tematik');
-Route::get('/edi-tematik/{id}', [App\Http\Controllers\TematikController::class, 'edit'])->name('edit tematik');
+Route::get('/edit-tematik/{id}', [App\Http\Controllers\TematikController::class, 'edit'])->name('edit tematik');
 Route::post('/update-tematik/{id}', [App\Http\Controllers\TematikController::class, 'update'])->name('update tematik');
 Route::get('/delete-tematik/{id}', [App\Http\Controllers\TematikController::class, 'destroy'])->name('delete tematik');
 Route::get('/maps', [App\Http\Controllers\MapController::class, 'index'])->name('maps');
+Route::get('/halaman-data2', [App\Http\Controllers\HalamanData2::class, 'index'])->name('halaman data2');
+Route::post('/input-data2', [App\Http\Controllers\HalamanData2::class, 'store'])->name('data kecelakaan2');
+Route::get('/tambah-data2', [App\Http\Controllers\HalamanData2::class, 'create'])->name('tambah data2');
+Route::get('/edit-data2/{id}', [App\Http\Controllers\HalamanData2::class, 'edit'])->name('edit data2');
+Route::put('/update-data2/{id}', [App\Http\Controllers\HalamanData2::class, 'update'])->name('update data2');
+Route::get('/delete-data2/{id}', [App\Http\Controllers\HalamanData2::class, 'destroy'])->name('delete data2');

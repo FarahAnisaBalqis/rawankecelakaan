@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHalamanDataTable extends Migration
+class CreateHalamanData2sTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateHalamanDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('halaman_data', function (Blueprint $table) {
+        Schema::create('halaman_data2s', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tematik_id')->constrained();
-            $table->string('alamat');
-            $table->integer('jumlah_kecelakaan');
-            $table->string('long');
-            $table->string('lat');
-            $table->string('gambar');
+            $table->string('no_laporan');
+            $table->string('waktu');
+            $table->string('deskripsi_lokasi');
+            $table->string('sifat_kasus');
+            $table->string('bio_korban');
+            $table->string('sifat_cidera');
             $table->timestamps();
-
         });
     }
 
@@ -33,6 +33,6 @@ class CreateHalamanDataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('halaman_data');
+        Schema::dropIfExists('halaman_data2s');
     }
 }

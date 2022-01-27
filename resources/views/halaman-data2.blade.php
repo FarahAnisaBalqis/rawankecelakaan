@@ -13,20 +13,24 @@
 						<h2>Data <b>Kecelakaan</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="{{route('tambah data')}}"class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Masukkan Data Baru</span></a>					
+						<a href="{{route('tambah data2')}}"class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Masukkan Data Baru</span></a>					
 					</div>
 				</div>
 			</div>
-			<table class="table table-striped table-hover">
+			<table id="table" class="table table-striped table-hover">
 				<thead>
 					<tr>
 						<th>
 							No
 						</th>
 						<th>Kecamatan</th>
-						<th>Alamat</th>
-						<th>Jumlah Kecelakaan</th>
-						<th>Actions</th>
+						<th>Instansi No.Laporan Polisi</th>
+						<th>Waktu Kejadian</th>
+						<th>Deskripsi Lokasi</th>
+						<th>Sifat dan Kasus Kecelakaan</th>
+						<th>Biodata Korban</th>
+						<th>Sifat Cidera</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -36,14 +40,17 @@
 							{{$loop->iteration}}
 						</td>
 						<td>{{$item->tematik->kecamatan}}</td>
-						<td>{{$item->alamat}}</td>
-						<td>{{$item->jumlah_kecelakaan}}</td>
+						<td>{{$item->no_laporan}}</td>
+						<td>{{$item->waktu}}</td>
+						<td>{{$item->deskripsi_lokasi}}</td>
+						<td>{{$item->sifat_kasus}}</td>
+						<td>{{$item->bio_korban}}</td>
+						<td>{{$item->sifat_cidera}}</td>
 						
 						<td class="w-25">
 							
-							<form action="{{route('delete data',['id'=>$item->id])}}" method="get">
-								<a href="{{route('detail map',['id'=>$item->id])}}" class="edit" ><i class="fas fa-map-marker-alt text-danger"></i></a>
-								<a href="{{route('edit data',['id'=>$item->id])}}" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+							<form action="{{route('delete data2',['id'=>$item->id])}}" method="get">
+								<a href="{{route('edit data2',['id'=>$item->id])}}" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 								<button type="submit" class="delete show_confirm border-0 p-0 bg-transparent"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></button>
 							</form>
 							
@@ -134,5 +141,8 @@
           });
       });
   
+	  $(document).ready( function () {
+    $('#table').DataTable();
+} );
 </script>
 @endsection

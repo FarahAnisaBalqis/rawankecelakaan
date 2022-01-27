@@ -13,12 +13,18 @@
                             <input name="alamat" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Jumlah Kecelakaan Tunggal</label>
-                            <input name="tunggal" type="number" class="form-control" required>
+                            <label>Kecamatan</label>
+                            <select class="form-select" name="kecamatan" required>
+                                <option value="">Pilih Kecamatan</option>
+                                @foreach ($tematik as $kecamatan)
+                                <option value="{{$kecamatan->id}}">{{$kecamatan->kecamatan}}</option>
+                                    
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Jumlah Kecelakaan</label>
-                            <input name="ganda" type="number" class="form-control" required>
+                            <input name="jumlah" type="number" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-md-6">
