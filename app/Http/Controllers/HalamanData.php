@@ -107,11 +107,11 @@ class HalamanData extends Controller
         }
         ModelsHalamanData::find($id)->update([
             'alamat'=>$request->alamat,
-            'jumlah_kecelakaan_tunggal'=>$request->tunggal,
-            'jumlah_kecelakaan_ganda'=>$request->ganda,
+            'tematik_id'=>$request->kecamatan,
+            'jumlah_kecelakaan'=>$request->jumlah,
+            'gambar'=> $fileName,
             'long'=>$request->long,
-            'lat'=>$request->lat,
-            'gambar'=>$fileName
+            'lat'=>$request->lat
         ]);
         return redirect()->route('halaman data');
     }

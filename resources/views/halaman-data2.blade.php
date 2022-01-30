@@ -23,6 +23,7 @@
 						<th>
 							No
 						</th>
+						<th>Tangal Input</th>
 						<th>Kecamatan</th>
 						<th>Instansi No.Laporan Polisi</th>
 						<th>Waktu Kejadian</th>
@@ -39,6 +40,7 @@
 						<td>
 							{{$loop->iteration}}
 						</td>
+						<td>{{ $item->created_at->format('Y-M-D') }}</td>
 						<td>{{$item->tematik->kecamatan}}</td>
 						<td>{{$item->no_laporan}}</td>
 						<td>{{$item->waktu}}</td>
@@ -63,63 +65,8 @@
 		</div>
 	</div>        
 </div>
-<!-- Edit Modal HTML -->
 
-{{-- ModalEdit --}}
-<div id="editModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form action="" method="post">
-                @csrf
-				<div class="modal-header">						
-					<h4 class="modal-title">Tambahkan Data</h4>
-					<button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">					
-					<div class="form-group">
-						<label>Alamat</label>
-						<input name="alamat" type="text" class="form-control" required>
-					</div>
-					<div class="form-group">
-						<label>Jumlah Kecelakaan Tunggal</label>
-						<input name="tunggal" type="number" class="form-control" required>
-					</div>
-					<div class="form-group">
-						<label>Jumlah Kecelakaan</label>
-						<input name="ganda" type="number" class="form-control" required>
-					</div>
-									
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-success" value="Add">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
 
-<!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form>
-				<div class="modal-header">						
-					<h4 class="modal-title">Delete Employee</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">					
-					<p>Are you sure you want to delete these Records?</p>
-					<p class="text-warning"><small>This action cannot be undone.</small></p>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Delete">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 <script type="text/javascript">
  
