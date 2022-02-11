@@ -26,6 +26,10 @@
                             <label>Jumlah Kecelakaan</label>
                             <input name="jumlah" type="number" class="form-control" required value="{{$data->jumlah_kecelakaan}}">
                         </div>
+                         <div class="form-group">
+                            <label>Tanggal Kejadian</label>
+                            <input name="tanggal" type="date" class="form-control" required value="{{$data->tanggal}}">
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
