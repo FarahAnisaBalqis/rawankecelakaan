@@ -4,7 +4,7 @@
 
     <div class="container">
         <div class="card p-4">
-            <form action="{{ route('data kecelakaan2') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('update data2') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
