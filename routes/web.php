@@ -39,5 +39,5 @@ Route::get('/halaman-data2', [App\Http\Controllers\HalamanData2::class, 'index']
 Route::post('/input-data2', [App\Http\Controllers\HalamanData2::class, 'store'])->name('data kecelakaan2');
 Route::get('/tambah-data2', [App\Http\Controllers\HalamanData2::class, 'create'])->name('tambah data2');
 Route::get('/edit-data2/{id}', [App\Http\Controllers\HalamanData2::class, 'edit'])->name('edit data2');
-Route::put('/update-data2/{id}', [App\Http\Controllers\HalamanData2::class, 'update'])->name('update data2');
+Route::post('/update-data2/{id}', [App\Http\Controllers\HalamanData2::class, 'update'])->name('update data2');
 Route::get('/delete-data2/{id}', [App\Http\Controllers\HalamanData2::class, 'destroy'])->name('delete data2');
