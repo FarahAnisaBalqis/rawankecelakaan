@@ -156,7 +156,7 @@
         const data = {
             labels: labels,
             datasets: [{
-                label: 'My First dataset',
+                label: 'Jumlah Kecelakaan',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: {!! json_encode($kasus) !!},
@@ -189,7 +189,7 @@
         const data2 = {
             labels: labels2,
             datasets: [{
-                label: 'My First dataset',
+                label: 'Jumlah Kecelakaan',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: {!! json_encode($jumlah) !!},
