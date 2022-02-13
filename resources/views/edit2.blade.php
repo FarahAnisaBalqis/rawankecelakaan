@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary float-end mt-4" type="submit">Tambah</button>
+                <button class="btn btn-primary float-end mt-4" type="submit">Simpan</button>
             </form>
         </div>
 
