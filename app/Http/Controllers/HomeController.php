@@ -70,7 +70,7 @@ class HomeController extends Controller
         $jumlah = [];
         $id = 0;
         foreach ($grafik2 as $value) {
-            $tahun[$id] = $value->date;
+            $tahun[$id] = $value->year;
             $jumlah[$id] = $value->sum;
             $id += 1;
         }
