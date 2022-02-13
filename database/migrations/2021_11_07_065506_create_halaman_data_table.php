@@ -21,7 +21,6 @@ class CreateHalamanDataTable extends Migration
             $table->string('long');
             $table->string('lat');
             $table->string('gambar');
-            $table->date('tanggal');
             $table->timestamps();
 
         });

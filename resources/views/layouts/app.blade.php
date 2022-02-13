@@ -107,8 +107,6 @@
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="info text-white">
-
-
                             {{ Auth::user()->name }}
                         </div>
                     </div>
@@ -153,7 +151,7 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item menu-open">
                                 <a href="#" class="nav-link ">
                                     <i class="nav-icon fa-solid fa-database"></i>
                                     <p>
@@ -170,6 +168,11 @@
                                     <li class="nav-item">
                                         <a href="{{ route('halaman data2') }}" class="nav-link">
                                             <p>Data Lokasi</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('halaman tematik') }}" class="nav-link">
+                                            <p>Data Tematik</p>
                                         </a>
                                     </li>
                                 </ul>

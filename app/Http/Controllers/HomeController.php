@@ -33,16 +33,18 @@ class HomeController extends Controller
         $kecamatan = $data->groupBy('tematik_id')
             ->selectRaw('sum(jumlah_kecelakaan) as sum, tematik_id')
             ->pluck('sum', 'tematik_id');
-        $kecamatan = $kecamatan->toArray();
-        $kecamatan = array_search(max($kecamatan), $kecamatan);
-        $kecamatan = Tematik::find($kecamatan);
+        if ($kecamatan->isNotEmpty()) {
+            $kecamatan = $kecamatan->toArray();
+            $kecamatan = array_search(max($kecamatan), $kecamatan);
+            $kecamatan = Tematik::find($kecamatan);
+            $kecamatan = $kecamatan->kecamatan;
+        }
 
-        $tanggal = $data->groupBy('tanggal')
-            ->selectRaw('sum(jumlah_kecelakaan) as sum, tanggal')
-            ->pluck('sum', 'tanggal');
-        $tanggal = $tanggal->toArray();
-        $tanggal = array_search(max($tanggal), $tanggal);
-        $tanggal = Carbon::createFromFormat('Y-m-d', $tanggal)->year;
+        $tanggal = $data2->select('*', DB::raw('COUNT(waktu) as count'))
+            ->groupBy('waktu')
+            ->orderBy('count')
+            ->first();
+        $tanggal = Carbon::parse($tanggal->waktu)->format('Y');
         $sifat = $data2->select('*', DB::raw('COUNT(sifat_cidera) as count'))
             ->groupBy('sifat_cidera')
             ->orderBy('count')
@@ -61,8 +63,8 @@ class HomeController extends Controller
             $id += 1;
         }
         $grafik2 = HalamanData::select(DB::raw('DATE(created_at) as date'), DB::raw('sum(jumlah_kecelakaan) as sum'))
-        ->groupBy('date')
-        ->get();
+            ->groupBy('date')
+            ->get();
         $tahun = [];
         $jumlah = [];
         $id = 0;
@@ -89,16 +91,16 @@ class HomeController extends Controller
             $coor[$index2] = [$item->alamat, $item->lat, $item->long];
             $index2++;
         }
-      
+
         return view('home', [
-            'kecamatan' => $kecamatan->kecamatan,
+            'kecamatan' => $kecamatan,
             'tanggal' => $tanggal,
             'sifat' => $sifat,
-            'waktu' => Carbon::parse($waktu->waktu)->format('H:i:m'),
+            'waktu' => Carbon::parse($waktu->waktu)->format('H'),
             'kec' => $kec,
-            'kasus'=> $kasus,
-            'tahun'=>$tahun,
-            'jumlah'=>$jumlah,
+            'kasus' => $kasus,
+            'tahun' => $tahun,
+            'jumlah' => $jumlah,
             'geofile' => $geofile,
             'color' => $color,
             'data' => $coor

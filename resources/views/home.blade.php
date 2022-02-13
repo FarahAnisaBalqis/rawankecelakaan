@@ -45,7 +45,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h4>{{ $waktu }}</h4>
+                        <h4>Jam {{ $waktu }}</h4>
 
                         <p>Waktu Rawan Kecelakaan</p>
                     </div>
