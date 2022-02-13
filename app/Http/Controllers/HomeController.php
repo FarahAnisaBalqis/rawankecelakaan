@@ -63,10 +63,9 @@ class HomeController extends Controller
             $kasus[$id] = $value->count;
             $id += 1;
         }
-        $grafik2 = HalamanData::select(DB::raw('YEAR(created_at) year'), DB::raw('sum(jumlah_kecelakaan) as sum'))
+        $grafik2 = HalamanData2::select(DB::raw('YEAR(waktu) year'), DB::raw('sum(jumlah_kecelakaan) as sum'))
             ->groupBy('year')
             ->get();
-            dd($grafik2);
         $tahun = [];
         $jumlah = [];
         $id = 0;
