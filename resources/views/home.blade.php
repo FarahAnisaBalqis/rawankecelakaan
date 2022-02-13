@@ -169,12 +169,13 @@
             data: data,
             options: {
                 maintainAspectRatio: false,
-                scales: {
-                    yAxes: [{
+                 scales: {
+                    y: {
+                        min: 0,
                         ticks: {
                             stepSize: 5
                         }
-                    }]
+                    }
                 }
             }
         };
@@ -202,11 +203,12 @@
             options: {
                 maintainAspectRatio: false,
                 scales: {
-                    yAxes: [{
+                    y: {
+                        min: 0,
                         ticks: {
                             stepSize: 5
                         }
-                    }]
+                    }
                 }
             }
         };
