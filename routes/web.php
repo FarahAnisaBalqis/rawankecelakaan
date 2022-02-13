@@ -21,6 +21,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/maps-user', [App\Http\Controllers\UserController::class, 'map'])->name('Map user');
+Route::get('/maps-data', [App\Http\Controllers\UserController::class, 'data'])->name('Data user');
 Route::get('/halaman-data', [App\Http\Controllers\HalamanData::class, 'index'])->name('halaman data');
 Route::post('/input-data', [App\Http\Controllers\HalamanData::class, 'store'])->name('data kecelakaan');
 Route::get('/edit-data/{id}', [App\Http\Controllers\HalamanData::class, 'edit'])->name('edit data');

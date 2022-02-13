@@ -38,7 +38,10 @@ http://www.tooplate.com/view/2091-ziggy
 
 <body>
 
-
+    <a href="{{ route('login') }}"
+        class="text-decoration-none text-white position-absolute m-4 py-1 btn btn-outline-info">
+        <h4>Log in</h4>
+    </a>
     <section class="first-section">
         <div class="container">
             <div class="row">
@@ -55,47 +58,56 @@ http://www.tooplate.com/view/2091-ziggy
 
     <section class="second-section">
         <div class="container">
-            <div class="row">
+            <div class="row mx-auto">
                 <div class="col-md-3 col-sm-6">
-                    <div class="service-item">
-                        <div class="icon">
-                            <img src="{{ asset('storage/img/first-icon.png')}}" alt="">
+                    <a href="{{route('Map user')}}" class="btn btn-outline-info py-2">
+                        <div class="service-item">
+                            <div class="icon">
+                                <i class="fa-solid fa-map-location h1"></i>
+                            </div>
+                            <h4>Maps</h4>
+                            <p>Aliquam ex velit, viverra eu tristique vel, rhoncus nec ligula. In vel massa sed dolor
+                                pharetra interdum vitae posuere.</p>
                         </div>
-                        <h4>Quick Editing</h4>
-                        <p>Aliquam ex velit, viverra eu tristique vel, rhoncus nec ligula. In vel massa sed dolor
-                            pharetra interdum vitae posuere.</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-3 col-sm-6">
-                    <div class="service-item">
-                        <div class="icon">
-                            <img src="{{ asset('storage/img/second-icon.png')}}" alt="">
+                    <a href="#" class="btn btn-outline-info py-2">
+                        <div class="service-item">
+                            <div class="icon">
+                                <i class="fa-solid fa-map h1"></i>
+                            </div>
+                            <h4>Heatmaps</h4>
+                            <p>Sed pulvinar ipsum id leo volutpat, in convallis lectus molestie. Aliquam nisi sapien,
+                                faucibus eu consequat id, egestas vitae augue.</p>
                         </div>
-                        <h4>Responsive Layout</h4>
-                        <p>Sed pulvinar ipsum id leo volutpat, in convallis lectus molestie. Aliquam nisi sapien,
-                            faucibus eu consequat id, egestas vitae augue.</p>
-                    </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-7">
+                    <a href="{{route('Data user')}}" class="btn btn-outline-info py-2">
+                        <div class="service-item">
+                            <div class="icon">
+                                <i class="fa-solid fa-database h1"></i>
+                            </div>
+                            <h4>Data</h4>
+                            <p>Sed pulvinar ipsum id leo volutpat, in convallis lectus molestie. Aliquam nisi sapien,
+                                faucibus eu consequat id, egestas vitae augue.</p>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-md-3 col-sm-6">
-                    <div class="service-item">
-                        <div class="icon">
-                            <img src="{{ asset('storage/img/third-icon.png')}}" alt="">
+                    <a href="#" class="btn btn-outline-info py-2">
+                        <div class="service-item">
+                            <div class="icon">
+                                <i class="fa-solid fa-book h1"></i>
+                            </div>
+                            <h4>Panduan</h4>
+                            <p>Aliquam ex velit, viverra eu tristique vel, rhoncus nec ligula. In vel massa sed dolor
+                                pharetra interdum vitae posuere.</p>
                         </div>
-                        <h4>Quick Support</h4>
-                        <p>Aliquam ex velit, viverra eu tristique vel, rhoncus nec ligula. In vel massa sed dolor
-                            pharetra interdum vitae posuere.</p>
-                    </div>
+                    </a>
                 </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="service-item">
-                        <div class="icon">
-                            <img src="{{ asset('storage/img/fourth-icon.png')}}" alt="">
-                        </div>
-                        <h4>Voice Chat</h4>
-                        <p>Sed pulvinar ipsum id leo volutpat, in convallis lectus molestie. Aliquam nisi sapien,
-                            faucibus eu consequat id, egestas vitae augue.</p>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
@@ -105,7 +117,7 @@ http://www.tooplate.com/view/2091-ziggy
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="left-image col-md-4">
-                        <img src="img/left-image.png" alt="">
+                        <img src="{{ asset('storage/img/left-image.png') }}" alt="">
                     </div>
                     <div class="right-text col-md-8">
                         <h4><em>Integer suscipit</em><br>Nullam volutpat mi vel</h4>
@@ -113,54 +125,6 @@ http://www.tooplate.com/view/2091-ziggy
                             suscipit arcu vulputate. Pellentesque hendrerit diam quis leo dignissim, lacinia interdum
                             nunc volutpat. Morbi lobortis mattis lectus, a dictum augue lobortis non. Fusce eu nulla
                             sagittis, scelerisque eros fringilla, commodo dolor.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="fourth-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="portfolio-item first-item">
-                        <div class="image">
-                            <a href="img/01-big-item.jpg" data-lightbox="image-1"><img src="img/first-item.jpg"></a>
-                        </div>
-                        <div class="text">
-                            <span>Nature</span>
-                            <h4>Robotic Light</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="portfolio-item second-item">
-                        <div class="image">
-                            <a href="img/02-big-item.jpg" data-lightbox="image-1"><img src="img/second-item.jpg"></a>
-                        </div>
-                        <div class="text">
-                            <span>Architect</span>
-                            <h4>Rock Solid</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="portfolio-item third-item">
-                        <div class="image">
-                            <a href="img/03-big-item.jpg" data-lightbox="image-1"><img src="img/third-item.jpg"></a>
-                        </div>
-                        <div class="text">
-                            <span>Focus</span>
-                            <h4>Clean Design</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="send-to-portfolio">
-                        <span>Do you want to see more?</span>
-                        <div class="primary-button">
-                            <a href="portfolio-page.html">Visit gallery</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -179,7 +143,7 @@ http://www.tooplate.com/view/2091-ziggy
                             dignissim, ante purus hendrerit urna, eu tristique est massa quis risus.</p>
                     </div>
                     <div class="right-image col-md-4">
-                        <img src="img/right-image.png" alt="">
+                        <img src="{{ asset('storage/img/right-image.png') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -190,33 +154,7 @@ http://www.tooplate.com/view/2091-ziggy
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="row">
-                        <form id="contact" action="" method="post">
-                            <div class="col-md-6">
-                                <fieldset>
-                                    <input name="name" type="text" class="form-control" id="name"
-                                        placeholder="Your name..." required="">
-                                </fieldset>
-                            </div>
-                            <div class="col-md-6">
-                                <fieldset>
-                                    <input name="email" type="email" class="form-control" id="email"
-                                        placeholder="Your email..." required="">
-                                </fieldset>
-                            </div>
-                            <div class="col-md-12">
-                                <fieldset>
-                                    <textarea name="message" rows="6" class="form-control" id="message"
-                                        placeholder="Your message..." required=""></textarea>
-                                </fieldset>
-                            </div>
-                            <div class="col-md-12">
-                                <fieldset>
-                                    <button type="submit" id="form-submit" class="btn">Send Message</button>
-                                </fieldset>
-                            </div>
-                        </form>
-                    </div>
+
                 </div>
                 <div class="col-md-5">
                     <div class="right-info">
@@ -254,12 +192,6 @@ http://www.tooplate.com/view/2091-ziggy
     <script>
         window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
     </script>
-
-    <script src="js/vendor/bootstrap.min.js"></script>
-
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-
 </body>
 
 </html>
