@@ -26,6 +26,7 @@
                             <label>Jumlah Kecelakaan</label>
                             <input name="jumlah" type="number" class="form-control" required>
                         </div>
+                        
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
