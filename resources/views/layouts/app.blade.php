@@ -161,13 +161,13 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="{{ route('halaman data') }}" class="nav-link ">
-                                            <p>Data Vaksinasi</p>
+                                        <a href="{{ route('halaman data2') }}" class="nav-link ">
+                                            <p>Data Kecelakaan</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('halaman data2') }}" class="nav-link">
-                                            <p>Data Lokasi</p>
+                                        <a href="{{ route('halaman data') }}" class="nav-link">
+                                            <p>Data Lokasi Rawan kecelakaan</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
