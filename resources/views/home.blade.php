@@ -12,7 +12,7 @@
                         <p>Kecamatan Dengan Kasus Kecelekaan Terbanyak</p>
                     </div>
 
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    
                 </div>
             </div>
             <!-- ./col -->
@@ -24,7 +24,7 @@
 
                         <p>Tahun Dengan Kasus Kecelakaan Terbanyak</p>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    
                 </div>
             </div>
             <!-- ./col -->
@@ -37,7 +37,7 @@
                         <p>Jumlah Sifat Cidera Terbanyak</p>
                     </div>
 
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    
                 </div>
             </div>
             <!-- ./col -->
@@ -45,12 +45,12 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h4>Jam {{ $waktu }}</h4>
+                        <h4>Jam {{ $waktu }}:00</h4>
 
                         <p>Waktu Rawan Kecelakaan</p>
                     </div>
 
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    
                 </div>
             </div>
             <!-- ./col -->
