@@ -39,7 +39,6 @@ class HomeController extends Controller
             $kecamatan = Tematik::find($kecamatan);
             $kecamatan = $kecamatan->kecamatan;
         }
-
         $tanggal = $data2->select('*', DB::raw('COUNT(waktu) as count'))
             ->groupBy('waktu')
             ->orderBy('count')
@@ -47,19 +46,21 @@ class HomeController extends Controller
         $tanggal = Carbon::parse($tanggal->waktu)->format('Y');
         $sifat = $data2->select('*', DB::raw('COUNT(sifat_cidera) as count'))
             ->groupBy('sifat_cidera')
-            ->orderBy('count','DESC')
+            ->orderBy('count', 'DESC')
             ->first();
         $waktu = $data2->select('*', DB::raw('COUNT(waktu) as count'))
             ->groupBy('waktu')
             ->orderBy('count')
             ->first();
-        $grafik = $data->withCount('tematik')->get();
+        $grafik = $data->with('tematik')->select('*', DB::raw('sum(jumlah_kecelakaan) as count'),'tematik_id')
+            ->groupBy('tematik_id')
+            ->get();;
         $kec = [];
         $kasus = [];
         $id = 0;
         foreach ($grafik as $value) {
             $kec[$id] = $value->tematik->kecamatan;
-            $kasus[$id] = $value->tematik_count;
+            $kasus[$id] = $value->count;
             $id += 1;
         }
         $grafik2 = HalamanData::select(DB::raw('DATE(created_at) as date'), DB::raw('sum(jumlah_kecelakaan) as sum'))

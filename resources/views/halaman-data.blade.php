@@ -26,7 +26,6 @@
 						<th>Kecamatan</th>
 						<th>Alamat</th>
 						<th>Jumlah Kecelakaan</th>
-						<th>Tanggal Kejadian</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -39,7 +38,6 @@
 						<td>{{$item->tematik->kecamatan}}</td>
 						<td>{{$item->alamat}}</td>
 						<td>{{$item->jumlah_kecelakaan}}</td>
-						<td>{{$item->tanggal}}</td>
 						
 						<td class="w-25">
 							

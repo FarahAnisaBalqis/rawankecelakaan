@@ -11,7 +11,6 @@
                             <tr><td>Kecematan</td><td>{{ $data->tematik->kecamatan }}</td></tr>
                             <tr><td>Alamat</td><td>{{ $data->alamat }}</td></tr>
                             <tr><td>Jumlah Kecelakaan </td><td>{{ $data->jumlah_kecelakaan }}</td></tr>
-                            <tr><td>Tanggal Kejadian </td><td>{{ $data->tanggal }}</td></tr>
                             <tr><td>Longitude</td><td>{{ $data->long }}</td></tr>
                             <tr><td>Latitude</td><td>{{ $data->lat }}</td></tr>
                         </tbody>
