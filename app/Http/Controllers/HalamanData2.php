@@ -80,7 +80,7 @@ class HalamanData2 extends Controller
     public function update(Request $request, $id)
     {
         ModelsHalamanData2::find($id)->update($request->all());
-        return redirect()->route('halaman data');
+        return redirect()->route('halaman data2');
     }
 
     /**
