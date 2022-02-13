@@ -12,7 +12,7 @@
                         <p>Kecamatan Dengan Kasus Kecelekaan Terbanyak</p>
                     </div>
 
-                    
+
                 </div>
             </div>
             <!-- ./col -->
@@ -24,7 +24,7 @@
 
                         <p>Tahun Dengan Kasus Kecelakaan Terbanyak</p>
                     </div>
-                    
+
                 </div>
             </div>
             <!-- ./col -->
@@ -32,12 +32,12 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>{{ $sifat->count }} {{ $sifat->sifat_cidera }}</h3>
+                        <span class="h3">{{ $sifat->count }} </span> {{ $sifat->sifat_cidera }}
 
                         <p>Jumlah Sifat Cidera Terbanyak</p>
                     </div>
 
-                    
+
                 </div>
             </div>
             <!-- ./col -->
@@ -50,7 +50,7 @@
                         <p>Waktu Rawan Kecelakaan</p>
                     </div>
 
-                    
+
                 </div>
             </div>
             <!-- ./col -->
@@ -108,12 +108,12 @@
     </div>
 @endsection
 @section('styles')
-<!-- Leaflet CSS -->
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-      crossorigin=""/>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
     <style>
-      .leaflet-control-attribution {
+        .leaflet-control-attribution {
             display: none !important
         }
 
@@ -144,6 +144,7 @@
             margin-right: 8px;
             opacity: 0.7;
         }
+
     </style>
 @endsection
 @push('scripts')
@@ -168,6 +169,13 @@
             data: data,
             options: {
                 maintainAspectRatio: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            stepSize: 5
+                        }
+                    }]
+                }
             }
         };
         const myChart = new Chart(
@@ -193,6 +201,13 @@
             data: data2,
             options: {
                 maintainAspectRatio: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            stepSize: 5
+                        }
+                    }]
+                }
             }
         };
         const myChart2 = new Chart(

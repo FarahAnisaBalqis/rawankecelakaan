@@ -47,7 +47,7 @@ class HomeController extends Controller
         $tanggal = Carbon::parse($tanggal->waktu)->format('Y');
         $sifat = $data2->select('*', DB::raw('COUNT(sifat_cidera) as count'))
             ->groupBy('sifat_cidera')
-            ->orderBy('count')
+            ->orderBy('count','DESC')
             ->first();
         $waktu = $data2->select('*', DB::raw('COUNT(waktu) as count'))
             ->groupBy('waktu')
