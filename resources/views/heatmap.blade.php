@@ -63,7 +63,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"
         integrity="sha512-Abr21JO2YqcJ03XGZRPuZSWKBhJpUAR6+2wH5zBeO4wAw4oksr8PRdF+BKIRsxvCdq+Mv4670rZ+dLnIyabbGw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+        <script src="{{ asset('storage/js/heatmap.js') }}"></script>
 
     <script type="text/javascript">
         var s = [5.554630942893766, 95.31709742351293];
@@ -94,7 +94,10 @@
                 'Gerakkan mouse Anda');
         };
         var heat = L.heatLayer(coor, {
-            radius: 25
+            radius: 200,
+            maxZoom: 20,
+          
+        
         })
         
         heat.addTo(map)

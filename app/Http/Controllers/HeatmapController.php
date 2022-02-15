@@ -19,7 +19,7 @@ class HeatmapController extends Controller
         }
         $index = 0;
         foreach ($data as $item) {
-            $coor[$index] = [$item->lat, $item->long];
+            $coor[$index] = [$item->lat, $item->long,2];
             $index++;
         }
         return view('heatmap', [
