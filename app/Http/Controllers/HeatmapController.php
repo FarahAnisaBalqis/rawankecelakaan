@@ -10,6 +10,7 @@ class HeatmapController extends Controller
     public function index()
     {
         $coor = [];
+        $arr = [];
         $index = 0;
         $data = HalamanData::all();
        
@@ -19,14 +20,15 @@ class HeatmapController extends Controller
         }
         $index = 0;
         foreach ($data as $item) {
-            $coor[$index] = [$item->lat, $item->long,2];
-            $index++;
-        }
+            $coor['lat'] = $item->lat;
+            $coor['lng'] = $item->long;
+            $arr[$index] = $coor;
+            $index += 1;
+        }       
         return view('heatmap', [
             'geofile' => [],
             'color' =>[],
             'data' => $info,
-            'coor'=> $coor
-        ]);
+            'coor'=> $arr     ]);
     }
 }
