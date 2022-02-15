@@ -65,10 +65,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
 
-    <script src="{{ asset('storage/js/heatmap/build/heatmap.min.js')}}">
-    </script>
-    <script src="{{ asset('storage/js/leaflet-heatmap.js') }}">
-    </script>
     <script type="text/javascript">
         var s = [5.554630942893766, 95.31709742351293];
         var color = {!! json_encode($color) !!};
@@ -80,8 +76,7 @@
 
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            maxZoom: 18
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
 
@@ -98,24 +93,24 @@
                 '<b>' + props.NAMOBJ + '</b><br />' + props.MhsSIF + ' orang' :
                 'Gerakkan mouse Anda');
         };
-        var dataMap = {
-            data: coor
-        };
-        var cfg = {
-            "radius": 0.001,
-            "maxOpacity": .8,
-            "scaleRadius": true,
-            "useLocalExtrema": true,
-            latField: 'lat',
-            lngField: 'lng',
-            valueField: 'count'
-        };
+        var heat = L.heatLayer(coor, {
+            radius: 25
+        })
+        
+        heat.addTo(map)
+        info.addTo(map);
 
+        function style(feature) {
+            return {
+                weight: 2,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 0.7,
+                fillColor: color[feature.properties.NAMOBJ]
+            };
 
-        var heatmapLayer = new HeatmapOverlay(cfg);
-        heatmapLayer.setData(dataMap);
-        heatmapLayer.addTo(map);
-       
+        }
         //memunculkan highlight pada peta
         function highlightFeature(e) {
             var layer = e.target;
@@ -138,8 +133,13 @@
                 .bindPopup(data[i][0])
                 .addTo(map);
         }
+        var geojson;
 
-        
+        function resetHighlight(e) {
+            geojsonLayer.resetStyle(e.target);
+            info.update();
+        }
+
         function zoomToFeature(e) {
             map.fitBounds(e.target.getBounds());
         }
@@ -151,11 +151,37 @@
                 click: zoomToFeature
             });
         }
-       
+        var geojsonLayer = new L.GeoJSON.AJAX({!! json_encode($geofile) !!}, {
+            style: style,
+            onEachFeature: onEachFeature
+        });
+        geojsonLayer.addTo(map);
+
         var legend = L.control({
             position: 'bottomright'
         });
 
-      
+        //pemanggilan legend
+        legend.onAdd = function(map) {
+
+            var div = L.DomUtil.create('div', 'info legend'),
+                grades = [0, 12, 25, 37, 50, 62, 75, 87], //pretty break untuk 8
+                labels = [],
+                from, to;
+
+            for (var i = 0; i < grades.length; i++) {
+                from = grades[i];
+                to = grades[i + 1];
+
+                labels.push(
+                    '<i style="background:' + getColor(from + 1) + '"></i> ' +
+                    from + (to ? '&ndash;' + to : '+'));
+            }
+
+            div.innerHTML = '<h4>Legenda:</h4><br>' + labels.join('<br>');
+            return div;
+        };
+
+        legend.addTo(map);
     </script>
 @endpush

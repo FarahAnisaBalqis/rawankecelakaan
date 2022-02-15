@@ -18,19 +18,15 @@ class HeatmapController extends Controller
             $index++;
         }
         $index = 0;
-        $arr = [];
         foreach ($data as $item) {
-            $coor['lat'] = $item->lat;
-            $coor['lng'] = $item->long;
-            $coor['count'] = $item->jumlah_kecelakaan;
-            $arr[$index] = $coor;
+            $coor[$index] = [$item->lat, $item->long];
             $index++;
         }
         return view('heatmap', [
             'geofile' => [],
             'color' =>[],
             'data' => $info,
-            'coor'=> $arr
+            'coor'=> $coor
         ]);
     }
 }
