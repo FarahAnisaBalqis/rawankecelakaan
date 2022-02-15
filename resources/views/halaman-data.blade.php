@@ -80,7 +80,7 @@
 
 	  $(document).ready( function () {
     $('#table').DataTable(
-		"pageLength": 50
+		"pageLength": 100
 	);
 } );
 </script>

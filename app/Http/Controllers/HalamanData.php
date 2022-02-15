@@ -50,7 +50,6 @@ class HalamanData extends Controller
             'alamat'=>$request->alamat,
             'tematik_id'=>$request->kecamatan,
             'jumlah_kecelakaan'=>$request->jumlah,
-            'tanggal' => $request->tanggal,
             'gambar'=> $fileName,
             'long'=>$request->long,
             'lat'=>$request->lat
@@ -110,7 +109,6 @@ class HalamanData extends Controller
             'alamat'=>$request->alamat,
             'tematik_id'=>$request->kecamatan,
             'jumlah_kecelakaan'=>$request->jumlah,
-            'tanggal' => $request->tanggal,
             'gambar'=> $fileName,
             'long'=>$request->long,
             'lat'=>$request->lat

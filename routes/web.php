@@ -37,6 +37,7 @@ Route::get('/edit-tematik/{id}', [App\Http\Controllers\TematikController::class,
 Route::post('/update-tematik/{id}', [App\Http\Controllers\TematikController::class, 'update'])->name('update tematik');
 Route::get('/delete-tematik/{id}', [App\Http\Controllers\TematikController::class, 'destroy'])->name('delete tematik');
 Route::get('/maps', [App\Http\Controllers\MapController::class, 'index'])->name('maps');
+Route::get('/heatmap', [App\Http\Controllers\HeatmapController::class, 'index'])->name('heatmap');
 Route::get('/halaman-data2', [App\Http\Controllers\HalamanData2::class, 'index'])->name('halaman data2');
 Route::post('/input-data2', [App\Http\Controllers\HalamanData2::class, 'store'])->name('data kecelakaan2');
 Route::get('/tambah-data2', [App\Http\Controllers\HalamanData2::class, 'create'])->name('tambah data2');
