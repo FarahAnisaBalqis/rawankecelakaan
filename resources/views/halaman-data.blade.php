@@ -78,10 +78,11 @@
           });
       });
 
-	  $(document).ready( function () {
-    $('#table').DataTable(
-		"pageLength": 100
-	);
-} );
-</script>
+	  $(document).ready(function() {
+            $('#table').DataTable({
+                fixedHeader: true,
+                pageLength: 100
+            });
+        });
+    </script>
 @endsection
