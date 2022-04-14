@@ -22,6 +22,7 @@ class HeatmapController extends Controller
         foreach ($data as $item) {
             $coor['lat'] = $item->lat;
             $coor['lng'] = $item->long;
+            //$coor['count'] = $item->jumlah_kecelakaan;
             $arr[$index] = $coor;
             $index += 1;
         }       

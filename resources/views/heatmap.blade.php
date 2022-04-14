@@ -102,7 +102,7 @@
             data: coor
         };
         var cfg = {
-            "radius": 0.006,
+            "radius": 0.01,
             "maxOpacity": .8,
             "scaleRadius": true,
             "useLocalExtrema": true,
