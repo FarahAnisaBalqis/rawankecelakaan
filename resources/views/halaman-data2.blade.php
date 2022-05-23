@@ -24,7 +24,6 @@
                             <th>
                                 No
                             </th>
-                            <th>Tangal Input</th>
                             <th>Kecamatan</th>
                             <th>Instansi No.Laporan Polisi</th>
                             <th>Waktu Kejadian</th>
@@ -41,10 +40,9 @@
                                 <td>
                                     {{ $loop->iteration }}
                                 </td>
-                                <td>{{ $item->created_at->isoFormat('D MMMM Y hh:mm:ss') }}</td>
                                 <td>{{ $item->tematik->kecamatan }}</td>
                                 <td>{{ $item->no_laporan }}</td>
-                                <td>{{ $item->waktu }}</td>
+                                <td>{{ $item->waktu->isoFormat('D MMMM Y hh:mm:ss') }}</td>
                                 <td>{{ $item->deskripsi_lokasi }}</td>
                                 <td>{{ $item->sifat_kasus }}</td>
                                 <td>{{ $item->bio_korban }}</td>

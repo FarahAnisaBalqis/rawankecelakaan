@@ -3,10 +3,10 @@
 @section('content')
     <div class="container">
         <div class="mx-auto">
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-lg-4 col-6">
                 <!-- small box -->
-                <div class="small-box bg-info">
+                <div class="small-box bg-info h-100">
                     <div class="inner">
                         <h3>{{ $kecamatan }}</h3>
 
@@ -19,7 +19,7 @@
             <!-- ./col -->
             <div class="col-lg-4 col-6">
                 <!-- small box -->
-                <div class="small-box bg-success">
+                <div class="small-box bg-success h-100">
                     <div class="inner">
                         <h3>{{ $tanggal }}</h3>
 
@@ -29,9 +29,9 @@
                 </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-4 col-6">
+            <div class="col-lg-4 col-6 ">
                 <!-- small box -->
-                <div class="small-box bg-warning">
+                <div class="small-box bg-warning h-100">
                     <div class="inner">
                         <span class="h3">{{ $sifat->count }} </span> {{ $sifat->sifat_cidera }}
 
@@ -54,16 +54,6 @@
                             <i class="fas fa-chart-pie mr-1"></i>
                             Grafik
                         </h3>
-                        <div class="card-tools">
-                            <ul class="nav nav-pills ml-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#grafik1-button" data-bs-toggle="tab">Grafik 1</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#grafik2-button" data-bs-toggle="tab">Grafik 2</a>
-                                </li>
-                            </ul>
-                        </div>
                     </div><!-- /.card-header -->
                     <div class="card-body">
                         <div class="tab-content p-0">

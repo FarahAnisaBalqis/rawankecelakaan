@@ -62,6 +62,9 @@ http://www.tooplate.com/view/2091-ziggy
         <a href="#" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h4>Panduan</h4>
         </a>
+        <a href="/" class="text-decoration-none text-white m-4 py-1 me-2 btn">
+            <h4>Home</h4>
+        </a>
     </section>
 
     <section class="second-section p-0">

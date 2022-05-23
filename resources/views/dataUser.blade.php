@@ -55,6 +55,9 @@ http://www.tooplate.com/view/2091-ziggy
         <a href="#" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h4>Panduan</h4>
         </a>
+        <a href="/" class="text-decoration-none text-white m-4 py-1 me-2 btn">
+            <h4>Home</h4>
+        </a>
     </section>
 
     <section class="second-section">
@@ -76,7 +79,7 @@ http://www.tooplate.com/view/2091-ziggy
                 <!-- ./col -->
                 <div class="col-lg-4 col-6">
                     <!-- small box -->
-                    <div class="card p-3 mb-3 bg-success">
+                    <div class="card p-3 mb-3 bg-success h-100">
                         <div class="inner">
                             <h3 class="text-white">{{ $tanggal }}</h3>
 
@@ -109,18 +112,7 @@ http://www.tooplate.com/view/2091-ziggy
                                 <i class="fas fa-chart-pie mr-1"></i>
                                 Grafik
                             </span>
-                            <div class="card-tools float-end">
-                                <ul class="nav nav-pills ml-auto">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="#grafik1-button" data-bs-toggle="tab">Grafik
-                                            1</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#grafik2-button" data-bs-toggle="tab">Grafik
-                                            2</a>
-                                    </li>
-                                </ul>
-                            </div>
+                          
                         </div><!-- /.card-header -->
                         <div class="card-body">
                             <div class="tab-content p-0">

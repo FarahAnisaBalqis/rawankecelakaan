@@ -9,6 +9,7 @@ class HalamanData2 extends Model
 {
     use HasFactory;
     protected $guarded =[];
+    protected $dates = ['waktu'];
     function tematik(){
         return $this->belongsTo(Tematik::class,'tematik_id','id');
     }
