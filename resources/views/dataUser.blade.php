@@ -61,7 +61,7 @@ http://www.tooplate.com/view/2091-ziggy
 
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <!-- small box -->
                     <div class="card p-3 mb-3 bg-info">
                         <div class="inner">
@@ -74,7 +74,7 @@ http://www.tooplate.com/view/2091-ziggy
                     </div>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <!-- small box -->
                     <div class="card p-3 mb-3 bg-success">
                         <div class="inner">
@@ -86,7 +86,7 @@ http://www.tooplate.com/view/2091-ziggy
                     </div>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <!-- small box -->
                     <div class="card p-3 mb-3 bg-warning">
                         <div class="inner">
@@ -99,19 +99,7 @@ http://www.tooplate.com/view/2091-ziggy
                     </div>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="card p-3 mb-3 bg-danger">
-                        <div class="inner">
-                            <span class="h3 text-white">Jam {{ $waktu }}:00</span>
-
-                            <p class="text-white">Waktu Rawan Kecelakaan</p>
-                        </div>
-
-
-                    </div>
-                </div>
-                <!-- ./col -->
+              
             </div>
                 <section>
 
