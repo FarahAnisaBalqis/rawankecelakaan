@@ -42,7 +42,7 @@
                                 </td>
                                 <td>{{ $item->tematik->kecamatan }}</td>
                                 <td>{{ $item->no_laporan }}</td>
-                                <td>{{ $item->waktu->isoFormat('D MMMM Y hh:mm:ss') }}</td>
+                                <td>{{ $item->waktu->isoFormat('DD MMMM Y hh:mm:ss') }}</td>
                                 <td>{{ $item->deskripsi_lokasi }}</td>
                                 <td>{{ $item->sifat_kasus }}</td>
                                 <td>{{ $item->bio_korban }}</td>
