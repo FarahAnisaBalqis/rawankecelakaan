@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function map(){
+    public function map($tahun = null){
    
         $geofile = [];
         $color = [];
@@ -19,23 +19,65 @@ class UserController extends Controller
         $index = 0;
         $index2 = 0;
         $tematik = Tematik::all();
-        $data = HalamanData::all();
+        if ($tahun) {
+            $data = HalamanData::where('tanggal', $tahun)->get();
+        } else {
+            $data = HalamanData::all();
+        }
         foreach ($tematik as $item) {
-            $geofile[$index] = 'storage/' . $item->geojson;
+            $geofile[$index] = '/storage/' . $item->geojson;
             $index++;
         }
         foreach ($tematik as $item) {
             $color[$item->kecamatan] = $item->warna;
         }
         foreach ($data as $item) {
-            $coor[$index2] = [$item->alamat, $item->lat, $item->long];
+            $coor[$index2] = [$item->alamat, $item->lat, $item->long, $item->tematik->kecamatan, $item->jumlah_kecelakaan];
             $index2++;
         }
-
+        $tahunList = HalamanData::groupby('tanggal')->get();
         return view('mapUser', [
             'geofile' => $geofile,
             'color' => $color,
-            'data' => $coor
+            'data' => $coor,
+            'tahunList' => $tahunList,
+            'tahun' => $tahun,
+        ]);
+    }
+    
+    public function heatmap($radius = 0.01, $tahun = null)
+    {
+        $coor = [];
+        $arr = [];
+        $info = [];
+        $index = 0;
+        if ($tahun) {
+            $data = HalamanData::where('tanggal', $tahun)->get();
+        } else {
+            $data = HalamanData::all();
+        }
+
+        foreach ($data as $item) {
+            $info[$index] = [$item->alamat, $item->lat, $item->long];
+            $index++;
+        }
+        $index = 0;
+        foreach ($data as $item) {
+            $coor['lat'] = $item->lat;
+            $coor['lng'] = $item->long;
+            //$coor['count'] = $item->jumlah_kecelakaan;
+            $arr[$index] = $coor;
+            $index += 1;
+        }
+        $tahunList = HalamanData::groupby('tanggal')->get();
+        return view('heatmap-user', [
+            'geofile' => [],
+            'color' => [],
+            'tahunList' => $tahunList,
+            'tahun' => $tahun,
+            'data' => $info,
+            'radius' => $radius,
+            'coor' => $arr
         ]);
     }
     public function data()

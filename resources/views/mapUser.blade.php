@@ -47,17 +47,22 @@ http://www.tooplate.com/view/2091-ziggy
             style="border-bottom:1px solid cyan;">
             <h4>Maps</h4>
         </a>
-        <a href="#" class="text-decoration-none text-white m-4 py-1 me-2 btn">
+        <a href="{{ route('heatmap user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h4>Heatmaps</h4>
         </a>
-        <a href="{{ route('Data user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn" >
+        <a href="{{ route('Data user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h4>Data</h4>
         </a>
         <a href="#" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h4>Panduan</h4>
         </a>
     </section>
+    <style>
+        input[type="range"] {
+            -webkit-appearance: slider-vertical;
+        }
 
+    </style>
     <section class="second-section p-0">
 
         <div class="card bg-primary m-4">
@@ -68,8 +73,24 @@ http://www.tooplate.com/view/2091-ziggy
                 </h3>
 
             </div>
-            <div class="card-body">
-                <div id="map" style="height: 300px; width: 100%;"></div>
+            <div class="card-body bg-white">
+                <select class="form-control float-right m-2 w-25" id="tahun">
+                <option value="" selected>--Lihat Semua--</option>
+                @foreach ($tahunList as $item)
+                    <option value="{{ $item->tanggal }}" {{ $tahun == $item->tanggal ? 'selected' : '' }}>
+                        {{ $item->tanggal }}
+                    </option>
+                @endforeach
+            </select>
+                <div class="row">
+                    <div class="col-lg-11">
+                        <div id="map"></div>
+                    </div>
+                    <div class="col-lg-1">
+                        <input id="opacity" type="range" class="form-control mt-4 w-50 h-50" min="0" max="1" value="0.5"
+                            step="0.1">
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -100,6 +121,11 @@ http://www.tooplate.com/view/2091-ziggy
 </body>
 
 </html>
+ <script>
+        $('#tahun').change(function() {
+            window.location.href = '/maps-user/' + this.value;
+        });
+    </script>
 <!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -147,8 +173,7 @@ http://www.tooplate.com/view/2091-ziggy
 <!-- Make sure you put this AFTER Leaflet's CSS -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-crossorigin="">
-</script>
+crossorigin=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"
 integrity="sha512-Abr21JO2YqcJ03XGZRPuZSWKBhJpUAR6+2wH5zBeO4wAw4oksr8PRdF+BKIRsxvCdq+Mv4670rZ+dLnIyabbGw=="
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -212,7 +237,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     }
     for (var i = 0; i < datamap.length; i++) {
         marker = new L.marker([datamap[i][1], datamap[i][2]])
-            .bindPopup(datamap[i][0])
+              .bindPopup(datamap[i][3]  +"<br>"+datamap[i][0]+ "<br> Jumlah Kecelakaan "+datamap[i][4]  )
             .addTo(map);
     }
     var geojson;
@@ -238,7 +263,11 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         onEachFeature: onEachFeature
     });
     geojsonLayer.addTo(map);
-
+    $('#opacity').change(function() {
+        geojsonLayer.setStyle({
+            fillOpacity: this.value
+        });
+    });
     var legend = L.control({
         position: 'bottomright'
     });
