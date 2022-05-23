@@ -138,7 +138,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('maps') }}" class="nav-link">
+                                <a href="{{ route('maps',['tahun'=>date('Y')]) }}" class="nav-link">
                                     <i class="nav-icon fa-solid fa-map-location"></i>
                                     <p>
                                         Maps
@@ -146,7 +146,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('maps') }}" class="nav-link">
+                                <a href="{{ route('heatmap',['radius'=>0.01,'tahun'=>date('Y')]) }}" class="nav-link">
                                     <i class="nav-icon fa-solid fa-map"></i>
                                     <p>
                                         Heatmap

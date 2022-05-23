@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\HalamanData;
 use App\Models\Tematik;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MapController extends Controller
 {
@@ -13,7 +14,7 @@ class MapController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($tahun = null)
     {
         $geofile = [];
         $color = [];
@@ -21,20 +22,27 @@ class MapController extends Controller
         $index = 0;
         $index2 = 0;
         $tematik = Tematik::all();
-        $data = HalamanData::all();
-        foreach($tematik as $item){
-            $geofile[$index] = 'storage/'.$item->geojson;
+        if ($tahun) {
+            $data = HalamanData::where('tanggal', $tahun)->get();
+        } else {
+            $data = HalamanData::all();
+        }
+        foreach ($tematik as $item) {
+            $geofile[$index] = '/storage/' . $item->geojson;
             $index++;
         }
-        foreach($tematik as $item){
+        foreach ($tematik as $item) {
             $color[$item->kecamatan] = $item->warna;
         }
-        foreach($data as $item){
-            $coor[$index2] = [$item->alamat,$item->lat,$item->long];
+        foreach ($data as $item) {
+            $coor[$index2] = [$item->alamat, $item->lat, $item->long, $item->tematik->kecamatan, $item->jumlah_kecelakaan];
             $index2++;
         }
-        return view('maps',[
-            'geofile'=> $geofile,
+        $tahunList = HalamanData::groupby('tanggal')->get();
+        return view('maps', [
+            'geofile' => $geofile,
+            'tahunList' => $tahunList,
+            'tahun' => $tahun,
             'color' => $color,
             'data' => $coor
         ]);

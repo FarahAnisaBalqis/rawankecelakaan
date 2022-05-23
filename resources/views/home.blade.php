@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        <div class="mx-auto">
         <div class="row">
             <div class="col-lg-3 col-6">
                 <!-- small box -->
@@ -41,19 +42,8 @@
                 </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h4>Jam {{ $waktu }}:00</h4>
-
-                        <p>Waktu Rawan Kecelakaan</p>
-                    </div>
-
-
-                </div>
-            </div>
-            <!-- ./col -->
+         
+        </div>
         </div>
         <div class="row">
             <section class="col-lg-7 connectedSortable">

@@ -41,7 +41,7 @@
                                 <td>
                                     {{ $loop->iteration }}
                                 </td>
-                                <td>{{ $item->created_at->format('Y-M-D') }}</td>
+                                <td>{{ $item->created_at->isoFormat('D MMMM Y hh:mm:ss') }}</td>
                                 <td>{{ $item->tematik->kecamatan }}</td>
                                 <td>{{ $item->no_laporan }}</td>
                                 <td>{{ $item->waktu }}</td>

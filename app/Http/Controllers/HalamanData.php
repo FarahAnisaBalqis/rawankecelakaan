@@ -48,6 +48,7 @@ class HalamanData extends Controller
         }
         ModelsHalamanData::create([
             'alamat'=>$request->alamat,
+            'tanggal' => $request->tanggal,
             'tematik_id'=>$request->kecamatan,
             'jumlah_kecelakaan'=>$request->jumlah,
             'gambar'=> $fileName,
@@ -107,6 +108,7 @@ class HalamanData extends Controller
         }
         ModelsHalamanData::find($id)->update([
             'alamat'=>$request->alamat,
+            'tanggal' => $request->tanggal,
             'tematik_id'=>$request->kecamatan,
             'jumlah_kecelakaan'=>$request->jumlah,
             'gambar'=> $fileName,
