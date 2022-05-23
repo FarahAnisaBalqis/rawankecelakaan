@@ -94,7 +94,8 @@
             $('#table').DataTable({
                 fixedHeader: true,
                 pageLength: 100,
-                scroller: true
+                scroller: true,
+                oSearch: { "bSmart": false, "bRegex": true }
             });
         });
     </script>
