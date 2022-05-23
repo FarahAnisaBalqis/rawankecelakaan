@@ -63,10 +63,10 @@ http://www.tooplate.com/view/2091-ziggy
     <section class="second-section">
 
         <div class="container">
-            <div class="row">
+            <div class="row mb-2">
                 <div class="col-lg-4 col-6">
                     <!-- small box -->
-                    <div class="card p-3 mb-3 bg-info">
+                    <div class="card p-3 mb-3 bg-info h-100">
                         <div class="inner">
                             <h3 class="text-white">{{ $kecamatan }}</h3>
 
@@ -91,7 +91,7 @@ http://www.tooplate.com/view/2091-ziggy
                 <!-- ./col -->
                 <div class="col-lg-4 col-6">
                     <!-- small box -->
-                    <div class="card p-3 mb-3 bg-warning">
+                    <div class="card p-3 mb-3 bg-warning h-100">
                         <div class="inner">
                             <span class="h3 text-white">{{ $sifat->count }} </span> <span class="text-white">{{ $sifat->sifat_cidera }}</span>
 
