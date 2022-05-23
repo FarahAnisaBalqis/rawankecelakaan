@@ -21,7 +21,7 @@ class HeatmapController extends Controller
         }
 
         foreach ($data as $item) {
-            $info[$index] = [$item->alamat, $item->lat, $item->long];
+            $info[$index] = [$item->alamat, $item->lat, $item->long, $item->tematik->kecamatan, $item->jumlah_kecelakaan];
             $index++;
         }
         $index = 0;
