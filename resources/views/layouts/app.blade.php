@@ -34,9 +34,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
         integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.4/fh-3.2.1/datatables.min.css"/>
- 
-        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.4/fh-3.2.1/datatables.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/dt/dt-1.11.4/fh-3.2.1/datatables.min.css" />
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.4/fh-3.2.1/datatables.min.js"></script>
 
     @yield('styles')
 </head>
@@ -81,7 +82,7 @@
                         <div id="drop" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                         document.getElementById('logout-form').submit();">
+                                document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
@@ -96,7 +97,7 @@
         </nav>
         @guest
         @else
-            <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <aside class="main-sidebar sidebar-dark-primary elevation-4 position-fixed">
                 <!-- Brand Logo -->
                 <a href="index3.html" class="brand-link">
 
@@ -111,25 +112,12 @@
                             {{ Auth::user()->name }}
                         </div>
                     </div>
-
-                    <!-- SidebarSearch Form -->
-                    <div class="form-inline">
-                        <div class="input-group" data-widget="sidebar-search">
-                            <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                                aria-label="Search">
-                            <div class="input-group-append">
-                                <button class="btn btn-sidebar">
-                                    <i class="fas fa-search fa-fw"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
                     <!-- Sidebar Menu -->
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                             data-accordion="false">
                             <li class="nav-item">
-                                <a href="{{ route('home') }}" class="nav-link">
+                                <a href="{{ route('home') }}" class="nav-link {{ request()->route()->getName() == 'home'? 'text-white bg-info': '' }} text-white text-start w-100">
                                     <i class="nav-icon fas fa-th"></i>
                                     <p>
                                         Dashboard
@@ -137,7 +125,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('maps',['tahun'=>date('Y')]) }}" class="nav-link">
+                                <a href="{{ route('maps', ['tahun' => date('Y')]) }}" class="nav-link {{ request()->route()->getName() == 'maps'? 'text-white bg-info': '' }} text-white text-start w-100">
                                     <i class="nav-icon fa-solid fa-map-location"></i>
                                     <p>
                                         Maps
@@ -145,41 +133,46 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('heatmap',['radius'=>0.01,'tahun'=>date('Y')]) }}" class="nav-link">
+                                <a href="{{ route('heatmap', ['radius' => 0.01, 'tahun' => date('Y')]) }}"
+                                    class="nav-link {{ request()->route()->getName() == 'heatmap'? 'text-white bg-info': '' }} text-white text-start w-100" >
                                     <i class="nav-icon fa-solid fa-map"></i>
                                     <p>
                                         Heatmap
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-item menu-open">
-                                <a href="#" class="nav-link ">
-                                    <i class="nav-icon fa-solid fa-database"></i>
-                                    <p>
-                                        Data
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="{{ route('halaman data2') }}" class="nav-link ">
-                                            <p>Data Kecelakaan</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('halaman data') }}" class="nav-link">
-                                            <p>Data Lokasi Rawan kecelakaan</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('halaman tematik') }}" class="nav-link">
-                                            <p>Data Tematik</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
                             <li class="nav-item">
-                                <a href="{{ route('maps') }}" class="nav-link">
+                                <a data-bs-toggle="collapse" href="#data-r"
+                                    class="nav-link btn bg-transparent text-white text-start w-100"
+                                    aria-controls="manajemen" role="button" aria-expanded="true">
+                                    <i class="nav-icon fa-solid fa-database"></i>
+                                    Data
+                                    <i class="fas fa-sort-down float-end"></i>
+                                </a>
+
+                                <div class="collapse {{ in_array(request()->route()->getName(),['halaman data2', 'halaman data', 'halaman tematik'])? 'show': '' }}"
+                                    id="data-r" style="">
+                                    <ul class="nav ps-3">
+                                        <li class="nav-item w-100">
+                                            <a class="dropdown-item {{ request()->route()->getName() == 'halaman data2'? 'text-white bg-info': '' }}"
+                                                href="{{ route('halaman data2') }}">Data Kecelakaan</a>
+                                        </li>
+
+                                        <li class="nav-item w-100">
+                                            <a class="dropdown-item {{ request()->route()->getName() == 'halaman data'? 'text-white bg-info': '' }}"
+                                                href="{{ route('halaman data') }}">Data Lokasi Rawan kecelakaan</a>
+                                        </li>
+                                        <li class="nav-item  w-100">
+                                            <a class="dropdown-item {{ request()->route()->getName() == 'halaman tematik'? 'text-white bg-info': '' }}"
+                                                href="{{ route('halaman tematik') }}">Data Tematik</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('maps') }}" class="nav-link {{ request()->route()->getName() == 'panduan'? 'text-white bg-info': '' }} text-white text-start w-100">
                                     <i class="nav-icon fa-solid fa-book"></i>
                                     <p>
                                         Panduan
