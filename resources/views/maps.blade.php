@@ -96,6 +96,7 @@
         var s = [5.554630942893766, 95.31709742351293];
         var color = {!! json_encode($color) !!};
         var data = {!! json_encode($data) !!}
+    var kecamatan = {!! json_encode($kecamatan) !!}
         var map = L.map('map').setView(
             s, 11
         );
