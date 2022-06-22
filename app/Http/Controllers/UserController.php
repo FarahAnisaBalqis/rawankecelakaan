@@ -35,6 +35,8 @@ class UserController extends Controller
             $coor[$index2] = [$item->alamat, $item->lat, $item->long, $item->tematik->kecamatan, $item->jumlah_kecelakaan];
             $index2++;
         }
+        $kecamatan = $tematik->pluck('kecamatan');
+
         $tahunList = HalamanData::groupby('tanggal')->get();
         return view('mapUser', [
             'geofile' => $geofile,
@@ -42,6 +44,7 @@ class UserController extends Controller
             'data' => $coor,
             'tahunList' => $tahunList,
             'tahun' => $tahun,
+            'kecamatan' => $kecamatan
         ]);
     }
     

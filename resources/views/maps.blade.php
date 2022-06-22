@@ -90,6 +90,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"
         integrity="sha512-Abr21JO2YqcJ03XGZRPuZSWKBhJpUAR6+2wH5zBeO4wAw4oksr8PRdF+BKIRsxvCdq+Mv4670rZ+dLnIyabbGw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-search@2.3.7/dist/leaflet-search.src.css" />
+    <script src="https://unpkg.com/leaflet-search@2.3.7/dist/leaflet-search.src.js"></script>
     <script type="text/javascript">
         var s = [5.554630942893766, 95.31709742351293];
         var color = {!! json_encode($color) !!};
@@ -185,26 +187,38 @@
         });
 
         //pemanggilan legend
-        legend.onAdd = function(map) {
+       legend.onAdd = function(map) {
 
-            var div = L.DomUtil.create('div', 'info legend'),
-                grades = [0, 12, 25, 37, 50, 62, 75, 87], //pretty break untuk 8
-                labels = [],
-                from, to;
+        var div = L.DomUtil.create('div', 'info legend'),
+            grades = [0, 12, 25, 37, 50, 62, 75, 87], //pretty break untuk 8
+            from, to;
+        labels = []
+        for (var i = 0; i < kecamatan.length; i++) {
+            labels.push(
+                '<i style="background:' + color[kecamatan[i]] + '"></i> - ' + kecamatan[i]);
+        }
 
-            for (var i = 0; i < grades.length; i++) {
-                from = grades[i];
-                to = grades[i + 1];
+        div.innerHTML = '<h4>Legenda:</h4>' + labels.join('<br>');
+        return div;
+    };
 
-                labels.push(
-                    '<i style="background:' + getColor(from + 1) + '"></i> ' +
-                    from + (to ? '&ndash;' + to : '+'));
+    legend.addTo(map);
+    
+         var controlSearch = new L.Control.Search({
+            position: 'topleft',
+            layer: geojsonLayer,
+            initial: false,
+            zoom: 12,
+            marker: false,
+            propertyName: 'NAMOBJ',
+            autoType: false,
+            marker: {
+                icon: false
             }
 
-            div.innerHTML = '<h4>Legenda:</h4><br>' + labels.join('<br>');
-            return div;
-        };
+        });
 
-        legend.addTo(map);
+
+        map.addControl(controlSearch);
     </script>
 @endpush

@@ -39,12 +39,14 @@ class MapController extends Controller
             $index2++;
         }
         $tahunList = HalamanData::groupby('tanggal')->get();
+        $kecamatan = $tematik->pluck('kecamatan');
         return view('maps', [
             'geofile' => $geofile,
             'tahunList' => $tahunList,
             'tahun' => $tahun,
             'color' => $color,
-            'data' => $coor
+            'data' => $coor,
+            'kecamatan' => $kecamatan
         ]);
     }
 
