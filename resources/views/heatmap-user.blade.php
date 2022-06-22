@@ -97,10 +97,15 @@ http://www.tooplate.com/view/2091-ziggy
                         @endforeach
                     </select>
                 </div>
-
+                <div class="col-md-5">
+                    <div class="text-end">
+                        <button id="printBtn" class="btn btn-success">Cetak Peta</button>
+                    </div>
+                </div>
             </div>
                 <div class="row">
                 <div class="col-lg-11">
+                    
                     <div id="map"></div>
                 </div>
                 <div class="col-lg-1">
@@ -198,6 +203,8 @@ http://www.tooplate.com/view/2091-ziggy
             window.location.href = '/heatmap-user/' + {{ $radius }} + "/" + this.value;
         });
     </script>
+    <script src="https://www.jqueryscript.net/demo/jQuery-Plugin-To-Print-Any-Part-Of-Your-Page-Print/jQuery.print.js"> </script>
+
     <!-- Leaflet JavaScript -->
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -296,5 +303,8 @@ http://www.tooplate.com/view/2091-ziggy
 
         var legend = L.control({
             position: 'bottomright'
+        });
+        $("#printBtn").click(function() {
+            $('#map').print();
         });
     </script>

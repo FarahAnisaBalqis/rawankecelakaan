@@ -64,7 +64,6 @@ http://www.tooplate.com/view/2091-ziggy
         input[type="range"] {
             -webkit-appearance: slider-vertical;
         }
-
     </style>
     <section class="second-section p-0">
 
@@ -78,20 +77,23 @@ http://www.tooplate.com/view/2091-ziggy
             </div>
             <div class="card-body bg-white">
                 <select class="form-control float-right m-2 w-25" id="tahun">
-                <option value="" selected>--Lihat Semua--</option>
-                @foreach ($tahunList as $item)
-                    <option value="{{ $item->tanggal }}" {{ $tahun == $item->tanggal ? 'selected' : '' }}>
-                        {{ $item->tanggal }}
-                    </option>
-                @endforeach
-            </select>
+                    <option value="" selected>--Lihat Semua--</option>
+                    @foreach ($tahunList as $item)
+                        <option value="{{ $item->tanggal }}" {{ $tahun == $item->tanggal ? 'selected' : '' }}>
+                            {{ $item->tanggal }}
+                        </option>
+                    @endforeach
+                </select>
                 <div class="row">
                     <div class="col-lg-11">
+                        <div class="text-end">
+                            <button id="printBtn" class="btn btn-success mb-2">Cetak Peta</button>
+                        </div>
                         <div id="map"></div>
                     </div>
                     <div class="col-lg-1">
-                        <input id="opacity" type="range" class="form-control mt-4 w-50 h-50" min="0" max="1" value="0.5"
-                            step="0.1">
+                        <input id="opacity" type="range" class="form-control mt-4 w-50 h-50" min="0"
+                            max="1" value="0.5" step="0.1">
                     </div>
                 </div>
             </div>
@@ -124,11 +126,11 @@ http://www.tooplate.com/view/2091-ziggy
 </body>
 
 </html>
- <script>
-        $('#tahun').change(function() {
-            window.location.href = '/maps-user/' + this.value;
-        });
-    </script>
+<script>
+    $('#tahun').change(function() {
+        window.location.href = '/maps-user/' + this.value;
+    });
+</script>
 <!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -169,19 +171,20 @@ http://www.tooplate.com/view/2091-ziggy
         margin-right: 8px;
         opacity: 0.7;
     }
-
 </style>
+<script src="https://www.jqueryscript.net/demo/jQuery-Plugin-To-Print-Any-Part-Of-Your-Page-Print/jQuery.print.js">
+</script>
 
 <!-- Leaflet JavaScript -->
 <!-- Make sure you put this AFTER Leaflet's CSS -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-crossorigin=""></script>
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"
-integrity="sha512-Abr21JO2YqcJ03XGZRPuZSWKBhJpUAR6+2wH5zBeO4wAw4oksr8PRdF+BKIRsxvCdq+Mv4670rZ+dLnIyabbGw=="
-crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    integrity="sha512-Abr21JO2YqcJ03XGZRPuZSWKBhJpUAR6+2wH5zBeO4wAw4oksr8PRdF+BKIRsxvCdq+Mv4670rZ+dLnIyabbGw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet-search@2.3.7/dist/leaflet-search.src.css" />
-    <script src="https://unpkg.com/leaflet-search@2.3.7/dist/leaflet-search.src.js"></script>
+<script src="https://unpkg.com/leaflet-search@2.3.7/dist/leaflet-search.src.js"></script>
 <script type="text/javascript">
     var s = [5.554630942893766, 95.31709742351293];
     var color = {!! json_encode($color) !!};
@@ -243,7 +246,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     }
     for (var i = 0; i < datamap.length; i++) {
         marker = new L.marker([datamap[i][1], datamap[i][2]])
-              .bindPopup(datamap[i][3]  +"<br>"+datamap[i][0]+ "<br> Jumlah Kecelakaan "+datamap[i][4]  )
+            .bindPopup(datamap[i][3] + "<br>" + datamap[i][0] + "<br> Jumlah Kecelakaan " + datamap[i][4])
             .addTo(map);
     }
     var geojson;
@@ -278,21 +281,21 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         position: 'bottomright'
     });
     var controlSearch = new L.Control.Search({
-            position: 'topleft',
-            layer: geojsonLayer,
-            initial: false,
-            zoom: 12,
-            marker: false,
-            propertyName: 'NAMOBJ',
-            autoType: false,
-            marker: {
-                icon: false
-            }
+        position: 'topleft',
+        layer: geojsonLayer,
+        initial: false,
+        zoom: 12,
+        marker: false,
+        propertyName: 'NAMOBJ',
+        autoType: false,
+        marker: {
+            icon: false
+        }
 
-        });
-        map.addControl(controlSearch);
+    });
+    map.addControl(controlSearch);
     //pemanggilan legend
-   legend.onAdd = function(map) {
+    legend.onAdd = function(map) {
 
         var div = L.DomUtil.create('div', 'info legend'),
             grades = [0, 12, 25, 37, 50, 62, 75, 87], //pretty break untuk 8
@@ -308,5 +311,4 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     };
 
     legend.addTo(map);
-    
 </script>

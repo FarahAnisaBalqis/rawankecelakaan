@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
+    <style>
         input[type="range"] {
             -webkit-appearance: slider-vertical;
         }
-
     </style>
     <div class="container">
         <div class="card p-4">
@@ -28,15 +27,21 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="col-md-5">
+                    <div class="text-end">
+                        <button id="printBtn" class="btn btn-success">Cetak Peta</button>
+                    </div>
+                </div>
 
             </div>
             <div class="row">
                 <div class="col-lg-11">
+
                     <div id="map"></div>
                 </div>
                 <div class="col-lg-1">
-                    <input id="opacity" type="range" class="form-control mt-4 w-50 h-50" min="0" max="1" value="0.5"
-                        step="0.1">
+                    <input id="opacity" type="range" class="form-control mt-4 w-50 h-50" min="0" max="1"
+                        value="0.5" step="0.1">
                 </div>
             </div>
         </div>
@@ -84,7 +89,6 @@
             margin-right: 8px;
             opacity: 0.7;
         }
-
     </style>
 @endsection
 
@@ -98,6 +102,8 @@
             window.location.href = '/heatmap/' + {{ $radius }} + "/" + this.value;
         });
     </script>
+    <script src="https://www.jqueryscript.net/demo/jQuery-Plugin-To-Print-Any-Part-Of-Your-Page-Print/jQuery.print.js"> </script>
+
     <!-- Leaflet JavaScript -->
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -178,7 +184,7 @@
         }
         for (var i = 0; i < data.length; i++) {
             marker = new L.marker([data[i][1], data[i][2]])
-                .bindPopup(data[i][3]  +"<br>"+data[i][0]+ "<br> Jumlah Kecelakaan "+data[i][4]  )
+                .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Kecelakaan " + data[i][4])
                 .addTo(map);
         }
 
@@ -196,6 +202,9 @@
 
         var legend = L.control({
             position: 'bottomright'
+        });
+        $("#printBtn").click(function() {
+            $('#map').print();
         });
     </script>
 @endpush
