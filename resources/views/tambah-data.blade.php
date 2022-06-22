@@ -65,7 +65,6 @@
         #mapid {
             min-height: 500px;
         }
-
     </style>
 @endsection
 
@@ -77,34 +76,65 @@
         crossorigin=""></script>
 
     <script>
-        var mapCenter = [
-            {{ config('leafletsetup.map_center_latitude') }},
-            {{ config('leafletsetup.map_center_longitude') }},
-        ];
-        var map = L.map('mapid').setView(mapCenter, {{ config('leafletsetup.zoom_level') }});
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        var marker = L.marker(mapCenter).addTo(map);
-
-        function updateMarker(lat, lng) {
-            marker
-                .setLatLng([lat, lng])
-                .bindPopup("Your location :" + marker.getLatLng().toString())
-                .openPopup();
-            return false;
-        };
-        map.on('click', function(e) {
-            let latitude = e.latlng.lat.toString().substring(0, 15);
-            let longitude = e.latlng.lng.toString().substring(0, 15);
-            $('#latitude').val(latitude);
-            $('#longitude').val(longitude);
-            updateMarker(latitude, longitude);
-        });
-        var updateMarkerByInputs = function() {
-            return updateMarker($('#latitude').val(), $('#longitude').val());
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
         }
-        $('#latitude').on('input', updateMarkerByInputs);
-        $('#longitude').on('input', updateMarkerByInputs);
+
+        function showPosition(position) {
+            let latPoint = position.coords.latitude;
+            let longPoint = position.coords.longitude;
+           
+            var mapCenter = [
+                {{ config('leafletsetup.map_center_latitude') }},
+                {{ config('leafletsetup.map_center_longitude') }},
+            ];
+            var map = L.map('mapid').setView(mapCenter, {{ config('leafletsetup.zoom_level') }});
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            var marker = L.marker(mapCenter).addTo(map);
+
+            function updateMarker(lat, lng) {
+                marker
+                    .setLatLng([lat, lng])
+                    .bindPopup("Your location :" + marker.getLatLng().toString())
+                    .openPopup();
+                return false;
+            };
+             $('#latitude').val(latPoint);
+            $('#longitude').val(longPoint);
+            updateMarker(latPoint, longPoint);
+            map.on('click', function(e) {
+                let latitude = e.latlng.lat.toString().substring(0, 15);
+                let longitude = e.latlng.lng.toString().substring(0, 15);
+                $('#latitude').val(latitude);
+                $('#longitude').val(longitude);
+                updateMarker(latitude, longitude);
+            });
+            var updateMarkerByInputs = function() {
+                return updateMarker($('#latitude').val(), $('#longitude').val());
+            }
+            $('#latitude').on('input', updateMarkerByInputs);
+            $('#longitude').on('input', updateMarkerByInputs);
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    x.innerHTML = "User denied the request for Geolocation."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML = "Location information is unavailable."
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    x.innerHTML = "An unknown error occurred."
+                    break;
+            }
+        }
     </script>
 @endpush
