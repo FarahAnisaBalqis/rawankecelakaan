@@ -47,9 +47,9 @@ http://www.tooplate.com/view/2091-ziggy
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-content">
-                        <h2>Welcome To Ziggy</h2>
+                        <h2>Selamat Di WebGIS Rawan Kecelakaan Lalu Lintas</h2>
                         <div class="line-dec"></div>
-                        <span>This is clean &amp; professional html template</span>
+                        <span>Di Kota Banda Aceh  &amp; dan Sekitarnya</span>
                     </div>
                 </div>
             </div>
