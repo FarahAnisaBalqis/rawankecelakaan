@@ -120,14 +120,14 @@ class UserController extends Controller
             $kasus[$id] = $value->count;
             $id += 1;
         }
-        $grafik2 = HalamanData2::select(DB::raw('YEAR(waktu) year'), DB::raw('count(id) as sum'))
-        ->groupBy('year')
-        ->get();
+        $grafik2 = HalamanData::select(DB::raw('tanggal'), DB::raw('count(id) as sum'))
+        ->groupBy('tanggal')
+            ->get();
         $tahun = [];
         $jumlah = [];
         $id = 0;
         foreach ($grafik2 as $value) {
-            $tahun[$id] = $value->year;
+            $tahun[$id] = $value->tanggal;
             $jumlah[$id] = $value->sum;
             $id += 1;
         }
