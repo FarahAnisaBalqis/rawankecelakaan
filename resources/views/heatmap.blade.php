@@ -204,7 +204,7 @@
             position: 'bottomright'
         });
         $("#printBtn").click(function() {
-            $('#map').print();
+           window.print();
         });
     </script>
 @endpush

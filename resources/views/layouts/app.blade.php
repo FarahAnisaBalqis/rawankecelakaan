@@ -133,7 +133,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('heatmap', ['radius' => 0.01, 'tahun' => date('Y')]) }}"
+                                <a href="{{ route('heatmap', ['radius' => 0.01]) }}"
                                     class="nav-link {{ request()->route()->getName() == 'heatmap'? 'text-white bg-info': '' }} text-white text-start w-100" >
                                     <i class="nav-icon fa-solid fa-map"></i>
                                     <p>

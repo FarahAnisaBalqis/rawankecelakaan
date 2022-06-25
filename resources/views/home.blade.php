@@ -9,7 +9,7 @@
                 <div class="small-box bg-info h-100">
                     <div class="inner">
                         <h3>{{ $kecamatan }}</h3>
-
+                        
                         <p>Kecamatan Dengan Kasus Kecelekaan Terbanyak</p>
                     </div>
 
