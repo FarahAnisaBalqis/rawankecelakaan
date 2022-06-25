@@ -34,10 +34,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
         integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.datatables.net/v/dt/dt-1.11.4/fh-3.2.1/datatables.min.css" />
-
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.4/fh-3.2.1/datatables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-html5-2.2.3/fh-3.2.4/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-html5-2.2.3/fh-3.2.4/datatables.min.js"></script>
 
     @yield('styles')
 </head>
@@ -117,7 +116,8 @@
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                             data-accordion="false">
                             <li class="nav-item">
-                                <a href="{{ route('home') }}" class="nav-link {{ request()->route()->getName() == 'home'? 'text-white bg-info': '' }} text-white text-start w-100">
+                                <a href="{{ route('home') }}"
+                                    class="nav-link {{ request()->route()->getName() == 'home'? 'text-white bg-info': '' }} text-white text-start w-100">
                                     <i class="nav-icon fas fa-th"></i>
                                     <p>
                                         Dashboard
@@ -125,7 +125,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('maps', ['tahun' => date('Y')]) }}" class="nav-link {{ request()->route()->getName() == 'maps'? 'text-white bg-info': '' }} text-white text-start w-100">
+                                <a href="{{ route('maps', ['tahun' => date('Y')]) }}"
+                                    class="nav-link {{ request()->route()->getName() == 'maps'? 'text-white bg-info': '' }} text-white text-start w-100">
                                     <i class="nav-icon fa-solid fa-map-location"></i>
                                     <p>
                                         Maps
@@ -134,7 +135,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('heatmap', ['radius' => 0.01]) }}"
-                                    class="nav-link {{ request()->route()->getName() == 'heatmap'? 'text-white bg-info': '' }} text-white text-start w-100" >
+                                    class="nav-link {{ request()->route()->getName() == 'heatmap'? 'text-white bg-info': '' }} text-white text-start w-100">
                                     <i class="nav-icon fa-solid fa-map"></i>
                                     <p>
                                         Heatmap
@@ -172,7 +173,8 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('maps') }}" class="nav-link {{ request()->route()->getName() == 'panduan'? 'text-white bg-info': '' }} text-white text-start w-100">
+                                <a href="{{ route('maps') }}"
+                                    class="nav-link {{ request()->route()->getName() == 'panduan'? 'text-white bg-info': '' }} text-white text-start w-100">
                                     <i class="nav-icon fa-solid fa-book"></i>
                                     <p>
                                         Panduan

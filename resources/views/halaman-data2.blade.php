@@ -94,6 +94,10 @@
             $('#table').DataTable({
                 fixedHeader: true,
                 pageLength: 100,
+                 dom: 'Bfrtip',
+                buttons: [
+                    'excel'
+                ],
                 scroller: true,
                 oSearch: { "bSmart": false, "bRegex": true }
             });
