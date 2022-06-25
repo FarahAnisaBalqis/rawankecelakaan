@@ -35,7 +35,7 @@ class MapController extends Controller
             $color[$item->kecamatan] = $item->warna;
         }
         foreach ($data as $item) {
-            $coor[$index2] = [$item->alamat, $item->lat, $item->long, $item->tematik->kecamatan, $item->jumlah_kecelakaan];
+            $coor[$index2] = [$item->alamat, $item->lat, $item->long, $item->tematik->kecamatan, $item->jumlah_kecelakaan, $item->tanggal];
             $index2++;
         }
         $tahunList = HalamanData::groupby('tanggal')->get();
