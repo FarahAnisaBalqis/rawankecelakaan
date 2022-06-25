@@ -121,7 +121,7 @@ http://www.tooplate.com/view/2091-ziggy
                                     style="position: relative; height: 300px;">
                                     <canvas id="grafik1" height="300" style="height: 300px;"></canvas>
                                 </div>
-                                <div class="chart tab-pane" id="grafik2-button"
+                                <div class="chart tab-pane active" id="grafik2-button"
                                     style="position: relative; height: 300px;">
                                     <canvas id="grafik2" height="300" style="height: 300px;"></canvas>
                                 </div>
