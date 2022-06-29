@@ -208,7 +208,8 @@
         if (show == 1) {
             for (var i = 0; i < data.length; i++) {
                 marker = new L.marker([data[i][1], data[i][2]])
-                    .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4])
+                    .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4] + "<br> Tahun " + data[i][
+                5])
                     .addTo(map);
             }
         }
