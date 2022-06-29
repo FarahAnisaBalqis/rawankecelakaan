@@ -315,4 +315,7 @@ http://www.tooplate.com/view/2091-ziggy
     };
 
     legend.addTo(map);
+     $("#printBtn").click(function() {
+            window.print();
+        });
 </script>
