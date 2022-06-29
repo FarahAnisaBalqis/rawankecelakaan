@@ -165,11 +165,11 @@ http://www.tooplate.com/view/2091-ziggy
 </html>
 <script>
     $('#radius').change(function() {
-        window.location.href = '/heatmap/' + {{ $show }} + '/' + this.value + "/"
+        window.location.href = '/heatmap-user/' + {{ $show }} + '/' + this.value + "/"
         {{ $tahun ? '+' . $tahun : '' }};
     });
     $('#tahun').change(function() {
-        window.location.href = '/heatmap/' + {{ $show }} + '/' + {{ $radius }} + "/" + this
+        window.location.href = '/heatmap-user/' + {{ $show }} + '/' + {{ $radius }} + "/" + this
             .value;
     });
 </script>
@@ -214,15 +214,7 @@ http://www.tooplate.com/view/2091-ziggy
         opacity: 0.7;
     }
 </style>
-<script>
-    $('#radius').change(function() {
-        window.location.href = '/heatmap-user/'+{{$show}}+'/' + this.value + "/"
-        {{ $tahun ? '+' . $tahun : '' }};
-    });
-    $('#tahun').change(function() {
-        window.location.href = '/heatmap-user/' +{{$show}}+'/' {{ $radius }} + "/" + this.value;
-    });
-</script>
+
 <script src="https://www.jqueryscript.net/demo/jQuery-Plugin-To-Print-Any-Part-Of-Your-Page-Print/jQuery.print.js">
 </script>
 
