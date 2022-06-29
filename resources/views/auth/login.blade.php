@@ -17,7 +17,7 @@ Template 2091 Ziggy
 http://www.tooplate.com/view/2091-ziggy
 
 -->
-    <title>Rumah Sakit Kabupaten Pidie</title>
+    <title>Rawan Kecelakaan Kota Banda Aceh dan Sekitarnya</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 

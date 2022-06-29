@@ -47,8 +47,8 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                            class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+                        {{-- <i class="fas fa-bars"></i></a> --}}
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                 </li>
@@ -133,6 +133,7 @@
                                     </p>
                                 </a>
                             </li>
+                            <!--nilai awal radius-->
                             <li class="nav-item">
                                 <a href="{{ route('heatmap', ['radius' => 0.01]) }}"
                                     class="nav-link {{ request()->route()->getName() == 'heatmap'? 'text-white bg-info': '' }} text-white text-start w-100">
@@ -173,7 +174,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('maps') }}"
+                                <a href="{{ route('panduan') }}"
                                     class="nav-link {{ request()->route()->getName() == 'panduan'? 'text-white bg-info': '' }} text-white text-start w-100">
                                     <i class="nav-icon fa-solid fa-book"></i>
                                     <p>

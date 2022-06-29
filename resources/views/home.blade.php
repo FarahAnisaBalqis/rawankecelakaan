@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <div class="mx-auto">
+            <!--informasi data dashboard-->
         <div class="row mb-2">
             <div class="col-lg-4 col-6">
                 <!-- small box -->
@@ -60,6 +61,7 @@
                             <!-- Morris chart - Sales -->
                             <div class="chart tab-pane active" id="grafik1-button"
                                 style="position: relative; height: 300px;">
+                                <!--tempat grafik-->
                                 <canvas id="grafik1" height="300" style="height: 300px;"></canvas>
                             </div>
                             <div class="chart tab-pane active" id="grafik2-button" style="position: relative; height: 300px;">
@@ -132,6 +134,7 @@
         integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+        /*grafik kecematan*/
         var labels = {!! json_encode($kec) !!};
         const data = {
             labels: labels,
@@ -165,6 +168,7 @@
         );
     </script>
     <script>
+        /*grafik tahun*/
         var labels2 = {!! json_encode($tahun) !!};
         const data2 = {
             labels: labels2,

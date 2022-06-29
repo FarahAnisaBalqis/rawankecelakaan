@@ -22,6 +22,7 @@ class MapController extends Controller
         $index = 0;
         $index2 = 0;
         $tematik = Tematik::all();
+        //pilihan tahun admin
         if ($tahun) {
             $data = HalamanData::where('tanggal', $tahun)->get();
         } else {

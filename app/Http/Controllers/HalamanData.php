@@ -17,6 +17,7 @@ class HalamanData extends Controller
      */
     public function index()
     {
+        //setting view ke halaman data 1 dengan memanggil data tabel halaman_data
         return view("halaman-data",[
             'data' =>ModelsHalamanData::with('tematik')->get()
         ]);
@@ -27,6 +28,7 @@ class HalamanData extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // halaman untuk menambah inputan di halaman data
     public function create()
     {
         $tematik = Tematik::all();
@@ -39,6 +41,7 @@ class HalamanData extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //simpan data pada tambah data
     public function store(Request $request)
     {
         $fileName="";
@@ -65,6 +68,7 @@ class HalamanData extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //diplay detail
     public function show($id)
     {
         return view('detail', [
@@ -95,6 +99,7 @@ class HalamanData extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //untuk simpan perubahan di halaman data
     public function update(Request $request, $id)
     {
         $fileName="";
@@ -124,6 +129,7 @@ class HalamanData extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //untuk menghapus data
     public function destroy($id)
     {
         $data = ModelsHalamanData::find($id);

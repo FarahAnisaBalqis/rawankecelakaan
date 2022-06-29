@@ -10,6 +10,7 @@
         <div class="card p-4">
             <div class="row">
                 <div class="col-md-3">
+                    <!--pilihan radius heatmap-->
                     <select class="form-control float-right m-2" id="radius">
                         <option value="">--Pilih Radius--</option>
                         <option {{ $radius == '0.005' ? 'selected' : '' }} value="0.005">1/2 km</option>
@@ -19,6 +20,7 @@
                     </select>
                 </div>
                 <div class="col-md-3">
+                    <!--pilihan tahun heatmap-->
                     <select class="form-control float-right m-2" id="tahun">
                         <option value="">--Lihat Semua--</option>
                         @foreach ($tahunList as $item)
@@ -148,6 +150,7 @@
         var dataMap = {
             data: coor
         };
+        /*radius*/
         var cfg = {
             "radius": {!! json_encode($radius) !!},
             "maxOpacity": .8,
@@ -184,7 +187,7 @@
         }
         for (var i = 0; i < data.length; i++) {
             marker = new L.marker([data[i][1], data[i][2]])
-                .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Kecelakaan " + data[i][4])
+                .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4])
                 .addTo(map);
         }
 

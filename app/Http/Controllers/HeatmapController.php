@@ -14,6 +14,7 @@ class HeatmapController extends Controller
         $arr = [];
         $info = [];
         $index = 0;
+        //pilihan tahun admin
         if ($tahun) {
             $data = HalamanData::where('tanggal', $tahun)->get();
         } else {

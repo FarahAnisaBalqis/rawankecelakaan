@@ -53,7 +53,7 @@ http://www.tooplate.com/view/2091-ziggy
         <a href="{{ route('Data user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h4>Data</h4>
         </a>
-        <a href="#" class="text-decoration-none text-white m-4 py-1 me-2 btn">
+        <a href="{{ route('panduan-user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h4>Panduan</h4>
         </a>
         <a href="/" class="text-decoration-none text-white m-4 py-1 me-2 btn">
@@ -76,6 +76,7 @@ http://www.tooplate.com/view/2091-ziggy
 
             </div>
             <div class="card-body bg-white">
+                <!--pilihan tahun maps-->
                 <select class="form-control float-right m-2 w-25" id="tahun">
                     <option value="" selected>--Lihat Semua--</option>
                     @foreach ($tahunList as $item)
@@ -87,11 +88,13 @@ http://www.tooplate.com/view/2091-ziggy
                 <div class="row">
                     <div class="col-lg-11">
                         <div class="text-end">
+                            <!--cetak peta-->
                             <button id="printBtn" class="btn btn-success mb-2">Cetak Peta</button>
                         </div>
                         <div id="map"></div>
                     </div>
                     <div class="col-lg-1">
+                        <!--opacity atau tembus pandang-->
                         <input id="opacity" type="range" class="form-control mt-4 w-50 h-50" min="0"
                             max="1" value="0.5" step="0.1">
                     </div>
@@ -244,6 +247,7 @@ http://www.tooplate.com/view/2091-ziggy
 
         info.update(layer.feature.properties);
     }
+    //pop up koordinat
     for (var i = 0; i < datamap.length; i++) {
         marker = new L.marker([datamap[i][1], datamap[i][2]])
             .bindPopup(datamap[i][3] + "<br>" + datamap[i][0] + "<br> Jumlah Kecelakaan " + datamap[i][4])

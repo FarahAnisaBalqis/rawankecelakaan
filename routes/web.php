@@ -45,3 +45,5 @@ Route::get('/tambah-data2', [App\Http\Controllers\HalamanData2::class, 'create']
 Route::get('/edit-data2/{id}', [App\Http\Controllers\HalamanData2::class, 'edit'])->name('edit data2');
 Route::post('/update-data2/{id}', [App\Http\Controllers\HalamanData2::class, 'update'])->name('update data2');
 Route::get('/delete-data2/{id}', [App\Http\Controllers\HalamanData2::class, 'destroy'])->name('delete data2');
+Route::get('/panduan', [App\Http\Controllers\PanduanController::class, 'index'])->name('panduan');
+Route::get('/panduan-user', [App\Http\Controllers\PanduanController::class, 'user'])->name('panduan-user');

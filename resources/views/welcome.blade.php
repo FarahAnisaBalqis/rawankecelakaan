@@ -16,7 +16,7 @@ Template 2091 Ziggy
 http://www.tooplate.com/view/2091-ziggy
 
 -->
-    <title>Ziggy HTML Template</title>
+    <title>Rawan Kecelakaan Kota Banda Aceh dan Sekitarnya</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -47,7 +47,7 @@ http://www.tooplate.com/view/2091-ziggy
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-content">
-                        <h2>Selamat Di WebGIS Rawan Kecelakaan Lalu Lintas</h2>
+                        <h2>Selamat Datang Di WebGIS Rawan Kecelakaan Lalu Lintas</h2>
                         <div class="line-dec"></div>
                         <span>Di Kota Banda Aceh  &amp; dan Sekitarnya</span>
                     </div>
@@ -96,7 +96,7 @@ http://www.tooplate.com/view/2091-ziggy
                     </a>
                 </div>
                 <div class="col-md-3 col-sm-6">
-                    <a href="#" class="btn btn-outline-info py-2">
+                    <a href="{{ route('panduan-user') }}" class="btn btn-outline-info py-2">
                         <div class="service-item">
                             <div class="icon">
                                 <i class="fa-solid fa-book h1"></i>
@@ -135,7 +135,7 @@ http://www.tooplate.com/view/2091-ziggy
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-                    <div class="left-text col-md-8">
+                    <div class="left-text col-md-8" style="text-color: black">
                         <h4><em>Aliquam efficitur</em><br>augue et libero vulputate feugiat</h4>
                         <p>Mauris eget orci porta, aliquam neque sit amet, porttitor dui. Donec efficitur vehicula justo
                             quis varius. Vivamus pharetra lorem eget turpis ornare tempus. Vivamus ac sodales lectus.

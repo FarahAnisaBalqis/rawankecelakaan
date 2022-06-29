@@ -19,6 +19,7 @@ class UserController extends Controller
         $index = 0;
         $index2 = 0;
         $tematik = Tematik::all();
+        //pilihan tahun map user
         if ($tahun) {
             $data = HalamanData::where('tanggal', $tahun)->get();
         } else {
@@ -54,6 +55,7 @@ class UserController extends Controller
         $arr = [];
         $info = [];
         $index = 0;
+        //pilihan tahun heatmap user
         if ($tahun) {
             $data = HalamanData::where('tanggal', $tahun)->get();
         } else {

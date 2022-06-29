@@ -16,7 +16,7 @@ Template 2091 Ziggy
 http://www.tooplate.com/view/2091-ziggy
 
 -->
-    <title>Ziggy HTML Template</title>
+    <title>Rawan Kecelakaan Kota Banda Aceh dan Sekitarnya</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -59,7 +59,7 @@ http://www.tooplate.com/view/2091-ziggy
         <a href="{{ route('Data user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn" >
             <h4>Data</h4>
         </a>
-        <a href="#" class="text-decoration-none text-white m-4 py-1 me-2 btn">
+        <a href="{{ route('panduan-user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h4>Panduan</h4>
         </a>
         <a href="/" class="text-decoration-none text-white m-4 py-1 me-2 btn">
@@ -80,6 +80,7 @@ http://www.tooplate.com/view/2091-ziggy
             <div class="card-body bg-white">
                   <div class="row">
                 <div class="col-md-3">
+                    <!--pilihan radius heatmap-->
                     <select class="form-control float-right m-2" id="radius">
                         <option value="">--Pilih Radius--</option>
                         <option {{ $radius == '0.005' ? 'selected' : '' }} value="0.005">1/2 km</option>
@@ -89,6 +90,7 @@ http://www.tooplate.com/view/2091-ziggy
                     </select>
                 </div>
                 <div class="col-md-3">
+                    <!--pilihan tahun heatmap-->
                     <select class="form-control float-right m-2" id="tahun">
                         <option value="">--Lihat Semua--</option>
                         @foreach ($tahunList as $item)
@@ -283,9 +285,10 @@ http://www.tooplate.com/view/2091-ziggy
 
             info.update(layer.feature.properties);
         }
+        //pop up koordinat
         for (var i = 0; i < data.length; i++) {
             marker = new L.marker([data[i][1], data[i][2]])
-                .bindPopup(data[i][3]  +"<br>"+data[i][0]+ "<br> Jumlah Kecelakaan "+data[i][4]  )
+                .bindPopup(data[i][3]  +"<br>"+data[i][0]+ "<br> Jumlah Korban "+data[i][4]  )
                 .addTo(map);
         }
 

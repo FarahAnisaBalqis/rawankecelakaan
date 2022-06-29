@@ -8,6 +8,7 @@
     </style>
     <div class="container">
         <div class="card p-4">
+            <!--pilihan tahun maps-->
             <select class="form-control float-right m-2" id="tahun">
                 <option value="" selected>--Lihat Semua--</option>
                 @foreach ($tahunList as $item)
@@ -19,11 +20,13 @@
             <div class="row">
                 <div class="col-lg-11">
                     <div class="text-end">
+                        <!--cetak peta-->
                         <button id="printBtn" class="btn btn-success mb-2">Cetak Peta</button>
                     </div>
                     <div id="map"></div>
                 </div>
                 <div class="col-lg-1">
+                    <!--opacity atau tembus pandang-->
                     <input id="opacity" type="range" class="form-control mt-4 w-50 h-50" min="0" max="1"
                         value="0.5" step="0.1">
                 </div>
@@ -151,6 +154,7 @@
 
             info.update(layer.feature.properties);
         }
+        //pop up koordinat
         for (var i = 0; i < data.length; i++) {
             marker = new L.marker([data[i][1], data[i][2]])
                 .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4] + "<br> Tahun "+data[i][5])
@@ -178,6 +182,7 @@
             style: style,
             onEachFeature: onEachFeature
         });
+        //pemanggilan maps
         geojsonLayer.addTo(map);
         $('#opacity').change(function() {
             geojsonLayer.setStyle({
@@ -222,6 +227,7 @@
 
 
         map.addControl(controlSearch);
+        /*cetak peta*/
         $("#printBtn").click(function() {
             $('#map').print();
         });

@@ -52,7 +52,7 @@ http://www.tooplate.com/view/2091-ziggy
         <a href="{{ route('Data user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn" style="border-bottom:1px solid cyan;">
             <h4>Data</h4>
         </a>
-        <a href="#" class="text-decoration-none text-white m-4 py-1 me-2 btn">
+        <a href="{{ route('panduan-user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h4>Panduan</h4>
         </a>
         <a href="/" class="text-decoration-none text-white m-4 py-1 me-2 btn">
@@ -61,8 +61,9 @@ http://www.tooplate.com/view/2091-ziggy
     </section>
 
     <section class="second-section">
-
+    
         <div class="container">
+            <!--data dashboard user-->
             <div class="row mb-2">
                 <div class="col-lg-4 col-6">
                     <!-- small box -->
@@ -162,6 +163,7 @@ http://www.tooplate.com/view/2091-ziggy
 integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg=="
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
+    /*grafik kecamatan*/
     var labels = {!! json_encode($kec) !!};
     const data = {
         labels: labels,
@@ -195,6 +197,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     );
 </script>
 <script>
+    /*grafik tahun*/
     var labels2 = {!! json_encode($tahun) !!};
     const data2 = {
         labels: labels2,
