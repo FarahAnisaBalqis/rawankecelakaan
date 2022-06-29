@@ -250,7 +250,7 @@ http://www.tooplate.com/view/2091-ziggy
     //pop up koordinat
     for (var i = 0; i < datamap.length; i++) {
         marker = new L.marker([datamap[i][1], datamap[i][2]])
-            .bindPopup(datamap[i][3] + "<br>" + datamap[i][0] + "<br> Jumlah Kecelakaan " + datamap[i][4])
+            .bindPopup(datamap[i][3] + "<br>" + datamap[i][0] + "<br> Jumlah Korban " + datamap[i][4]+ "<br> Tahun "+datamap[i][5])
             .addTo(map);
     }
     var geojson;

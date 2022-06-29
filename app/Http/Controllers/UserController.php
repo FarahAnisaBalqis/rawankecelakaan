@@ -33,7 +33,7 @@ class UserController extends Controller
             $color[$item->kecamatan] = $item->warna;
         }
         foreach ($data as $item) {
-            $coor[$index2] = [$item->alamat, $item->lat, $item->long, $item->tematik->kecamatan, $item->jumlah_kecelakaan];
+            $coor[$index2] = [$item->alamat, $item->lat, $item->long, $item->tematik->kecamatan, $item->jumlah_kecelakaan,$item->tanggal];
             $index2++;
         }
         $kecamatan = $tematik->pluck('kecamatan');
@@ -63,7 +63,7 @@ class UserController extends Controller
         }
 
         foreach ($data as $item) {
-            $info[$index] = [$item->alamat, $item->lat, $item->long, $item->tematik->kecamatan, $item->jumlah_kecelakaan];
+            $info[$index] = [$item->alamat, $item->lat, $item->long, $item->tematik->kecamatan, $item->jumlah_kecelakaan,$item->tanggal];
             $index++;
         }
         $index = 0;
