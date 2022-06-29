@@ -31,6 +31,7 @@
                 </div>
                 <div class="col-md-5">
                     <div class="text-end">
+                       
                         <button id="printBtn" class="btn btn-success">Cetak Peta</button>
                     </div>
                 </div>
@@ -104,7 +105,8 @@
             window.location.href = '/heatmap/' + {{ $radius }} + "/" + this.value;
         });
     </script>
-    <script src="https://www.jqueryscript.net/demo/jQuery-Plugin-To-Print-Any-Part-Of-Your-Page-Print/jQuery.print.js"> </script>
+    <script src="https://www.jqueryscript.net/demo/jQuery-Plugin-To-Print-Any-Part-Of-Your-Page-Print/jQuery.print.js">
+    </script>
 
     <!-- Leaflet JavaScript -->
     <!-- Make sure you put this AFTER Leaflet's CSS -->
@@ -207,7 +209,7 @@
             position: 'bottomright'
         });
         $("#printBtn").click(function() {
-           window.print();
+            window.print();
         });
     </script>
 @endpush

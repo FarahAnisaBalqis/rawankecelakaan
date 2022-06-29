@@ -49,7 +49,7 @@ class UserController extends Controller
         ]);
     }
     
-    public function heatmap($radius = 0.01, $tahun = null)
+    public function heatmap($show = 1, $radius = 0.01, $tahun = null)
     {
         $coor = [];
         $arr = [];
@@ -82,7 +82,8 @@ class UserController extends Controller
             'tahun' => $tahun,
             'data' => $info,
             'radius' => $radius,
-            'coor' => $arr
+            'coor' => $arr,
+            'show' => $show
         ]);
     }
     public function data()
