@@ -46,7 +46,7 @@ http://www.tooplate.com/view/2091-ziggy
         <a href="{{ route('Map user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn" >
             <h4>Maps</h4>
         </a>
-        <a href="{{ route('heatmap user',['radius'=>0.01,'tahun'=>date('Y')]) }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
+        <a href="{{ route('heatmap user',['show'=>1,'radius'=>0.01]) }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h4>Heatmaps</h4>
         </a>
         <a href="{{ route('Data user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn" style="border-bottom:1px solid cyan;">
