@@ -229,7 +229,7 @@
         map.addControl(controlSearch);
         /*cetak peta*/
         $("#printBtn").click(function() {
-            $('#map').print();
+        $('#map').print();
         });
     </script>
 @endpush
