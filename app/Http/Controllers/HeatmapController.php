@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class HeatmapController extends Controller
 {
-    public function index($radius = 0.01, $tahun = null)
+    public function index($show = 1,$radius = 0.01, $tahun = null)
     {
         $coor = [];
         $arr = [];
@@ -42,6 +42,7 @@ class HeatmapController extends Controller
             'data' => $info,
             'radius' => $radius,
             'coor' => $arr,
+            'show' => $show
         ]);
     }
 }

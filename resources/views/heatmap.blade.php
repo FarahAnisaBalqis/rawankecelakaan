@@ -31,7 +31,23 @@
                 </div>
                 <div class="col-md-5">
                     <div class="text-end">
-                       
+                        @if ($show)
+                            @if ($tahun)
+                                <a href="{{ route('heatmap', ['show' => 0, 'tahun' => $tahun, 'radius' => $radius]) }}"
+                                    class="btn btn-info">Sembunyikan Titik</a>
+                            @else
+                                <a href="{{ route('heatmap', ['show' => 0]) }}" class="btn btn-info">Sembunyikan
+                                    Titik</a>
+                            @endif
+                        @else
+                            @if ($tahun)
+                                <a href="{{ route('heatmap', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
+                                    class="btn btn-info">Tampil Titik</a>
+                            @else
+                                <a href="{{ route('heatmap', ['show' => 1]) }}" class="btn btn-info">Tampil
+                                    Titik</a>
+                            @endif
+                        @endif
                         <button id="printBtn" class="btn btn-success">Cetak Peta</button>
                     </div>
                 </div>
@@ -98,11 +114,12 @@
 @push('scripts')
     <script>
         $('#radius').change(function() {
-            window.location.href = '/heatmap/' + this.value + "/"
+            window.location.href = '/heatmap/' + {{ $show }} + '/' + this.value + "/"
             {{ $tahun ? '+' . $tahun : '' }};
         });
         $('#tahun').change(function() {
-            window.location.href = '/heatmap/' + {{ $radius }} + "/" + this.value;
+            window.location.href = '/heatmap/' + {{ $show }} + '/' + {{ $radius }} + "/" + this
+                .value;
         });
     </script>
     <script src="https://www.jqueryscript.net/demo/jQuery-Plugin-To-Print-Any-Part-Of-Your-Page-Print/jQuery.print.js">
@@ -125,6 +142,7 @@
         var color = {!! json_encode($color) !!};
         var data = {!! json_encode($data) !!}
         var coor = {!! json_encode($coor) !!}
+        var show = {!! json_encode($show) !!}
         var map = L.map('map').setView(
             s, 11
         );
@@ -187,10 +205,12 @@
 
             info.update(layer.feature.properties);
         }
-        for (var i = 0; i < data.length; i++) {
-            marker = new L.marker([data[i][1], data[i][2]])
-                .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4])
-                .addTo(map);
+        if (show == 1) {
+            for (var i = 0; i < data.length; i++) {
+                marker = new L.marker([data[i][1], data[i][2]])
+                    .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4])
+                    .addTo(map);
+            }
         }
 
         function zoomToFeature(e) {
