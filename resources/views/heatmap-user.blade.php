@@ -324,6 +324,6 @@ http://www.tooplate.com/view/2091-ziggy
         position: 'bottomright'
     });
     $("#printBtn").click(function() {
-        $('#map').print();
+            window.print();
     });
 </script>
