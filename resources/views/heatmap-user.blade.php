@@ -101,20 +101,20 @@ http://www.tooplate.com/view/2091-ziggy
                     </div>
                     <div class="col-md-5">
                         <div class="text-end">
-                            @if ($show)
+                            @if (!$show)
                                 @if ($tahun)
-                                    <a href="{{ route('heatmap user', ['show' =>0, 'tahun' => $tahun, 'radius' => $radius]) }}"
+                                    <a href="{{ route('heatmap user', ['show' =>1, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                         class="btn btn-info">Sembunyikan Titik</a>
                                 @else
-                                    <a href="{{ route('heatmap user', ['show' => 0]) }}"
+                                    <a href="{{ route('heatmap user', ['show' => 1]) }}"
                                         class="btn btn-info">Sembunyikan Titik</a>
                                 @endif
                             @else
                                 @if ($tahun)
-                                    <a href="{{ route('heatmap user', ['show' =>1, 'tahun' => $tahun, 'radius' => $radius]) }}"
+                                    <a href="{{ route('heatmap user', ['show' =>0, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                         class="btn btn-info">Tampil Titik</a>
                                 @else
-                                    <a href="{{ route('heatmap user', ['show' => 1]) }}" class="btn btn-info">Tampil
+                                    <a href="{{ route('heatmap user', ['show' =>0]) }}" class="btn btn-info">Tampil
                                         Titik</a>
                                 @endif
 
@@ -297,7 +297,7 @@ http://www.tooplate.com/view/2091-ziggy
 
         info.update(layer.feature.properties);
     }
-    if (show == 1) {
+    if (show != 1) {
          //pop up koordinat
     for (var i = 0; i < data.length; i++) {
         marker = new L.marker([data[i][1], data[i][2]])

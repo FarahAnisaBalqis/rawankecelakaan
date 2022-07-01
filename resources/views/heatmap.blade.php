@@ -31,20 +31,20 @@
                 </div>
                 <div class="col-md-5">
                     <div class="text-end">
-                        @if ($show)
+                        @if (!$show)
                             @if ($tahun)
-                                <a href="{{ route('heatmap', ['show' => 0, 'tahun' => $tahun, 'radius' => $radius]) }}"
+                                <a href="{{ route('heatmap', ['show' =>1, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                     class="btn btn-info">Sembunyikan Titik</a>
                             @else
-                                <a href="{{ route('heatmap', ['show' => 0]) }}" class="btn btn-info">Sembunyikan
+                                <a href="{{ route('heatmap', ['show' =>1]) }}" class="btn btn-info">Sembunyikan
                                     Titik</a>
                             @endif
                         @else
                             @if ($tahun)
-                                <a href="{{ route('heatmap', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
+                                <a href="{{ route('heatmap', ['show' => 0, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                     class="btn btn-info">Tampil Titik</a>
                             @else
-                                <a href="{{ route('heatmap', ['show' => 1]) }}" class="btn btn-info">Tampil
+                                <a href="{{ route('heatmap', ['show' =>0]) }}" class="btn btn-info">Tampil
                                     Titik</a>
                             @endif
                         @endif
@@ -205,7 +205,7 @@
 
             info.update(layer.feature.properties);
         }
-        if (show == 1) {
+        if (show != 1) {
             for (var i = 0; i < data.length; i++) {
                 marker = new L.marker([data[i][1], data[i][2]])
                     .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4] + "<br> Tahun " + data[i][
