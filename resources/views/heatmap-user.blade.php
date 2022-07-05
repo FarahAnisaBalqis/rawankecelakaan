@@ -51,7 +51,7 @@ http://www.tooplate.com/view/2091-ziggy
         <a href="{{ route('Map user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h4>Maps</h4>
         </a>
-        <a href="{{ route('heatmap user',['show'=>1,'radius'=>0.01]) }}" class="text-decoration-none text-white m-4 py-1 me-2 btn"
+        <a href="{{ route('heatmap user',['show'=>1,'radius'=>0.001]) }}" class="text-decoration-none text-white m-4 py-1 me-2 btn"
             style="border-bottom:1px solid cyan;">
             <h4>Heatmaps</h4>
         </a>
@@ -85,7 +85,6 @@ http://www.tooplate.com/view/2091-ziggy
                             <option {{ $radius == '0.001' ? 'selected' : '' }} value="0.001">100 m</option>
                             <option {{ $radius == '0.002' ? 'selected' : '' }} value="0.002">200 m</option>
                             <option {{ $radius == '0.003' ? 'selected' : '' }} value="0.003">300 m</option>
-                            <option {{ $radius == '0.005' ? 'selected' : '' }} value="0.005">2 km</option>
                         </select>
                     </div>
                     <div class="col-md-3">

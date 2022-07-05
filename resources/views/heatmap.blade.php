@@ -16,7 +16,6 @@
                         <option {{ $radius == '0.001' ? 'selected' : '' }} value="0.001">100 m</option>
                         <option {{ $radius == '0.003' ? 'selected' : '' }} value="0.003">300 m</option>
                         <option {{ $radius == '0.004' ? 'selected' : '' }} value="0.004">400 m</option>
-                        <option {{ $radius == '0.005' ? 'selected' : '' }} value="0.005">500 m</option>
                     </select>
                 </div>
                 <div class="col-md-3">

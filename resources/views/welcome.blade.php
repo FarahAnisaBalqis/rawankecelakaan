@@ -72,7 +72,7 @@ http://www.tooplate.com/view/2091-ziggy
                     </a>
                 </div>
                 <div class="col-md-3 col-sm-6">
-                    <a href="{{ route('heatmap user',['show'=>1,'radius'=>0.01]) }}" class="btn btn-outline-info py-2">
+                    <a href="{{ route('heatmap user',['show'=>1,'radius'=>0.001]) }}" class="btn btn-outline-info py-2">
                         <div class="service-item">
                             <div class="icon">
                                 <i class="fa-solid fa-map h1"></i>
