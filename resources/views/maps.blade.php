@@ -26,7 +26,7 @@
                     <div id="map"></div>
                 </div>
                 <div class="col-lg-1">
-                    <!--opacity atau tembus pandang-->
+                    <!--opacity atau transparansi-->
                     <input id="opacity" type="range" class="form-control mt-4 w-50 h-50" min="0" max="1"
                         value="0.5" step="0.1">
                 </div>
@@ -91,7 +91,7 @@
     <script src="https://www.jqueryscript.net/demo/jQuery-Plugin-To-Print-Any-Part-Of-Your-Page-Print/jQuery.print.js">
     </script>
     <!-- Leaflet JavaScript -->
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <!-- memanggil library leaflet -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
@@ -102,7 +102,7 @@
     <script src="https://unpkg.com/leaflet-search@2.3.7/dist/leaflet-search.src.js"></script>
     <script type="text/javascript">
     /*cetak peta*/
-       
+       /*mendeklar posisi awal ttitik fokus peta*/
         var s = [5.554630942893766, 95.31709742351293];
         var color = {!! json_encode($color) !!};
         var data = {!! json_encode($data) !!}
@@ -110,14 +110,14 @@
         var map = L.map('map').setView(
             s, 11
         );
-
+//API open streetmap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
 
         var info = L.control();
-
+//mendeklar map ke html
         info.onAdd = function(map) {
             this._div = L.DomUtil.create('div', 'info');
             this.update();

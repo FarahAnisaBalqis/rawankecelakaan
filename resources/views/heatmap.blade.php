@@ -13,10 +13,10 @@
                     <!--pilihan radius heatmap-->
                     <select class="form-control float-right m-2" id="radius">
                         <option value="">--Pilih Radius--</option>
-                        <option {{ $radius == '0.005' ? 'selected' : '' }} value="0.005">1/2 km</option>
-                        <option {{ $radius == '0.01' ? 'selected' : '' }} value="0.01">1 km</option>
-                        <option {{ $radius == '0.015' ? 'selected' : '' }} value="0.015">1 1/2 km</option>
-                        <option {{ $radius == '0.02' ? 'selected' : '' }} value="0.02">2 km</option>
+                        <option {{ $radius == '0.001' ? 'selected' : '' }} value="0.001">100 m</option>
+                        <option {{ $radius == '0.003' ? 'selected' : '' }} value="0.003">300 m</option>
+                        <option {{ $radius == '0.004' ? 'selected' : '' }} value="0.004">400 m</option>
+                        <option {{ $radius == '0.005' ? 'selected' : '' }} value="0.005">500 m</option>
                     </select>
                 </div>
                 <div class="col-md-3">
@@ -31,6 +31,7 @@
                 </div>
                 <div class="col-md-5">
                     <div class="text-end">
+                       <!--sembunyikan titik pada heatmap--> 
                         @if (!$show)
                             @if ($tahun)
                                 <a href="{{ route('heatmap', ['show' =>1, 'tahun' => $tahun, 'radius' => $radius]) }}"
