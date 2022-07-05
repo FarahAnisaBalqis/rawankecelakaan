@@ -30,13 +30,13 @@
                 </div>
                 <div class="col-md-5">
                     <div class="text-end">
-                       <!--sembunyikan titik pada heatmap--> 
+                        <!--sembunyikan titik pada heatmap-->
                         @if (!$show)
                             @if ($tahun)
-                                <a href="{{ route('heatmap', ['show' =>1, 'tahun' => $tahun, 'radius' => $radius]) }}"
+                                <a href="{{ route('heatmap', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                     class="btn btn-info">Sembunyikan Titik</a>
                             @else
-                                <a href="{{ route('heatmap', ['show' =>1]) }}" class="btn btn-info">Sembunyikan
+                                <a href="{{ route('heatmap', ['show' => 1]) }}" class="btn btn-info">Sembunyikan
                                     Titik</a>
                             @endif
                         @else
@@ -44,7 +44,7 @@
                                 <a href="{{ route('heatmap', ['show' => 0, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                     class="btn btn-info">Tampil Titik</a>
                             @else
-                                <a href="{{ route('heatmap', ['show' =>0]) }}" class="btn btn-info">Tampil
+                                <a href="{{ route('heatmap', ['show' => 0]) }}" class="btn btn-info">Tampil
                                     Titik</a>
                             @endif
                         @endif
@@ -208,11 +208,32 @@
         if (show != 1) {
             for (var i = 0; i < data.length; i++) {
                 marker = new L.marker([data[i][1], data[i][2]])
-                    .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4] + "<br> Tahun " + data[i][
-                5])
+                    .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4] + "<br> Tahun " + data[
+                        i][
+                        5
+                    ])
                     .addTo(map);
             }
         }
+        var mapZoomLevel = localStorage.theZoom;
+        var mapCenterLat = localStorage.mapCenterLat;
+        var mapCenterLng = localStorage.mapCenterLng;
+        console.log(mapCenterLng)
+        if (isNaN(mapZoomLevel)) {
+            mapZoomLevel = 12;
+        }
+
+
+        //simpan titik saat refresh
+        map.on('zoomend', function(e) {
+            localStorage.theZoom = map.getZoom();
+        });
+        map.on('moveend', function(e) {
+            localStorage.mapCenterLat = map.getCenter().lat;
+            localStorage.mapCenterLng = map.getCenter().lng;
+        });
+        map.setZoom(mapZoomLevel);
+        map.panTo(new L.LatLng(mapCenterLat, mapCenterLng));
 
         function zoomToFeature(e) {
             map.fitBounds(e.target.getBounds());

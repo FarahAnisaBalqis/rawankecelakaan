@@ -51,8 +51,8 @@ http://www.tooplate.com/view/2091-ziggy
         <a href="{{ route('Map user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h4>Maps</h4>
         </a>
-        <a href="{{ route('heatmap user',['show'=>1,'radius'=>0.001]) }}" class="text-decoration-none text-white m-4 py-1 me-2 btn"
-            style="border-bottom:1px solid cyan;">
+        <a href="{{ route('heatmap user', ['show' => 1, 'radius' => 0.001]) }}"
+            class="text-decoration-none text-white m-4 py-1 me-2 btn" style="border-bottom:1px solid cyan;">
             <h4>Heatmaps</h4>
         </a>
         <a href="{{ route('Data user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
@@ -102,7 +102,7 @@ http://www.tooplate.com/view/2091-ziggy
                         <div class="text-end">
                             @if (!$show)
                                 @if ($tahun)
-                                    <a href="{{ route('heatmap user', ['show' =>1, 'tahun' => $tahun, 'radius' => $radius]) }}"
+                                    <a href="{{ route('heatmap user', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                         class="btn btn-info">Sembunyikan Titik</a>
                                 @else
                                     <a href="{{ route('heatmap user', ['show' => 1]) }}"
@@ -110,10 +110,10 @@ http://www.tooplate.com/view/2091-ziggy
                                 @endif
                             @else
                                 @if ($tahun)
-                                    <a href="{{ route('heatmap user', ['show' =>0, 'tahun' => $tahun, 'radius' => $radius]) }}"
+                                    <a href="{{ route('heatmap user', ['show' => 0, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                         class="btn btn-info">Tampil Titik</a>
                                 @else
-                                    <a href="{{ route('heatmap user', ['show' =>0]) }}" class="btn btn-info">Tampil
+                                    <a href="{{ route('heatmap user', ['show' => 0]) }}" class="btn btn-info">Tampil
                                         Titik</a>
                                 @endif
 
@@ -297,16 +297,36 @@ http://www.tooplate.com/view/2091-ziggy
         info.update(layer.feature.properties);
     }
     if (show != 1) {
-         //pop up koordinat
-    for (var i = 0; i < data.length; i++) {
-        marker = new L.marker([data[i][1], data[i][2]])
-            .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4] + "<br> Tahun " + data[i][
-                5])
-            .addTo(map);
+        //pop up koordinat
+        for (var i = 0; i < data.length; i++) {
+            marker = new L.marker([data[i][1], data[i][2]])
+                .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4] + "<br> Tahun " + data[
+                    i][
+                    5
+                ])
+                .addTo(map);
+        }
     }
-    }
-   
 
+    var mapZoomLevel = localStorage.theZoom;
+    var mapCenterLat = localStorage.mapCenterLat;
+    var mapCenterLng = localStorage.mapCenterLng;
+    console.log(mapCenterLng)
+    if (isNaN(mapZoomLevel)) {
+        mapZoomLevel = 12; //default
+    }
+
+   
+    //store
+    map.on('zoomend', function(e) {
+        localStorage.theZoom = map.getZoom();
+    });
+    map.on('moveend', function(e) {
+        localStorage.mapCenterLat = map.getCenter().lat;
+        localStorage.mapCenterLng = map.getCenter().lng;
+    });
+ map.setZoom(mapZoomLevel);
+    map.panTo(new L.LatLng(mapCenterLat,mapCenterLng));
     function zoomToFeature(e) {
         map.fitBounds(e.target.getBounds());
     }
@@ -322,7 +342,8 @@ http://www.tooplate.com/view/2091-ziggy
     var legend = L.control({
         position: 'bottomright'
     });
+
     $("#printBtn").click(function() {
-            window.print();
+        window.print();
     });
 </script>
