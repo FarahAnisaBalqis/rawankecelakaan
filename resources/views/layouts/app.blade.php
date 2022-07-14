@@ -106,9 +106,9 @@
                 <div class="sidebar">
                     <a href="index3.html" class="brand-link text-decoration-none">
 
-                        <p class="brand-text font-weight-light mb-0">WebGIS Rawan Kecelakaan </p>
-                        <p class="brand-text font-weight-light mb-0">di Kota Banda Aceh</p>
-                        <p class="brand-text font-weight-light mb-0">dan Sekitarnya</p>
+                        <p class="brand-text font-weight-light mb-0" style="font-size: large">WebGIS Rawan Kecelakaan </p>
+                        <p class="brand-text font-weight-light mb-0" style="font-size: large">di Kota Banda Aceh</p>
+                        <p class="brand-text font-weight-light mb-0" style="font-size: large">dan Sekitarnya</p>
                     </a>
 
                     <!-- Sidebar user panel (optional) -->

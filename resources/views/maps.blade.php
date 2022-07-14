@@ -27,8 +27,8 @@
                 </div>
                 <div class="col-lg-1">
                     <!--opacity atau transparansi-->
-                    <input id="opacity" type="range" class="form-control mt-4 w-50 h-50 bg-success" min="0" max="1"
-                        value="0.5" step="0.1">
+                    <input id="opacity" type="range" class="form-control mt-4 w-50 h-50 bg-success" min="0"
+                        max="1" value="0.5" step="0.1">
                 </div>
             </div>
         </div>
@@ -41,6 +41,7 @@
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
     <style>
+   
         #map {
             min-height: 500px;
         }
@@ -76,8 +77,9 @@
             margin-right: 8px;
             opacity: 0.7;
         }
+
         /* ukuran legenda */
-        .leaflet-control{
+        .leaflet-control {
             max-height: 14rem;
             overflow-y: auto
         }
@@ -89,7 +91,7 @@
         $('#tahun').change(function() {
             window.location.href = '/maps/' + this.value;
         });
-       $("#printBtn").click(function() {
+        $("#printBtn").click(function() {
             window.print();
         });
     </script>
@@ -106,8 +108,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-search@2.3.7/dist/leaflet-search.src.css" />
     <script src="https://unpkg.com/leaflet-search@2.3.7/dist/leaflet-search.src.js"></script>
     <script type="text/javascript">
-    /*cetak peta*/
-       /*mendeklar posisi awal ttitik fokus peta*/
+        /*cetak peta*/
+        /*mendeklar posisi awal ttitik fokus peta*/
         var s = [5.554630942893766, 95.31709742351293];
         var color = {!! json_encode($color) !!};
         var data = {!! json_encode($data) !!}
@@ -115,14 +117,14 @@
         var map = L.map('map').setView(
             s, 11
         );
-//API open streetmap
+        //API open streetmap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
 
         var info = L.control();
-//mendeklar map ke html
+        //mendeklar map ke html
         info.onAdd = function(map) {
             this._div = L.DomUtil.create('div', 'info');
             this.update();
@@ -169,7 +171,8 @@
         for (var i = 0; i < data.length; i++) {
             marker = new L.marker([data[i][1], data[i][2]])
                 .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4] + "<br> Tahun " + data[i][
-                    5])
+                    5
+                ])
                 .addTo(map);
         }
         var geojson;
@@ -239,6 +242,5 @@
 
 
         map.addControl(controlSearch);
-        
     </script>
 @endpush
