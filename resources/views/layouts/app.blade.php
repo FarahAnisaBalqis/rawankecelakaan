@@ -112,7 +112,7 @@
                         </div>
                     </div>
                     <!-- Sidebar Menu -->
-                    <nav class="mt-2" style="background-color: #2B333F">
+                    <nav class="mt-2" style="background-color: #2B333F;overflow:hidden">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                             data-accordion="false">
                             <li class="nav-item">
@@ -154,7 +154,7 @@
 
                                 <div class="collapse {{ in_array(request()->route()->getName(),['halaman data2', 'halaman data', 'halaman tematik'])? 'show': '' }}"
                                     id="data-r" style="">
-                                    <ul class="nav ps-3">
+                                    <ul class="nav">
                                         <li class="nav-item w-100">
                                             <a class="dropdown-item {{ request()->route()->getName() == 'halaman data2'? 'text-white bg-info': '' }}"
                                                 href="{{ route('halaman data2') }}">Data Kecelakaan</a>
