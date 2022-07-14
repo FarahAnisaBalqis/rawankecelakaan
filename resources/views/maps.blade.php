@@ -76,6 +76,10 @@
             margin-right: 8px;
             opacity: 0.7;
         }
+        .leaflet-control{
+            max-height: 14rem;
+            overflow-y: auto
+        }
     </style>
 @endsection
 
