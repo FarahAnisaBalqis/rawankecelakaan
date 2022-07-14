@@ -35,6 +35,9 @@
                             @if ($tahun)
                                 <a href="{{ route('heatmap', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                     class="btn btn-primary">Sembunyikan Titik</a>
+                            @elseif($radius)
+                            <a href="{{ route('heatmap', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
+                                    class="btn btn-primary">Sembunyikan Titik</a>
                             @else
                                 <a href="{{ route('heatmap', ['show' => 1]) }}" class="btn btn-primary">Sembunyikan
                                     Titik</a>
@@ -42,6 +45,9 @@
                         @else
                             @if ($tahun)
                                 <a href="{{ route('heatmap', ['show' => 0, 'tahun' => $tahun, 'radius' => $radius]) }}"
+                                    class="btn btn-primary">Tampil Titik</a>
+                            @elseif($radius)
+                            <a href="{{ route('heatmap', ['show' => 0, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                     class="btn btn-primary">Tampil Titik</a>
                             @else
                                 <a href="{{ route('heatmap', ['show' => 0]) }}" class="btn btn-primary">Tampil

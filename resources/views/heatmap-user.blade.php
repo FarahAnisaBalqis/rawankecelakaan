@@ -104,19 +104,25 @@ http://www.tooplate.com/view/2091-ziggy
                                 @if ($tahun)
                                     <a href="{{ route('heatmap user', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                         class="btn btn-primary">Sembunyikan Titik</a>
+                                @elseif($radius)
+                                    <a href="{{ route('heatmap user', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
+                                        class="btn btn-primary">Sembunyikan Titik</a>
                                 @else
                                     <a href="{{ route('heatmap user', ['show' => 1]) }}"
-                                        class="btn btn-primary">Sembunyikan Titik</a>
+                                        class="btn btn-primary">Sembunyikan
+                                        Titik</a>
                                 @endif
                             @else
                                 @if ($tahun)
+                                    <a href="{{ route('heatmap user', ['show' => 0, 'tahun' => $tahun, 'radius' => $radius]) }}"
+                                        class="btn btn-primary">Tampil Titik</a>
+                                @elseif($radius)
                                     <a href="{{ route('heatmap user', ['show' => 0, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                         class="btn btn-primary">Tampil Titik</a>
                                 @else
                                     <a href="{{ route('heatmap user', ['show' => 0]) }}" class="btn btn-primary">Tampil
                                         Titik</a>
                                 @endif
-
                             @endif
                             <button id="printBtn" class="btn btn-primary">Cetak Peta</button>
                         </div>
@@ -308,7 +314,7 @@ http://www.tooplate.com/view/2091-ziggy
         mapZoomLevel = 12; //default
     }
 
-   
+
     //store
     map.on('zoomend', function(e) {
         localStorage.theZoom = map.getZoom();
@@ -317,8 +323,9 @@ http://www.tooplate.com/view/2091-ziggy
         localStorage.mapCenterLat = map.getCenter().lat;
         localStorage.mapCenterLng = map.getCenter().lng;
     });
- map.setZoom(mapZoomLevel);
-    map.panTo(new L.LatLng(mapCenterLat,mapCenterLng));
+    map.setZoom(mapZoomLevel);
+    map.panTo(new L.LatLng(mapCenterLat, mapCenterLng));
+
     function zoomToFeature(e) {
         map.fitBounds(e.target.getBounds());
     }
