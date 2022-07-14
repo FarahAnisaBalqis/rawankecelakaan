@@ -98,9 +98,11 @@
         @else
             <aside class="main-sidebar sidebar-dark-primary elevation-4 position-fixed" style="background-color: #2B333F">
                 <!-- Brand Logo -->
-                <a href="index3.html" class="brand-link">
+                <a href="index3.html" class="brand-link text-decoration-none">
 
-                    <span class="brand-text font-weight-light">RK</span>
+                    <p class="brand-text font-weight-light mb-0">WebGIS Rawan Kecelakaan </p>
+                    <p class="brand-text font-weight-light mb-0">di Kota Banda Aceh</p>
+                    <p class="brand-text font-weight-light mb-0">dan Sekitarnya</p>
                 </a>
 
                 <!-- Sidebar -->
@@ -108,6 +110,7 @@
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="info text-white">
+                            {{-- nama user name --}}
                             {{ Auth::user()->name }}
                         </div>
                     </div>
