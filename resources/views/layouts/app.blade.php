@@ -34,16 +34,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
         integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-html5-2.2.3/fh-3.2.4/datatables.min.css"/>
- 
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-html5-2.2.3/fh-3.2.4/datatables.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-html5-2.2.3/fh-3.2.4/datatables.min.css" />
+
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-html5-2.2.3/fh-3.2.4/datatables.min.js">
+    </script>
 
     @yield('styles')
 </head>
 
 <body>
     <div id="app">
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="max-height: 4rem">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -98,15 +101,16 @@
         @else
             <aside class="main-sidebar sidebar-dark-primary elevation-4 position-fixed" style="background-color: #2B333F">
                 <!-- Brand Logo -->
-                <a href="index3.html" class="brand-link text-decoration-none">
-
-                    <p class="brand-text font-weight-light mb-0">WebGIS Rawan Kecelakaan </p>
-                    <p class="brand-text font-weight-light mb-0">di Kota Banda Aceh</p>
-                    <p class="brand-text font-weight-light mb-0">dan Sekitarnya</p>
-                </a>
 
                 <!-- Sidebar -->
                 <div class="sidebar">
+                    <a href="index3.html" class="brand-link text-decoration-none">
+
+                        <p class="brand-text font-weight-light mb-0">WebGIS Rawan Kecelakaan </p>
+                        <p class="brand-text font-weight-light mb-0">di Kota Banda Aceh</p>
+                        <p class="brand-text font-weight-light mb-0">dan Sekitarnya</p>
+                    </a>
+
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="info text-white">
@@ -138,7 +142,7 @@
                             </li>
                             <!--nilai awal radius-->
                             <li class="nav-item">
-                                <a href="{{ route('heatmap', ['show'=>1,'radius' => 0.001]) }}"
+                                <a href="{{ route('heatmap', ['show' => 1, 'radius' => 0.001]) }}"
                                     class="nav-link {{ request()->route()->getName() == 'heatmap'? 'text-white bg-info': '' }} text-white text-start w-100">
                                     <i class="nav-icon fa-solid fa-map"></i>
                                     <p>
