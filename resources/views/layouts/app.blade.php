@@ -96,7 +96,7 @@
         </nav>
         @guest
         @else
-            <aside class="main-sidebar sidebar-dark-primary elevation-4 position-fixed">
+            <aside class="main-sidebar sidebar-dark-primary elevation-4 position-fixed" style="background-color: #2B333F">
                 <!-- Brand Logo -->
                 <a href="index3.html" class="brand-link">
 
@@ -112,7 +112,7 @@
                         </div>
                     </div>
                     <!-- Sidebar Menu -->
-                    <nav class="mt-2">
+                    <nav class="mt-2" style="background-color: #2B333F">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                             data-accordion="false">
                             <li class="nav-item">
@@ -166,7 +166,7 @@
                                         </li>
                                         <li class="nav-item  w-100">
                                             <a class="dropdown-item {{ request()->route()->getName() == 'halaman tematik'? 'text-white bg-info': '' }}"
-                                                href="{{ route('halaman tematik') }}">Data Tematik</a>
+                                                href="{{ route('halaman tematik') }}">Pengaturan Warna Tematik</a>
                                         </li>
 
                                     </ul>

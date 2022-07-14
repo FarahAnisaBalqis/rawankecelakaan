@@ -40,24 +40,24 @@ http://www.tooplate.com/view/2091-ziggy
 
 
     <section class="w-100" style="background-color: #2B333F">
-        <a href="{{ route('login') }}" class="text-decoration-none text-white m-4 py-1 btn btn-outline-info me-2">
-            <h4>Log in</h4>
+        <a href="{{ route('login') }}" class="text-decoration-none text-white m-4 py-1 btn btn-outline-light me-2">
+            <h5>Log in</h5>
         </a>
         <a href="{{ route('Map user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn"
-            style="border-bottom:1px solid cyan;">
-            <h4>Maps</h4>
+            style="border-bottom:1px solid white;">
+            <h5>Maps</h5>
         </a>
         <a href="{{ route('heatmap user',['show'=>1,'radius'=>0.001]) }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
-            <h4>Heatmaps</h4>
+            <h5>Heatmaps</h5>
         </a>
         <a href="{{ route('Data user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
-            <h4>Data</h4>
+            <h5>Data</h5>
         </a>
         <a href="{{ route('panduan-user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
-            <h4>Panduan</h4>
+            <h5>Panduan</h5>
         </a>
         <a href="/" class="text-decoration-none text-white m-4 py-1 me-2 btn">
-            <h4>Home</h4>
+            <h5>Home</h5>
         </a>
     </section>
     <style>
@@ -67,7 +67,7 @@ http://www.tooplate.com/view/2091-ziggy
     </style>
     <section class="second-section p-0">
 
-        <div class="card bg-primary m-4">
+        <div class="card m-4" style="background-color: #2B333F">
             <div class="card-header border-0">
                 <h3 class="card-title text-white">
                     <i class="fas fa-map-marker-alt mr-1 "></i>
@@ -89,7 +89,7 @@ http://www.tooplate.com/view/2091-ziggy
                     <div class="col-lg-11">
                         <div class="text-end">
                             <!--cetak peta-->
-                            <button id="printBtn" class="btn btn-success mb-2">Cetak Peta</button>
+                            <button id="printBtn" class="btn btn-primary mb-2">Cetak Peta</button>
                         </div>
                         <div id="map"></div>
                     </div>
@@ -107,16 +107,9 @@ http://www.tooplate.com/view/2091-ziggy
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <ul>
-                        <li><a href="https://www.facebook.com/tooplate"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    </ul>
-                    <p class="text-white">Copyright &copy; 2017 Company Name
 
-                        | Design: <a href="https://www.facebook.com/tooplate" target="_parent">Tooplate</a></p>
+                    <h4 class="text-white">Jasa Raharja </h4>
+
                 </div>
             </div>
         </div>

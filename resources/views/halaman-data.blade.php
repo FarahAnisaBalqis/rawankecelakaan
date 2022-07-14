@@ -7,7 +7,7 @@
     <div class="container-xl">
         <div class="table-responsive">
             <div class="table-wrapper">
-                <div class="table-title">
+                <div class="table-title" style="background-color: #2B333F">
                     <div class="row">
                         <div class="col-sm-6">
                             <h2>Data <b>Rawan </b><b>Kecelakaan</b></h2>

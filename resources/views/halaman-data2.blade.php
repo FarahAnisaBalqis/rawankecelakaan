@@ -7,13 +7,13 @@
     <div class="container-xl">
         <div class="table-responsive">
             <div class="table-wrapper">
-                <div class="table-title">
+                <div class="table-title" style="background-color: #2B333F">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6" style="background-color: #2B333F">
                             <h2>Data <b>Kecelakaan</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="{{ route('tambah data2') }}" class="btn btn-success"><i
+                            <a href="{{ route('tambah data2') }}" class="btn btn-primary"><i
                                     class="material-icons">&#xE147;</i> <span>Masukkan Data Baru</span></a>
                         </div>
                     </div>

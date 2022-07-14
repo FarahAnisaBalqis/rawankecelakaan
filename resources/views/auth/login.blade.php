@@ -92,7 +92,7 @@ http://www.tooplate.com/view/2091-ziggy
 <body>
 
 
-    <section class="w-100" style="background-color: #68A7AD">
+    <section class="w-100" style="background-color: #2B333F">
         <a href="/" class="text-decoration-none text-white m-2 py-1 me-2 btn">
             <h4>Home</h4>
         </a>
@@ -105,7 +105,7 @@ http://www.tooplate.com/view/2091-ziggy
         <div class="row justify-content-center">
             <div class="col-md-6 p-2">
                 <div>
-                    <h3 class=" text-center">---  ---</h3>
+                    <h3 class=" text-center">WebGIS Rawan Kecelakaan di Kota Banda Aceh dan sekitarnya </h3>
                 </div>
                 <div class="card">
                     <div class="card-header text-center" style="background-image: ">{{ __('LOGIN') }}</div>
@@ -163,7 +163,7 @@ http://www.tooplate.com/view/2091-ziggy
 
                             <div class="form-group row mb-0 mt-2">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn text-white w-100" style="background-color: #68A7AD">
+                                    <button type="submit" class="btn text-white w-100" style="background-color: #2B333F">
                                         {{ __('Login') }}
                                     </button>
                                 </div>

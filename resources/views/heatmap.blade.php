@@ -14,8 +14,8 @@
                     <select class="form-control float-right m-2" id="radius">
                         <option value="">--Pilih Radius--</option>
                         <option {{ $radius == '0.001' ? 'selected' : '' }} value="0.001">100 m</option>
+                        <option {{ $radius == '0.002' ? 'selected' : '' }} value="0.002">200 m</option>
                         <option {{ $radius == '0.003' ? 'selected' : '' }} value="0.003">300 m</option>
-                        <option {{ $radius == '0.004' ? 'selected' : '' }} value="0.004">400 m</option>
                     </select>
                 </div>
                 <div class="col-md-3">
@@ -34,21 +34,21 @@
                         @if (!$show)
                             @if ($tahun)
                                 <a href="{{ route('heatmap', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
-                                    class="btn btn-info">Sembunyikan Titik</a>
+                                    class="btn btn-primary">Sembunyikan Titik</a>
                             @else
-                                <a href="{{ route('heatmap', ['show' => 1]) }}" class="btn btn-info">Sembunyikan
+                                <a href="{{ route('heatmap', ['show' => 1]) }}" class="btn btn-primary">Sembunyikan
                                     Titik</a>
                             @endif
                         @else
                             @if ($tahun)
                                 <a href="{{ route('heatmap', ['show' => 0, 'tahun' => $tahun, 'radius' => $radius]) }}"
-                                    class="btn btn-info">Tampil Titik</a>
+                                    class="btn btn-primary">Tampil Titik</a>
                             @else
-                                <a href="{{ route('heatmap', ['show' => 0]) }}" class="btn btn-info">Tampil
+                                <a href="{{ route('heatmap', ['show' => 0]) }}" class="btn btn-primary">Tampil
                                     Titik</a>
                             @endif
                         @endif
-                        <button id="printBtn" class="btn btn-success">Cetak Peta</button>
+                        <button id="printBtn" class="btn btn-primary">Cetak Peta</button>
                     </div>
                 </div>
 

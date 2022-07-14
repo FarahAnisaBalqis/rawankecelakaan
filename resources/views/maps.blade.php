@@ -21,13 +21,13 @@
                 <div class="col-lg-11">
                     <div class="text-end">
                         <!--cetak peta-->
-                        <button id="printBtn" class="btn btn-success mb-2">Cetak Peta</button>
+                        <button id="printBtn" class="btn btn-primary mb-2">Cetak Peta</button>
                     </div>
                     <div id="map"></div>
                 </div>
                 <div class="col-lg-1">
                     <!--opacity atau transparansi-->
-                    <input id="opacity" type="range" class="form-control mt-4 w-50 h-50" min="0" max="1"
+                    <input id="opacity" type="range" class="form-control mt-4 w-50 h-50 bg-success" min="0" max="1"
                         value="0.5" step="0.1">
                 </div>
             </div>
