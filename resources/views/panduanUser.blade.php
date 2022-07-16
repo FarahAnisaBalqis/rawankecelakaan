@@ -73,7 +73,7 @@ http://www.tooplate.com/view/2091-ziggy
                 <h3><b>Fitur Maps</b></h3>
                 <div class="mt-2">
                     <div class="mb-2">
-                        <span class="bg-dark me-2 me-2 text-white rounded-circle px-2" style="width: fit-content">
+                        <span class="bg-dark me-2 me-2 text-dark rounded-circle px-2" style="width: fit-content">
                             1
                         </span> Tekan "Lihat Semua" untuk melihat koordinat lokasi kecelakaan pertahun
                     </div>
@@ -92,6 +92,8 @@ http://www.tooplate.com/view/2091-ziggy
                         <span class="bg-dark me-2 text-white rounded-circle px-2" style="width: fit-content">
                             3
                         </span> Tekan scale button untuk mengatur transparansi
+                        <div class="text-center mt-4"><img width="700" src="{{ asset('storage/img/maps.png') }}" alt="">
+                        </div>
                     </div>
                 </div>
 
@@ -136,7 +138,7 @@ http://www.tooplate.com/view/2091-ziggy
                     <div class="mb-2">
                         <span class="bg-dark me-2 text-white rounded-circle px-2" style="width: fit-content">
                             5
-                        </span>Tekan scale button untuk mengatur transparansi
+                        </span> Tekan scale button untuk mengatur transparansi
 
                         <div class="text-center mt-4"><img width="700" src="{{ asset('storage/img/heatmap.png') }}" alt="">
                         </div>
@@ -185,19 +187,6 @@ http://www.tooplate.com/view/2091-ziggy
                     <div class="text-center"><img width="700" src="{{ asset('storage/img/tahun.png') }}" alt="">
                     </div>
                 </div>
-
-
-
-                <div class="mt-2">
-                    <div class="mb-2">
-                        <span class="bg-dark me-2 text-white rounded-circle px-2" style="width: fit-content">
-                            4
-                        </span>
-                        Menu Data menampilkan beberapa informasi dalam bentuk tabel seperti data vaksinasi, data
-                        lokasi,
-                        data desa, data kecamatan dan data user. Pada halaman ini Admin juga dapat melakukan
-                        input data atau edit data
-                    </div>
 
                     <div class="text-center"><img width="700" src="{{ asset('storage/img/data.png') }}" alt="">
                     </div>

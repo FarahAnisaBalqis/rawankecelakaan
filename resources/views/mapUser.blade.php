@@ -167,6 +167,10 @@ http://www.tooplate.com/view/2091-ziggy
         margin-right: 8px;
         opacity: 0.7;
     }
+    .leaflet-control {
+            max-height: 10rem;
+            overflow-y: auto
+        }
 </style>
 <script src="https://www.jqueryscript.net/demo/jQuery-Plugin-To-Print-Any-Part-Of-Your-Page-Print/jQuery.print.js">
 </script>

@@ -94,7 +94,7 @@ http://www.tooplate.com/view/2091-ziggy
 
     <section class="w-100" style="background-color: #2B333F">
         <a href="/" class="text-decoration-none text-white m-2 py-1 me-2 btn">
-            <h4>Home</h4>
+            <h4>LOGIN</h4>
         </a>
 
     </section>
