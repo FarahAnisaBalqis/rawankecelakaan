@@ -51,7 +51,9 @@ http://www.tooplate.com/view/2091-ziggy
         <a href="{{ route('login') }}" class="text-decoration-none text-white m-4 py-1 btn btn-outline-light me-2">
             <h5>Log in</h5>
         </a>
-
+        <a href="/" class="text-decoration-none text-white m-4 py-1 me-2 btn">
+            <h5>Home</h5>
+        </a>
         <a href="{{ route('heatmap user', ['show' => 1, 'radius' => 0.001]) }}"
             class="text-decoration-none text-white m-4 py-1 me-2 btn" style="border-bottom:1px solid white;">
             <h5>Maps</h5>
@@ -62,9 +64,7 @@ http://www.tooplate.com/view/2091-ziggy
         <a href="{{ route('panduan-user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h5>Panduan</h5>
         </a>
-        <a href="/" class="text-decoration-none text-white m-4 py-1 me-2 btn">
-            <h5>Home</h5>
-        </a>
+
     </section>
 
     <section class="second-section p-0">

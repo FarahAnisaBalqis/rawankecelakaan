@@ -43,23 +43,25 @@ http://www.tooplate.com/view/2091-ziggy
         <a href="{{ route('login') }}" class="text-decoration-none text-white m-4 py-1 btn btn-outline-light me-2">
             <h5>Log in</h5>
         </a>
-      
-        <a href="{{ route('heatmap user',['show'=>1,'radius'=>0.001]) }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
+        <a href="/" class="text-decoration-none text-white m-4 py-1 me-2 btn">
+            <h5>Home</h5>
+        </a>
+        <a href="{{ route('heatmap user', ['show' => 1, 'radius' => 0.001]) }}"
+            class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h5>Maps</h5>
         </a>
-        <a href="{{ route('Data user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn" style="border-bottom:1px solid white;">
+        <a href="{{ route('Data user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn"
+            style="border-bottom:1px solid white;">
             <h5>Data</h5>
         </a>
         <a href="{{ route('panduan-user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h5>Panduan</h5>
         </a>
-        <a href="/" class="text-decoration-none text-white m-4 py-1 me-2 btn">
-            <h5>Home</h5>
-        </a>
+
     </section>
 
     <section class="second-section">
-    
+
         <div class="container">
             <!--data dashboard user-->
             <div class="row mb-2">
@@ -92,7 +94,8 @@ http://www.tooplate.com/view/2091-ziggy
                     <!-- small box -->
                     <div class="card p-3 mb-3 bg-warning h-100">
                         <div class="inner">
-                            <span class="h3 text-white">{{ $sifat->count }} </span> <span class="text-white">{{ $sifat->sifat_cidera }}</span>
+                            <span class="h3 text-white">{{ $sifat->count }} </span> <span
+                                class="text-white">{{ $sifat->sifat_cidera }}</span>
 
                             <p class="text-white">Jumlah Sifat Cidera Terbanyak</p>
                         </div>
@@ -101,33 +104,33 @@ http://www.tooplate.com/view/2091-ziggy
                     </div>
                 </div>
                 <!-- ./col -->
-              
-            </div>
-                <section>
 
-                    <div class="card">
-                        <div class="card-header">
-                            <span class="card-title h3">
-                                <i class="fas fa-chart-pie mr-1"></i>
-                                Grafik
-                            </span>
-                          
-                        </div><!-- /.card-header -->
-                        <div class="card-body">
-                            <div class="tab-content p-0">
-                                <!-- Morris chart - Sales -->
-                                <div class="chart tab-pane active" id="grafik1-button"
-                                    style="position: relative; height: 300px;">
-                                    <canvas id="grafik1" height="300" style="height: 300px;"></canvas>
-                                </div>
-                                <div class="chart tab-pane active" id="grafik2-button"
-                                    style="position: relative; height: 300px;">
-                                    <canvas id="grafik2" height="300" style="height: 300px;"></canvas>
-                                </div>
+            </div>
+            <section>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title h3">
+                            <i class="fas fa-chart-pie mr-1"></i>
+                            Grafik
+                        </span>
+
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="tab-content p-0">
+                            <!-- Morris chart - Sales -->
+                            <div class="chart tab-pane active" id="grafik1-button"
+                                style="position: relative; height: 300px;">
+                                <canvas id="grafik1" height="300" style="height: 300px;"></canvas>
                             </div>
-                        </div><!-- /.card-body -->
-                    </div>
-                </section>
+                            <div class="chart tab-pane active" id="grafik2-button"
+                                style="position: relative; height: 300px;">
+                                <canvas id="grafik2" height="300" style="height: 300px;"></canvas>
+                            </div>
+                        </div>
+                    </div><!-- /.card-body -->
+                </div>
+            </section>
         </div>
     </section>
     <footer>
@@ -150,8 +153,8 @@ http://www.tooplate.com/view/2091-ziggy
 </html>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"
-integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg=="
-crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     /*grafik kecamatan*/
     var labels = {!! json_encode($kec) !!};
@@ -220,4 +223,3 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         config2
     );
 </script>
-

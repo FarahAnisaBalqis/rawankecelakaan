@@ -38,30 +38,30 @@ http://www.tooplate.com/view/2091-ziggy
 
 <body>
 
-<style>
+    <style>
         input[type="range"] {
             -webkit-appearance: slider-vertical;
             background-color: #9a905d;
         }
-
     </style>
     <section class="w-100" style="background-color: #2B333F">
         <a href="{{ route('login') }}" class="text-decoration-none text-white m-4 py-1 btn btn-outline-light me-2">
             <h5>Log in</h5>
         </a>
-  
-        <a href="{{ route('heatmap user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
-            <h5>Maps</h5>
-        </a>
-        <a href="{{ route('Data user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn" >
-            <h5>Data</h5>
-        </a>
-        <a href="#" class="text-decoration-none text-white m-4 py-1 me-2 btn" style="border-bottom:1px solid white;">
-            <h5>Panduan</h5>
-        </a>
         <a href="/" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h5>Home</h5>
         </a>
+        <a href="{{ route('heatmap user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
+            <h5>Maps</h5>
+        </a>
+        <a href="{{ route('Data user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
+            <h5>Data</h5>
+        </a>
+        <a href="#" class="text-decoration-none text-white m-4 py-1 me-2 btn"
+            style="border-bottom:1px solid white;">
+            <h5>Panduan</h5>
+        </a>
+
     </section>
 
     <section class="pt-4" style=" background-color: #EDE6DB">
@@ -84,12 +84,13 @@ http://www.tooplate.com/view/2091-ziggy
                     </div>
                 </div>
 
-                    <div class="mt-2">
+                <div class="mt-2">
                     <div class="mb-2">
                         <span class="bg-dark me-2 text-white rounded-circle px-2" style="width: fit-content">
                             3
                         </span> Tekan scale button untuk mengatur transparansi
-                        <div class="text-center mt-4"><img width="700" src="{{ asset('storage/img/maps.png') }}" alt="">
+                        <div class="text-center mt-4"><img width="700" src="{{ asset('storage/img/maps.png') }}"
+                                alt="">
                         </div>
                     </div>
                 </div>
@@ -122,14 +123,14 @@ http://www.tooplate.com/view/2091-ziggy
                         <span class="bg-dark me-2 text-white rounded-circle px-2" style="width: fit-content">
                             3
                         </span>Tekan button tampil titik untuk melihat koordinat pada halaman heatmaps
-                    </div> 
+                    </div>
                 </div>
                 <div class="mt-2">
                     <div class="mb-2">
                         <span class="bg-dark me-2 text-white rounded-circle px-2" style="width: fit-content">
                             4
                         </span>Tekan button "Cetak Peta" untuk mencetak peta
-                    </div> 
+                    </div>
                 </div>
                 <div class="mt-2">
                     <div class="mb-2">
@@ -137,9 +138,10 @@ http://www.tooplate.com/view/2091-ziggy
                             5
                         </span> Tekan scale button untuk mengatur transparansi
 
-                        <div class="text-center mt-4"><img width="700" src="{{ asset('storage/img/heatmap.png') }}" alt="">
+                        <div class="text-center mt-4"><img width="700" src="{{ asset('storage/img/heatmap.png') }}"
+                                alt="">
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -154,7 +156,8 @@ http://www.tooplate.com/view/2091-ziggy
                     <div class="mb-2">
                         <span class="bg-dark me-2 text-white rounded-circle px-2" style="width: fit-content">
                             1
-                        </span> Anda dapat melihat informasi mengenai kecamatan dan tahun dengan kasus kecelakaan terbanyak, juga sifat cidera terbanyak
+                        </span> Anda dapat melihat informasi mengenai kecamatan dan tahun dengan kasus kecelakaan
+                        terbanyak, juga sifat cidera terbanyak
                     </div>
 
                     <div class="text-center"><img width="700" src="{{ asset('storage/img/data1.png') }}"
@@ -181,15 +184,17 @@ http://www.tooplate.com/view/2091-ziggy
                         </span> Anda dapat melihat grafik total kecelakaan setiap tahun
                     </div>
 
-                    <div class="text-center"><img width="700" src="{{ asset('storage/img/tahun.png') }}" alt="">
+                    <div class="text-center"><img width="700" src="{{ asset('storage/img/tahun.png') }}"
+                            alt="">
                     </div>
                 </div>
 
-                    <div class="text-center"><img width="700" src="{{ asset('storage/img/data.png') }}" alt="">
-                    </div>
-
+                <div class="text-center"><img width="700" src="{{ asset('storage/img/data.png') }}"
+                        alt="">
                 </div>
+
             </div>
+        </div>
         </div>
 
     </section>
