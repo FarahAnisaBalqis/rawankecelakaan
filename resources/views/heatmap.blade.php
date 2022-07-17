@@ -320,20 +320,6 @@
             map.fitBounds(e.target.getBounds());
         }
 
-        function onEachFeature(feature, layer) {
-            layer.on({
-                mouseover: highlightFeature,
-                mouseout: resetHighlight,
-                click: zoomToFeature
-            });
-        }
-        for (var i = 0; i < data.length; i++) {
-            marker = new L.marker([data[i][1], data[i][2]])
-                .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4] + "<br> Tahun " + data[i][
-                    5
-                ])
-                .addTo(map);
-        }
         var geojson;
 
         function resetHighlight(e) {
@@ -347,8 +333,6 @@
 
         function onEachFeature(feature, layer) {
             layer.on({
-                mouseover: highlightFeature,
-                mouseout: resetHighlight,
                 click: zoomToFeature
             });
         }
@@ -374,6 +358,7 @@
                 });
                 btn_tematik.innerHTML = 'Tampilkan Tematik';
             state = false;
+            
             } else {
                 geojsonLayer.setStyle({
                     fillOpacity: opacity
