@@ -59,31 +59,20 @@ http://www.tooplate.com/view/2091-ziggy
     <section class="second-section">
         <div class="container">
             <div class="row mx-auto">
-                <div class="col-md-3 col-sm-6">
-                    <a href="{{route('Map user')}}" class="btn btn-outline-info py-2">
+              
+                <div class="col-md-4 col-sm-8">
+                    <a href="{{ route('heatmap user',['show'=>1,'radius'=>0.001]) }}" class="btn btn-outline-info py-2">
                         <div class="service-item">
                             <div class="icon">
                                 <i class="fa-solid fa-map-location h1"></i>
                             </div>
                             <h4>Maps</h4>
-                            <p>Aliquam ex velit, viverra eu tristique vel, rhoncus nec ligula. In vel massa sed dolor
-                                pharetra interdum vitae posuere.</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="{{ route('heatmap user',['show'=>1,'radius'=>0.001]) }}" class="btn btn-outline-info py-2">
-                        <div class="service-item">
-                            <div class="icon">
-                                <i class="fa-solid fa-map h1"></i>
-                            </div>
-                            <h4>Heatmaps</h4>
                             <p>Sed pulvinar ipsum id leo volutpat, in convallis lectus molestie. Aliquam nisi sapien,
                                 faucibus eu consequat id, egestas vitae augue.</p>
                         </div>
                     </a>
                 </div>
-                <div class="col-md-3 col-sm-7">
+                <div class="col-md-4 col-sm-8">
                     <a href="{{route('Data user')}}" class="btn btn-outline-info py-2">
                         <div class="service-item">
                             <div class="icon">
@@ -95,7 +84,7 @@ http://www.tooplate.com/view/2091-ziggy
                         </div>
                     </a>
                 </div>
-                <div class="col-md-3 col-sm-6">
+                <div class="col-md-4 col-sm-8">
                     <a href="{{ route('panduan-user') }}" class="btn btn-outline-info py-2">
                         <div class="service-item">
                             <div class="icon">

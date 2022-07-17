@@ -51,20 +51,30 @@ class UserController extends Controller
     
     public function heatmap($show = 1, $radius = 0.001, $tahun = null)
     {
+        $geofile = [];
         $coor = [];
         $arr = [];
         $info = [];
         $index = 0;
-        //pilihan tahun heatmap user
+        $index2 = 0;
+        $color = [];
+        //pilihan tahun admin
         if ($tahun) {
             $data = HalamanData::where('tanggal', $tahun)->get();
         } else {
             $data = HalamanData::all();
         }
-
-        foreach ($data as $item) {
-            $info[$index] = [$item->alamat, $item->lat, $item->long, $item->tematik->kecamatan, $item->jumlah_kecelakaan,$item->tanggal];
+        $tematik = Tematik::all();
+        foreach ($tematik as $item) {
+            $geofile[$index] = '/storage/' . $item->geojson;
             $index++;
+        }
+        foreach ($data as $item) {
+            $info[$index2] = [$item->alamat, $item->lat, $item->long, $item->tematik->kecamatan, $item->jumlah_kecelakaan, $item->tanggal];
+            $index2++;
+        }
+        foreach ($tematik as $item) {
+            $color[$item->kecamatan] = $item->warna;
         }
         $index = 0;
         foreach ($data as $item) {
@@ -75,15 +85,18 @@ class UserController extends Controller
             $index += 1;
         }
         $tahunList = HalamanData::groupby('tanggal')->get();
+        $kecamatan = $tematik->pluck('kecamatan');
         return view('heatmap-user', [
-            'geofile' => [],
-            'color' => [],
+            'geofile' => $geofile,
+            'color' => $color,
             'tahunList' => $tahunList,
             'tahun' => $tahun,
             'data' => $info,
             'radius' => $radius,
             'coor' => $arr,
-            'show' => $show
+            'show' => $show,
+            'kecamatan' => $kecamatan
+
         ]);
     }
     public function data()

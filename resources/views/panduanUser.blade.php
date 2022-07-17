@@ -49,12 +49,9 @@ http://www.tooplate.com/view/2091-ziggy
         <a href="{{ route('login') }}" class="text-decoration-none text-white m-4 py-1 btn btn-outline-light me-2">
             <h5>Log in</h5>
         </a>
-        <a href="{{ route('Map user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn"
-            >
-            <h5>Maps</h5>
-        </a>
+  
         <a href="{{ route('heatmap user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
-            <h5>Heatmaps</h5>
+            <h5>Maps</h5>
         </a>
         <a href="{{ route('Data user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn" >
             <h5>Data</h5>

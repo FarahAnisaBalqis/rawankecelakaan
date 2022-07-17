@@ -39,21 +39,22 @@ http://www.tooplate.com/view/2091-ziggy
 <body>
 
     <style>
-        input[type="range"] {
+        .tematik input[type="range"] {
+            -webkit-appearance: slider-horizontal;
+        }
+
+        .heatmap input[type="range"] {
             -webkit-appearance: slider-vertical;
-            background-color: #9a905d;
         }
     </style>
     <section class="w-100" style="background-color: #2B333F">
         <a href="{{ route('login') }}" class="text-decoration-none text-white m-4 py-1 btn btn-outline-light me-2">
             <h5>Log in</h5>
         </a>
-        <a href="{{ route('Map user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
-            <h5>Maps</h5>
-        </a>
+      
         <a href="{{ route('heatmap user', ['show' => 1, 'radius' => 0.001]) }}"
             class="text-decoration-none text-white m-4 py-1 me-2 btn" style="border-bottom:1px solid white;">
-            <h5>Heatmaps</h5>
+            <h5>Maps</h5>
         </a>
         <a href="{{ route('Data user') }}" class="text-decoration-none text-white m-4 py-1 me-2 btn">
             <h5>Data</h5>
@@ -100,6 +101,7 @@ http://www.tooplate.com/view/2091-ziggy
                     </div>
                     <div class="col-md-5">
                         <div class="text-end">
+                        <button id="btn_tematik" class="btn btn-primary"></button>
                             @if (!$show)
                                 @if ($tahun)
                                     <a href="{{ route('heatmap user', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
@@ -120,7 +122,8 @@ http://www.tooplate.com/view/2091-ziggy
                                     <a href="{{ route('heatmap user', ['show' => 0, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                         class="btn btn-primary">Tampil Titik</a>
                                 @else
-                                    <a href="{{ route('heatmap user', ['show' => 0]) }}" class="btn btn-primary">Tampil
+                                    <a href="{{ route('heatmap user', ['show' => 0]) }}"
+                                        class="btn btn-primary">Tampil
                                         Titik</a>
                                 @endif
                             @endif
@@ -134,8 +137,44 @@ http://www.tooplate.com/view/2091-ziggy
                         <div id="map"></div>
                     </div>
                     <div class="col-lg-1">
-                        <input id="opacity" type="range" class="form-control mt-4 w-50 h-50" min="0"
-                            max="1" value="0.5" step="0.1">
+                        <p style="font-size: 13px">Opacity Heatmap</p>
+                        <div class="heatmap d-flex h-100">
+                            <input id="opacity" type="range" class="form-control h-50 " min="0"
+                                max="1" value="0.5" step="0.1" list="tickmarks">
+                            <datalist id="tickmarks" class="h-50">
+                                <option value="1" label="1"></option>
+                                <option value="0.9" label="0.9"></option>
+                                <option value="0.8" label="0.8"></option>
+                                <option value="0.7" label="0.7"></option>
+                                <option value="0.6" label="0.6"></option>
+                                <option value="0.5" label="0.5"></option>
+                                <option value="0.4" label="0.4"></option>
+                                <option value="0.3" label="0.3"></option>
+                                <option value="0.2" label="0.2"></option>
+                                <option value="0.1" label="0.1"></option>
+                                <option value="0" label="0"></option>
+                            </datalist>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p>Opacity Tematik</p>
+                    <div class="d-block w-50 tematik">
+                        <input id="opacity2" type="range" class="form-control w-100 " min="0"
+                            max="1" value="0.5" step="0.1" list="tickmarks2">
+                        <datalist id="tickmarks2" class="w-100">
+                            <option value="1" label="1"></option>
+                            <option value="0.9" label="0.9"></option>
+                            <option value="0.8" label="0.8"></option>
+                            <option value="0.7" label="0.7"></option>
+                            <option value="0.6" label="0.6"></option>
+                            <option value="0.5" label="0.5"></option>
+                            <option value="0.4" label="0.4"></option>
+                            <option value="0.3" label="0.3"></option>
+                            <option value="0.2" label="0.2"></option>
+                            <option value="0.1" label="0.1"></option>
+                            <option value="0" label="0"></option>
+                        </datalist>
                     </div>
                 </div>
             </div>
@@ -175,6 +214,16 @@ http://www.tooplate.com/view/2091-ziggy
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin="" />
 <style>
+    .leaflet-zoom-hide {
+        z-index: 600;
+    }
+
+    .tematik datalist {
+        display: flex;
+        justify-content: space-between;
+        color: red;
+    }
+
     #map {
         min-height: 500px;
     }
@@ -210,6 +259,11 @@ http://www.tooplate.com/view/2091-ziggy
         margin-right: 8px;
         opacity: 0.7;
     }
+    /* ukuran legenda */
+        .leaflet-control {
+            max-height: 14rem;
+            overflow-y: auto
+        }
 </style>
 
 <script src="https://www.jqueryscript.net/demo/jQuery-Plugin-To-Print-Any-Part-Of-Your-Page-Print/jQuery.print.js">
@@ -233,6 +287,7 @@ http://www.tooplate.com/view/2091-ziggy
     var data = {!! json_encode($data) !!}
     var coor = {!! json_encode($coor) !!}
     var show = {!! json_encode($show) !!}
+    var kecamatan = {!! json_encode($kecamatan) !!}
     var map = L.map('map').setView(
         s, 11
     );
@@ -257,9 +312,22 @@ http://www.tooplate.com/view/2091-ziggy
             '<b>' + props.NAMOBJ + '</b><br />' + props.MhsSIF + ' orang' :
             'Gerakkan mouse Anda');
     };
+
+    function style(feature) {
+        return {
+            weight: 2,
+            opacity: 1,
+            color: 'white',
+            dashArray: '3',
+            fillOpacity: 0,
+            fillColor: color[feature.properties.NAMOBJ]
+        };
+
+    }
     var dataMap = {
         data: coor
     };
+    /*radius*/
     var cfg = {
         "radius": {!! json_encode($radius) !!},
         "maxOpacity": .8,
@@ -294,8 +362,8 @@ http://www.tooplate.com/view/2091-ziggy
 
         info.update(layer.feature.properties);
     }
+
     if (show != 1) {
-        //pop up koordinat
         for (var i = 0; i < data.length; i++) {
             marker = new L.marker([data[i][1], data[i][2]])
                 .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4] + "<br> Tahun " + data[
@@ -303,6 +371,7 @@ http://www.tooplate.com/view/2091-ziggy
                     5
                 ])
                 .addTo(map);
+
         }
     }
 
@@ -311,11 +380,11 @@ http://www.tooplate.com/view/2091-ziggy
     var mapCenterLng = localStorage.mapCenterLng;
     console.log(mapCenterLng)
     if (isNaN(mapZoomLevel)) {
-        mapZoomLevel = 12; //default
+        mapZoomLevel = 12;
     }
 
 
-    //store
+    //simpan titik saat refresh
     map.on('zoomend', function(e) {
         localStorage.theZoom = map.getZoom();
     });
@@ -330,18 +399,74 @@ http://www.tooplate.com/view/2091-ziggy
         map.fitBounds(e.target.getBounds());
     }
 
+    var geojson;
+
+    function resetHighlight(e) {
+        geojsonLayer.resetStyle(e.target);
+        info.update();
+    }
+
+    function zoomToFeature(e) {
+        map.fitBounds(e.target.getBounds());
+    }
+
     function onEachFeature(feature, layer) {
         layer.on({
-            mouseover: highlightFeature,
-            mouseout: resetHighlight,
             click: zoomToFeature
         });
     }
+    var geojsonLayer = new L.GeoJSON.AJAX({!! json_encode($geofile) !!}, {
+        style: style,
+        onEachFeature: onEachFeature
+    });
+    //pemanggilan maps
+    geojsonLayer.addTo(map);
+    $('#opacity2').change(function() {
+        geojsonLayer.setStyle({
+            fillOpacity: this.value
+        });
+    });
+    var btn_tematik = document.getElementById('btn_tematik');
+    btn_tematik.innerHTML = 'Tampilkan Tematik';
+    var state = false;
+    var opacity = document.getElementById('opacity2').value;
+    $('#btn_tematik').click(function() {
+        if (state) {
+            geojsonLayer.setStyle({
+                fillOpacity: 0
+            });
+            btn_tematik.innerHTML = 'Tampilkan Tematik';
+            state = false;
 
+        } else {
+            geojsonLayer.setStyle({
+                fillOpacity: opacity
+            });
+            btn_tematik.innerHTML = 'Sembunyikan Tematik';
+            state = true;
+        }
+    });
     var legend = L.control({
         position: 'bottomright'
     });
 
+    //pemanggilan legend
+    legend.onAdd = function(map) {
+
+        var div = L.DomUtil.create('div', 'info legend'),
+            grades = [0, 12, 25, 37, 50, 62, 75, 87], //pretty break untuk 8
+            from, to;
+        labels = []
+        for (var i = 0; i < kecamatan.length; i++) {
+            labels.push(
+                '<i style="background:' + color[kecamatan[i]] + '"></i> - ' + kecamatan[i]);
+        }
+
+        div.innerHTML = '<h4>Legenda:</h4>' + labels.join('<br>');
+        return div;
+    };
+
+    legend.addTo(map);
     $("#printBtn").click(function() {
         window.print();
     });
