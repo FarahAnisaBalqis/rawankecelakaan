@@ -32,7 +32,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <div class="text-end">
                         <button id="btn_tematik" class="btn btn-primary"></button>
                         <!--sembunyikan titik pada heatmap-->
