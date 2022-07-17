@@ -70,7 +70,7 @@
                     <div id="map"></div>
                 </div>
                 <div class="col-lg-1">
-                    <p>Opacity Heatmap</p>
+                    <p style="font-size: 13px">Opacity Heatmap</p>
                     <div class="heatmap d-flex h-100">
                         <input id="opacity" type="range" class="form-control h-50 " min="0" max="1"
                             value="0.5" step="0.1" list="tickmarks">
@@ -119,6 +119,9 @@
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
     <style>
+        .leaflet-zoom-hide{
+            z-index: 600;
+        }
         .tematik datalist {
             display: flex;
             justify-content: space-between;
