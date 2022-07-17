@@ -80,7 +80,7 @@
 
         /* ukuran legenda */
         .leaflet-control {
-            max-height: 14rem;
+            max-height: 10rem;
             overflow-y: auto
         }
     </style>

@@ -39,7 +39,7 @@ http://www.tooplate.com/view/2091-ziggy
 <body>
 
     <a href="{{ route('login') }}"
-        class="text-decoration-none text-white position-absolute m-4 py-1 btn btn-outline-info">
+        class="text-decoration-none text-white position-absolute m-4 py-1 btn btn-outline-light">
         <h4>Log in</h4>
     </a>
     <section class="first-section">
