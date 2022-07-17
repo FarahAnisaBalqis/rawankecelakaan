@@ -64,9 +64,7 @@
                     </div>
 
                 </div>
-                <div class="text-center">
-                    <h5 class="text-danger">Simpan data terlebih dahulu untuk menambahkan korban</h5>
-                </div>
+               
                 <div class="container mt-4" id="mapid"></div>
                 <button class="btn btn-primary float-end mt-4" type="submit">Selanjutnya</button>
             </form>
