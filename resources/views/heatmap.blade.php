@@ -14,6 +14,7 @@
         <div class="card p-4">
             <div class="row">
                 <div class="col-md-3">
+                    <label for="">Pilih Radius</label>
                     <!--pilihan radius heatmap-->
                     <select class="form-control float-right m-2" id="radius">
                         <option value="">--Pilih Radius--</option>
@@ -23,6 +24,7 @@
                     </select>
                 </div>
                 <div class="col-md-3">
+                    <label for="">Pilih Tahun</label>
                     <!--pilihan tahun heatmap-->
                     <select class="form-control float-right m-2" id="tahun">
                         <option value="">--Lihat Semua--</option>
