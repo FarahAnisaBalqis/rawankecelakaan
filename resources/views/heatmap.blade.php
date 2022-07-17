@@ -34,6 +34,7 @@
                 </div>
                 <div class="col-md-5">
                     <div class="text-end">
+                        <button id="btn_tematik" class="btn btn-primary"></button>
                         <!--sembunyikan titik pada heatmap-->
                         @if (!$show)
                             @if ($tahun)
@@ -201,6 +202,7 @@
     <script src="{{ asset('storage/js/heatmap/build/heatmap.min.js') }}"></script>
     <script src="{{ asset('storage/js/leaflet-heatmap.js') }}"></script>
     <script type="text/javascript">
+        
         var s = [5.554630942893766, 95.31709742351293];
         var color = {!! json_encode($color) !!};
         var data = {!! json_encode($data) !!}
@@ -238,7 +240,7 @@
                 opacity: 1,
                 color: 'white',
                 dashArray: '3',
-                fillOpacity: 0.7,
+                fillOpacity: 0,
                 fillColor: color[feature.properties.NAMOBJ]
             };
 
@@ -281,7 +283,7 @@
 
             info.update(layer.feature.properties);
         }
-        
+
         if (show != 1) {
             for (var i = 0; i < data.length; i++) {
                 marker = new L.marker([data[i][1], data[i][2]])
@@ -290,7 +292,7 @@
                         5
                     ])
                     .addTo(map);
-                    
+
             }
         }
 
@@ -325,7 +327,7 @@
                 click: zoomToFeature
             });
         }
-         for (var i = 0; i < data.length; i++) {
+        for (var i = 0; i < data.length; i++) {
             marker = new L.marker([data[i][1], data[i][2]])
                 .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4] + "<br> Tahun " + data[i][
                     5
@@ -360,6 +362,25 @@
             geojsonLayer.setStyle({
                 fillOpacity: this.value
             });
+        });
+        var btn_tematik = document.getElementById('btn_tematik');
+        btn_tematik.innerHTML = 'Tampilkan Tematik';
+        var state = false;
+        var opacity = document.getElementById('opacity2').value;
+        $('#btn_tematik').click(function() {
+            if (state) {
+                geojsonLayer.setStyle({
+                    fillOpacity: 0
+                });
+                btn_tematik.innerHTML = 'Tampilkan Tematik';
+            state = false;
+            } else {
+                geojsonLayer.setStyle({
+                    fillOpacity: opacity
+                });
+                btn_tematik.innerHTML = 'Sembunyikan Tematik';
+            state = true;
+            }
         });
         var legend = L.control({
             position: 'bottomright'
