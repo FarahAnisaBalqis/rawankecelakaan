@@ -17,7 +17,7 @@
                                     <td>{{ $data->alamat }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Jumlah Kecelakaan </td>
+                                    <td>Jumlah Korban </td>
                                     <td>{{ $data->jumlah_kecelakaan }}</td>
                                 </tr>
                                 <tr>
