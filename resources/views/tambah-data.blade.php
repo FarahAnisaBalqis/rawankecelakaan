@@ -38,9 +38,10 @@
                             <input name="waktu" type="datetime-local" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Deskripsi Lokasi</label>
-                            <input name="deskripsi_lokasi" type="text" class="form-control" required>
+                            <label>Instansi No.Laporan Polisi</label>
+                            <input name="no_laporan" type="text" class="form-control" required>
                         </div>
+
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
@@ -59,17 +60,15 @@
                             <label>Sifat dan Kasus</label>
                             <input name="sifat_kasus" type="text" class="form-control" required>
                         </div>
-                         <div class="form-group">
-                            <label>Instansi No.Laporan Polisi</label>
-                            <input name="no_laporan" type="text" class="form-control" required>
-                        </div>
-                        
+
                     </div>
-                    
+
                 </div>
-                <div class="text-center"><h5 class="text-danger">Simpan data terlebih dahulu untuk menambahkan korban</h5></div>
+                <div class="text-center">
+                    <h5 class="text-danger">Simpan data terlebih dahulu untuk menambahkan korban</h5>
+                </div>
                 <div class="container mt-4" id="mapid"></div>
-                <button class="btn btn-primary float-end mt-4" type="submit">Tambah</button>
+                <button class="btn btn-primary float-end mt-4" type="submit">Selanjutnya</button>
             </form>
         </div>
 
@@ -104,7 +103,7 @@
         function showPosition(position) {
             let latPoint = position.coords.latitude;
             let longPoint = position.coords.longitude;
-           
+
             var mapCenter = [
                 {{ config('leafletsetup.map_center_latitude') }},
                 {{ config('leafletsetup.map_center_longitude') }},
@@ -122,7 +121,7 @@
                     .openPopup();
                 return false;
             };
-             $('#latitude').val(latPoint);
+            $('#latitude').val(latPoint);
             $('#longitude').val(longPoint);
             updateMarker(latPoint, longPoint);
             map.on('click', function(e) {

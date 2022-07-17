@@ -45,9 +45,9 @@
                                 value="{{ $data->long }}"value="{{ $data->waktu }}">
                         </div>
                         <div class="form-group">
-                            <label>Deskripsi Lokasi</label>
-                            <input name="deskripsi_lokasi" type="text" class="form-control" required
-                                value="{{ $data->deskripsi_lokasi }}">
+                            <label>Instansi No.Laporan Polisi</label>
+                            <input name="no_laporan" type="text" class="form-control" required
+                                value="{{ $data->no_laporan }}">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -72,11 +72,7 @@
                             <input name="sifat_kasus" type="text" class="form-control" required
                                 value="{{ $data->sifat_kasus }}">
                         </div>
-                        <div class="form-group">
-                            <label>Instansi No.Laporan Polisi</label>
-                            <input name="no_laporan" type="text" class="form-control" required
-                                value="{{ $data->no_laporan }}">
-                        </div>
+
                     </div>
                 </div>
             </form>
@@ -104,7 +100,8 @@
                                     <td>{{ $item->alamat }}</td>
                                     <td>{{ $item->sifat_cidera }}</td>
                                     <td>
-                                        <a class="btn btn-danger" href="{{route('hapus korban',['id'=>$item->id])}}">X</a>
+                                        <a class="btn btn-danger"
+                                            href="{{ route('hapus korban', ['id' => $item->id]) }}">X</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -124,8 +121,8 @@
                             </tr>
                         </tbody>
                     </table>
-                    <input type="hidden" class="form-control" name="halaman_data_id" value="{{$id}}">
-                    
+                    <input type="hidden" class="form-control" name="halaman_data_id" value="{{ $id }}">
+
                 </div>
             </form>
             <div class="container mt-4" id="mapid"></div>
