@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Jumlah Kecelakaan</label>
+                            <label>Jumlah Korban</label>
                             <input name="jumlah" type="number" class="form-control" required
                                 value="{{ $data->jumlah_kecelakaan }}">
                         </div>
