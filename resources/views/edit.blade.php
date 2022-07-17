@@ -126,7 +126,7 @@
                 </div>
             </form>
             <div class="container mt-4" id="mapid"></div>
-            <button class="btn btn-primary float-end mt-4" type="button" onclick="">Simpan</button>
+            <button class="btn btn-primary float-end mt-4" type="button" onclick="submit()">Simpan</button>
         </div>
 
     </div>
