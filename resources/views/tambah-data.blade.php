@@ -33,6 +33,14 @@
                                 @endfor
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label>Waktu Kejadian</label>
+                            <input name="waktu" type="datetime-local" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Deskripsi Lokasi</label>
+                            <input name="deskripsi_lokasi" type="text" class="form-control" required>
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
@@ -47,8 +55,19 @@
                             <label>Latitude</label>
                             <input id="latitude" name="lat" type="text" class="form-control" required>
                         </div>
+                        <div class="form-group">
+                            <label>Sifat dan Kasus</label>
+                            <input name="sifat_kasus" type="text" class="form-control" required>
+                        </div>
+                         <div class="form-group">
+                            <label>Instansi No.Laporan Polisi</label>
+                            <input name="no_laporan" type="text" class="form-control" required>
+                        </div>
+                        
                     </div>
+                    
                 </div>
+                <div class="text-center"><h5 class="text-danger">Simpan data terlebih dahulu untuk menambahkan korban</h5></div>
                 <div class="container mt-4" id="mapid"></div>
                 <button class="btn btn-primary float-end mt-4" type="submit">Tambah</button>
             </form>

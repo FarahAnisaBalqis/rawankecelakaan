@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HalamanData as ModelsHalamanData;
+use App\Models\Korban;
 use App\Models\Tematik;
 use CreateHalamanDataTable;
 use Illuminate\Http\Request;
@@ -49,17 +50,21 @@ class HalamanData extends Controller
             $fileName = $request->gambar->store('public/images');
             $fileName = str_replace("public/", "", $fileName);
         }
-        ModelsHalamanData::create([
+        $data = ModelsHalamanData::create([
             'alamat'=>$request->alamat,
             'tanggal' => $request->tanggal,
             'tematik_id'=>$request->kecamatan,
             'jumlah_kecelakaan'=>$request->jumlah,
             'gambar'=> $fileName,
             'long'=>$request->long,
-            'lat'=>$request->lat
+            'lat'=>$request->lat,
+            'no_laporan'=>$request->no_laporan,
+            'waktu'=>$request->waktu,
+            'deskripsi_lokasi'=>$request->deskripsi_lokasi,
+            'sifat_kasus' => $request->sifat_kasus,
 
         ]);
-        return redirect()->route('halaman data');
+        return redirect()->route('edit data',['id'=>$data->id]);
     }
 
     /**
@@ -71,8 +76,10 @@ class HalamanData extends Controller
     //diplay detail
     public function show($id)
     {
+        $korban = Korban::where('halaman_data_id',$id)->get();
         return view('detail', [
-            'data'=>ModelsHalamanData::find($id)
+            'data'=>ModelsHalamanData::find($id),
+            'korban' => $korban
         ]);
     }
 
@@ -85,10 +92,12 @@ class HalamanData extends Controller
     public function edit($id)
     {
         $tematik = Tematik::all();
+        $korban = Korban::where('halaman_data_id',$id)->get();
         return view('edit',[
             'data' => ModelsHalamanData::with('tematik')->find($id),
             'id' =>$id,
             'tematik'=>$tematik,
+            'korban' => $korban
         ]);
     }
 
@@ -118,7 +127,11 @@ class HalamanData extends Controller
             'jumlah_kecelakaan'=>$request->jumlah,
             'gambar'=> $fileName,
             'long'=>$request->long,
-            'lat'=>$request->lat
+            'lat'=>$request->lat,
+            'no_laporan' => $request->no_laporan,
+            'waktu' => $request->waktu,
+            'deskripsi_lokasi' => $request->deskripsi_lokasi,
+            'sifat_kasus' => $request->sifat_kasus,
         ]);
         return redirect()->route('halaman data');
     }

@@ -33,7 +33,9 @@ Route::get('/detail-map/{id}', [App\Http\Controllers\HalamanData::class, 'show']
 Route::get('/halaman-tematik', [App\Http\Controllers\TematikController::class, 'index'])->name('halaman tematik');
 Route::get('/tambah-tematik', [App\Http\Controllers\TematikController::class, 'create'])->name('tambah tematik');
 Route::post('/input-tematik', [App\Http\Controllers\TematikController::class, 'store'])->name('data tematik');
-Route::get('/edit-tematik/{id}', [App\Http\Controllers\TematikController::class, 'edit'])->name('edit tematik');
+Route::get('/edit-tematik/{id}', [ App\Http\Controllers\TematikController::class, 'edit'])->name('edit tematik');
+Route::post('/tambah-korban', [App\Http\Controllers\KorbanController::class, 'store'])->name('tambah korban');
+Route::get('/hapus-korban/{id}', [App\Http\Controllers\KorbanController::class, 'destroy'])->name('hapus korban');
 Route::post('/update-tematik/{id}', [App\Http\Controllers\TematikController::class, 'update'])->name('update tematik');
 Route::get('/delete-tematik/{id}', [App\Http\Controllers\TematikController::class, 'destroy'])->name('delete tematik');
 Route::get('/maps/{tahun?}', [App\Http\Controllers\MapController::class, 'index'])->name('maps');

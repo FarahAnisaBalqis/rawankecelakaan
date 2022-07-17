@@ -131,7 +131,7 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="{{ route('maps', ['tahun' => date('Y')]) }}"
                                     class="nav-link {{ request()->route()->getName() == 'maps'? 'text-white bg-info': '' }} text-white text-start w-100">
                                     <i class="nav-icon fa-solid fa-map-location"></i>
@@ -139,14 +139,14 @@
                                         Maps
                                     </p>
                                 </a>
-                            </li>
+                            </li> --}}
                             <!--nilai awal radius-->
                             <li class="nav-item">
                                 <a href="{{ route('heatmap', ['show' => 1, 'radius' => 0.001]) }}"
                                     class="nav-link {{ request()->route()->getName() == 'heatmap'? 'text-white bg-info': '' }} text-white text-start w-100">
                                     <i class="nav-icon fa-solid fa-map"></i>
                                     <p>
-                                        Heatmap
+                                         Map
                                     </p>
                                 </a>
                             </li>
@@ -162,10 +162,10 @@
                                 <div class="collapse {{ in_array(request()->route()->getName(),['halaman data2', 'halaman data', 'halaman tematik'])? 'show': '' }}"
                                     id="data-r" style="">
                                     <ul class="nav">
-                                        <li class="nav-item w-100">
+                                        {{-- <li class="nav-item w-100">
                                             <a class="dropdown-item {{ request()->route()->getName() == 'halaman data2'? 'text-white bg-info': '' }}"
                                                 href="{{ route('halaman data2') }}">Data Kecelakaan</a>
-                                        </li>
+                                        </li> --}}
 
                                         <li class="nav-item w-100">
                                             <a class="dropdown-item {{ request()->route()->getName() == 'halaman data'? 'text-white bg-info': '' }}"

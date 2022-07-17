@@ -2,7 +2,11 @@
 
 @section('content')
     <style>
-        input[type="range"] {
+        .tematik input[type="range"] {
+            -webkit-appearance: slider-horizontal;
+        }
+
+        .heatmap input[type="range"] {
             -webkit-appearance: slider-vertical;
         }
     </style>
@@ -36,7 +40,7 @@
                                 <a href="{{ route('heatmap', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                     class="btn btn-primary">Sembunyikan Titik</a>
                             @elseif($radius)
-                            <a href="{{ route('heatmap', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
+                                <a href="{{ route('heatmap', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                     class="btn btn-primary">Sembunyikan Titik</a>
                             @else
                                 <a href="{{ route('heatmap', ['show' => 1]) }}" class="btn btn-primary">Sembunyikan
@@ -47,7 +51,7 @@
                                 <a href="{{ route('heatmap', ['show' => 0, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                     class="btn btn-primary">Tampil Titik</a>
                             @elseif($radius)
-                            <a href="{{ route('heatmap', ['show' => 0, 'tahun' => $tahun, 'radius' => $radius]) }}"
+                                <a href="{{ route('heatmap', ['show' => 0, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                     class="btn btn-primary">Tampil Titik</a>
                             @else
                                 <a href="{{ route('heatmap', ['show' => 0]) }}" class="btn btn-primary">Tampil
@@ -65,12 +69,47 @@
                     <div id="map"></div>
                 </div>
                 <div class="col-lg-1">
-                    <input id="opacity" type="range" class="form-control mt-4 w-50 h-50" min="0" max="1"
-                        value="0.5" step="0.1">
+                    <p>Opacity Heatmap</p>
+                    <div class="heatmap d-flex h-100">
+                        <input id="opacity" type="range" class="form-control h-50 " min="0" max="1"
+                            value="0.5" step="0.1" list="tickmarks">
+                        <datalist id="tickmarks" class="h-50">
+                            <option value="1" label="1"></option>
+                            <option value="0.9" label="0.9"></option>
+                            <option value="0.8" label="0.8"></option>
+                            <option value="0.7" label="0.7"></option>
+                            <option value="0.6" label="0.6"></option>
+                            <option value="0.5" label="0.5"></option>
+                            <option value="0.4" label="0.4"></option>
+                            <option value="0.3" label="0.3"></option>
+                            <option value="0.2" label="0.2"></option>
+                            <option value="0.1" label="0.1"></option>
+                            <option value="0" label="0"></option>
+                        </datalist>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p>Opacity Tematik</p>
+                <div class="d-block w-50 tematik">
+                    <input id="opacity2" type="range" class="form-control w-100 " min="0" max="1"
+                        value="0.5" step="0.1" list="tickmarks2">
+                    <datalist id="tickmarks2" class="w-100">
+                        <option value="1" label="1"></option>
+                        <option value="0.9" label="0.9"></option>
+                        <option value="0.8" label="0.8"></option>
+                        <option value="0.7" label="0.7"></option>
+                        <option value="0.6" label="0.6"></option>
+                        <option value="0.5" label="0.5"></option>
+                        <option value="0.4" label="0.4"></option>
+                        <option value="0.3" label="0.3"></option>
+                        <option value="0.2" label="0.2"></option>
+                        <option value="0.1" label="0.1"></option>
+                        <option value="0" label="0"></option>
+                    </datalist>
                 </div>
             </div>
         </div>
-
     </div>
 @endsection
 @section('styles')
@@ -79,6 +118,18 @@
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
     <style>
+        .tematik datalist {
+            display: flex;
+            justify-content: space-between;
+            color: red;
+        }
+
+        .heatmap datalist {
+            display: grid;
+            justify-content: space-between;
+            color: red;
+        }
+
         #map {
             min-height: 500px;
         }
@@ -113,6 +164,12 @@
             float: left;
             margin-right: 8px;
             opacity: 0.7;
+        }
+
+        /* ukuran legenda */
+        .leaflet-control {
+            max-height: 14rem;
+            overflow-y: auto
         }
     </style>
 @endsection
@@ -149,6 +206,7 @@
         var data = {!! json_encode($data) !!}
         var coor = {!! json_encode($coor) !!}
         var show = {!! json_encode($show) !!}
+        var kecamatan = {!! json_encode($kecamatan) !!}
         var map = L.map('map').setView(
             s, 11
         );
@@ -173,6 +231,18 @@
                 '<b>' + props.NAMOBJ + '</b><br />' + props.MhsSIF + ' orang' :
                 'Gerakkan mouse Anda');
         };
+
+        function style(feature) {
+            return {
+                weight: 2,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 0.7,
+                fillColor: color[feature.properties.NAMOBJ]
+            };
+
+        }
         var dataMap = {
             data: coor
         };
@@ -211,6 +281,7 @@
 
             info.update(layer.feature.properties);
         }
+        
         if (show != 1) {
             for (var i = 0; i < data.length; i++) {
                 marker = new L.marker([data[i][1], data[i][2]])
@@ -219,8 +290,10 @@
                         5
                     ])
                     .addTo(map);
+                    
             }
         }
+
         var mapZoomLevel = localStorage.theZoom;
         var mapCenterLat = localStorage.mapCenterLat;
         var mapCenterLng = localStorage.mapCenterLng;
@@ -252,10 +325,63 @@
                 click: zoomToFeature
             });
         }
+         for (var i = 0; i < data.length; i++) {
+            marker = new L.marker([data[i][1], data[i][2]])
+                .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4] + "<br> Tahun " + data[i][
+                    5
+                ])
+                .addTo(map);
+        }
+        var geojson;
 
+        function resetHighlight(e) {
+            geojsonLayer.resetStyle(e.target);
+            info.update();
+        }
+
+        function zoomToFeature(e) {
+            map.fitBounds(e.target.getBounds());
+        }
+
+        function onEachFeature(feature, layer) {
+            layer.on({
+                mouseover: highlightFeature,
+                mouseout: resetHighlight,
+                click: zoomToFeature
+            });
+        }
+        var geojsonLayer = new L.GeoJSON.AJAX({!! json_encode($geofile) !!}, {
+            style: style,
+            onEachFeature: onEachFeature
+        });
+        //pemanggilan maps
+        geojsonLayer.addTo(map);
+        $('#opacity2').change(function() {
+            geojsonLayer.setStyle({
+                fillOpacity: this.value
+            });
+        });
         var legend = L.control({
             position: 'bottomright'
         });
+
+        //pemanggilan legend
+        legend.onAdd = function(map) {
+
+            var div = L.DomUtil.create('div', 'info legend'),
+                grades = [0, 12, 25, 37, 50, 62, 75, 87], //pretty break untuk 8
+                from, to;
+            labels = []
+            for (var i = 0; i < kecamatan.length; i++) {
+                labels.push(
+                    '<i style="background:' + color[kecamatan[i]] + '"></i> - ' + kecamatan[i]);
+            }
+
+            div.innerHTML = '<h4>Legenda:</h4>' + labels.join('<br>');
+            return div;
+        };
+
+        legend.addTo(map);
         $("#printBtn").click(function() {
             window.print();
         });

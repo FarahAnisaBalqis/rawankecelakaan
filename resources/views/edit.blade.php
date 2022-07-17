@@ -3,7 +3,8 @@
 @section('content')
     <div class="container">
         <div class="card p-4">
-            <form action="{{ route('update data', ['id' => $id]) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('update data', ['id' => $id]) }}" method="post" enctype="multipart/form-data"
+                id="form">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
@@ -32,9 +33,21 @@
                             <select class="form-control" name="tanggal">
                                 <option value="">--Pilih Tahun--</option>
                                 @for ($year = (int) date('Y'); 2019 <= $year; $year--)
-                                    <option value="<?= $year ?>" {{$data->tanggal == $year? 'selected':''}}><?= $year ?></option>
+                                    <option value="<?= $year ?>" {{ $data->tanggal == $year ? 'selected' : '' }}>
+                                        <?= $year ?>
+                                    </option>
                                 @endfor
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Waktu Kejadian</label>
+                            <input name="waktu" type="datetime-local" class="form-control" required
+                                value="{{ $data->long }}"value="{{ $data->waktu }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Deskripsi Lokasi</label>
+                            <input name="deskripsi_lokasi" type="text" class="form-control" required
+                                value="{{ $data->deskripsi_lokasi }}">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -54,11 +67,69 @@
                             <input id="latitude" name="lat" type="text" class="form-control" required
                                 value="{{ $data->lat }}">
                         </div>
+                        <div class="form-group">
+                            <label>Sifat dan Kasus</label>
+                            <input name="sifat_kasus" type="text" class="form-control" required
+                                value="{{ $data->sifat_kasus }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Instansi No.Laporan Polisi</label>
+                            <input name="no_laporan" type="text" class="form-control" required
+                                value="{{ $data->no_laporan }}">
+                        </div>
                     </div>
                 </div>
-                <div class="container mt-4" id="mapid"></div>
-                <button class="btn btn-primary float-end mt-4" type="submit">Simpan</button>
             </form>
+            <form action="{{ route('tambah korban') }}" method="POST">
+                @csrf
+                <div class="text-center">
+                    <h5 class="mx-auto text-info">Biodata Korban</h5>
+                    <table class="table w-75 mx-auto">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Umur</th>
+                                <th>Alamat</th>
+                                <th>Sifat Cidera</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($korban as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->nama }}</td>
+                                    <td>{{ $item->umur }}</td>
+                                    <td>{{ $item->alamat }}</td>
+                                    <td>{{ $item->sifat_cidera }}</td>
+                                    <td>
+                                        <a class="btn btn-danger" href="{{route('hapus korban',['id'=>$item->id])}}">X</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            <tr>
+                                <td></td>
+                                <td><input type="text" class="form-control" name="nama"></td>
+                                <td><input type="text" class="form-control" name="umur"></td>
+                                <td><input type="text" class="form-control" name="alamat"></td>
+                                <td>
+                                    <select name="sifat_cidera">
+                                        <option value="">--Pilih Sifat Cidera--</option>
+                                        <option value="luka luar">luka luar</option>
+                                        <option value="meninggal dunia">meninggal dunia</option>
+                                    </select>
+                                </td>
+                                <td><button class="btn btn-success" type="submit">Tambah</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <input type="hidden" class="form-control" name="halaman_data_id" value="{{$id}}">
+                    
+                </div>
+            </form>
+            <div class="container mt-4" id="mapid"></div>
+            <button class="btn btn-primary float-end mt-4" type="button" onclick="">Simpan</button>
         </div>
 
     </div>
@@ -72,11 +143,15 @@
         #mapid {
             min-height: 500px;
         }
-
     </style>
 @endsection
 
 @push('scripts')
+    <script>
+        function submit() {
+            document.getElementById("form").submit();
+        }
+    </script>
     <!-- Leaflet JavaScript -->
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
