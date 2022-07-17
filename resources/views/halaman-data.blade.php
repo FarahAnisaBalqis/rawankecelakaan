@@ -24,6 +24,7 @@
                             <th>
                                 No
                             </th>
+                            <th>Instansi No.Laporan Polisi</th>
                             <th>Kecamatan</th>
                             <th>Alamat</th>
                             <th>Jumlah Kecelakaan</th>
@@ -37,6 +38,7 @@
                                 <td>
                                     {{ $loop->iteration }}
                                 </td>
+                                <td>{{ $item->no_laporan }}</td>
                                 <td>{{ $item->tematik->kecamatan }}</td>
                                 <td>{{ $item->alamat }}</td>
                                 <td>{{ $item->jumlah_kecelakaan }}</td>
