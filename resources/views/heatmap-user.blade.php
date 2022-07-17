@@ -51,7 +51,7 @@ http://www.tooplate.com/view/2091-ziggy
         <a href="{{ route('login') }}" class="text-decoration-none text-white m-4 py-1 btn btn-outline-light me-2">
             <h5>Log in</h5>
         </a>
-      
+
         <a href="{{ route('heatmap user', ['show' => 1, 'radius' => 0.001]) }}"
             class="text-decoration-none text-white m-4 py-1 me-2 btn" style="border-bottom:1px solid white;">
             <h5>Maps</h5>
@@ -80,6 +80,7 @@ http://www.tooplate.com/view/2091-ziggy
             <div class="card-body bg-white">
                 <div class="row">
                     <div class="col-md-3">
+                        <label for="">Pilih Radius</label>
                         <!--pilihan radius heatmap-->
                         <select class="form-control float-right m-2" id="radius">
                             <option value="">--Pilih Radius--</option>
@@ -89,6 +90,7 @@ http://www.tooplate.com/view/2091-ziggy
                         </select>
                     </div>
                     <div class="col-md-3">
+                        <label for="">Pilih Tahun</label>
                         <!--pilihan tahun heatmap-->
                         <select class="form-control float-right m-2" id="tahun">
                             <option value="">--Lihat Semua--</option>
@@ -101,7 +103,7 @@ http://www.tooplate.com/view/2091-ziggy
                     </div>
                     <div class="col-md-5">
                         <div class="text-end">
-                        <button id="btn_tematik" class="btn btn-primary"></button>
+                            <button id="btn_tematik" class="btn btn-primary"></button>
                             @if (!$show)
                                 @if ($tahun)
                                     <a href="{{ route('heatmap user', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
@@ -259,11 +261,12 @@ http://www.tooplate.com/view/2091-ziggy
         margin-right: 8px;
         opacity: 0.7;
     }
+
     /* ukuran legenda */
-        .leaflet-control {
-            max-height: 14rem;
-            overflow-y: auto
-        }
+    .leaflet-control {
+        max-height: 14rem;
+        overflow-y: auto
+    }
 </style>
 
 <script src="https://www.jqueryscript.net/demo/jQuery-Plugin-To-Print-Any-Part-Of-Your-Page-Print/jQuery.print.js">
