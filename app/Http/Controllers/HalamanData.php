@@ -60,7 +60,6 @@ class HalamanData extends Controller
             'lat'=>$request->lat,
             'no_laporan'=>$request->no_laporan,
             'waktu'=>$request->waktu,
-            'deskripsi_lokasi'=>$request->deskripsi_lokasi,
             'sifat_kasus' => $request->sifat_kasus,
 
         ]);
@@ -130,7 +129,6 @@ class HalamanData extends Controller
             'lat'=>$request->lat,
             'no_laporan' => $request->no_laporan,
             'waktu' => $request->waktu,
-            'deskripsi_lokasi' => $request->deskripsi_lokasi,
             'sifat_kasus' => $request->sifat_kasus,
         ]);
         return redirect()->route('halaman data');
