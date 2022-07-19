@@ -115,7 +115,7 @@
             function updateMarker(lat, lng) {
                 marker
                     .setLatLng([lat, lng])
-                    .bindPopup("Your location :" + marker.getLatLng().toString())
+                    .bindPopup("location")
                     .openPopup();
                 return false;
             };
