@@ -112,7 +112,8 @@ http://www.tooplate.com/view/2091-ziggy
                     <div class="card-header">
                         <span class="card-title h3">
                             <i class="fas fa-chart-pie mr-1"></i>
-                            Grafik
+                            Grafik Jumlah Total Kecelakaan Per Kecamatan dari Tahun 2019
+
                         </span>
 
                     </div><!-- /.card-header -->
@@ -123,13 +124,24 @@ http://www.tooplate.com/view/2091-ziggy
                                 style="position: relative; height: 300px;">
                                 <canvas id="grafik1" height="300" style="height: 300px;"></canvas>
                             </div>
-                            <div class="chart tab-pane active" id="grafik2-button"
-                                style="position: relative; height: 300px;">
-                                <canvas id="grafik2" height="300" style="height: 300px;"></canvas>
-                            </div>
                         </div>
-                    </div><!-- /.card-body -->
+                    </div>
                 </div>
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <span class="card-title h3">
+                            <i class="fas fa-chart-pie mr-1"></i>
+                            Grafik Jumlah Total Kecelakaan Per Tahun
+                        </span>
+
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="chart tab-pane active" id="grafik2-button"
+                            style="position: relative; height: 300px;">
+                            <canvas id="grafik2" height="300" style="height: 300px;"></canvas>
+                        </div>
+                    </div>
+                </div><!-- /.card-body -->
             </section>
         </div>
     </section>

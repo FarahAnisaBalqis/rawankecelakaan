@@ -49,26 +49,39 @@
         <div class="row">
             <section class="col-lg-7 connectedSortable">
 
-                <div class="card">
+               <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
                             <i class="fas fa-chart-pie mr-1"></i>
-                            Grafik
+                            Grafik Jumlah Total Kecelakaan Per Kecamatan dari Tahun 2019
+
                         </h3>
+
                     </div><!-- /.card-header -->
                     <div class="card-body">
                         <div class="tab-content p-0">
                             <!-- Morris chart - Sales -->
                             <div class="chart tab-pane active" id="grafik1-button"
                                 style="position: relative; height: 300px;">
-                                <!--tempat grafik-->
                                 <canvas id="grafik1" height="300" style="height: 300px;"></canvas>
                             </div>
-                            <div class="chart tab-pane active" id="grafik2-button" style="position: relative; height: 300px;">
-                                <canvas id="grafik2" height="300" style="height: 300px;"></canvas>
-                            </div>
                         </div>
-                    </div><!-- /.card-body -->
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-chart-pie mr-1"></i>
+                            Grafik Jumlah Total Kecelakaan Per Tahun
+                        </h3>
+
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="chart tab-pane active" id="grafik2-button"
+                            style="position: relative; height: 300px;">
+                            <canvas id="grafik2" height="300" style="height: 300px;"></canvas>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section class="col-lg-5 connectedSortable">
