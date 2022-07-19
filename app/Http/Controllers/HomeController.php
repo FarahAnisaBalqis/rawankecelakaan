@@ -77,6 +77,8 @@ class HomeController extends Controller
         $geofile = [];
         $color = [];
         $coor = [];
+        $coor2 = [];
+        $arr = [];
         $index = 0;
         $index2 = 0;
         $tematik = Tematik::all();
@@ -92,7 +94,14 @@ class HomeController extends Controller
             $coor[$index2] = [$item->alamat, $item->lat, $item->long];
             $index2++;
         }
-
+        $index = 0;
+        foreach ($data as $item) {
+            $coor2['lat'] = $item->lat;
+            $coor2['lng'] = $item->long;
+            //$coor['count'] = $item->jumlah_kecelakaan;
+            $arr[$index] = $coor2;
+            $index += 1;
+        }
         return view('home', [
             'kecamatan' => $kecamatan,
             'tanggal' => $tanggal,
@@ -104,7 +113,8 @@ class HomeController extends Controller
             'jumlah' => $jumlah,
             'geofile' => $geofile,
             'color' => $color,
-            'data' => $coor
+            'data' => $coor,
+            'coor2' => $arr
         ]);
     }
 }

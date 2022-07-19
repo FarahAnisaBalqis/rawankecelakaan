@@ -4,52 +4,52 @@
     <div class="container">
         <div class="mx-auto">
             <!--informasi data dashboard-->
-        <div class="row mb-2">
-            <div class="col-lg-4 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info h-100">
-                    <div class="inner">
-                        <h3>{{ $kecamatan }}</h3>
-                        
-                        <p>Kecamatan Dengan Kasus Kecelekaan Terbanyak</p>
+            <div class="row mb-2">
+                <div class="col-lg-4 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info h-100">
+                        <div class="inner">
+                            <h3>{{ $kecamatan }}</h3>
+
+                            <p>Kecamatan Dengan Kasus Kecelekaan Terbanyak</p>
+                        </div>
+
+
                     </div>
-
-
                 </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-4 col-6">
-                <!-- small box -->
-                <div class="small-box bg-success h-100">
-                    <div class="inner">
-                        <h3>{{ $tanggal }}</h3>
+                <!-- ./col -->
+                <div class="col-lg-4 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success h-100">
+                        <div class="inner">
+                            <h3>{{ $tanggal }}</h3>
 
-                        <p>Tahun Dengan Kasus Kecelakaan Terbanyak</p>
+                            <p>Tahun Dengan Kasus Kecelakaan Terbanyak</p>
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-4 col-6 ">
-                <!-- small box -->
-                <div class="small-box bg-warning h-100">
-                    <div class="inner">
-                        <span class="h3">{{ $sifat->count }} </span> {{ $sifat->sifat_cidera }}
+                <!-- ./col -->
+                <div class="col-lg-4 col-6 ">
+                    <!-- small box -->
+                    <div class="small-box bg-warning h-100">
+                        <div class="inner">
+                            <span class="h3">{{ $sifat->count }} </span> {{ $sifat->sifat_cidera }}
 
-                        <p>Jumlah Sifat Cidera Terbanyak</p>
+                            <p>Jumlah Sifat Cidera Terbanyak</p>
+                        </div>
+
+
                     </div>
-
-
                 </div>
+                <!-- ./col -->
+
             </div>
-            <!-- ./col -->
-         
-        </div>
         </div>
         <div class="row">
             <section class="col-lg-7 connectedSortable">
 
-               <div class="card">
+                <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
                             <i class="fas fa-chart-pie mr-1"></i>
@@ -77,8 +77,7 @@
 
                     </div><!-- /.card-header -->
                     <div class="card-body">
-                        <div class="chart tab-pane active" id="grafik2-button"
-                            style="position: relative; height: 300px;">
+                        <div class="chart tab-pane active" id="grafik2-button" style="position: relative; height: 300px;">
                             <canvas id="grafik2" height="300" style="height: 300px;"></canvas>
                         </div>
                     </div>
@@ -139,7 +138,6 @@
             margin-right: 8px;
             opacity: 0.7;
         }
-
     </style>
 @endsection
 @push('scripts')
@@ -165,7 +163,7 @@
             data: data,
             options: {
                 maintainAspectRatio: false,
-                 scales: {
+                scales: {
                     y: {
                         min: 0,
                         ticks: {
@@ -219,15 +217,17 @@
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin="">
-    </script>
+        crossorigin=""></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"
         integrity="sha512-Abr21JO2YqcJ03XGZRPuZSWKBhJpUAR6+2wH5zBeO4wAw4oksr8PRdF+BKIRsxvCdq+Mv4670rZ+dLnIyabbGw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ asset('storage/js/heatmap/build/heatmap.min.js') }}"></script>
+    <script src="{{ asset('storage/js/leaflet-heatmap.js') }}"></script>
     <script type="text/javascript">
         var s = [5.554630942893766, 95.31709742351293];
         var color = {!! json_encode($color) !!};
         var datamap = {!! json_encode($data) !!}
+        var coor = {!! json_encode($coor2) !!}
         var map = L.map('map').setView(
             s, 11
         );
@@ -237,105 +237,28 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-
-        var info = L.control();
-
-        info.onAdd = function(map) {
-            this._div = L.DomUtil.create('div', 'info');
-            this.update();
-            return this._div;
-        };
-        //menampilkan pop up info tematik
-        info.update = function(props) {
-            this._div.innerHTML = '<h4>Kecamatan</h4>' + (props ?
-                '<b>' + props.NAMOBJ + '</b><br />' + props.MhsSIF + ' orang' :
-                'Gerakkan mouse Anda');
-        };
-
-        info.addTo(map);
-
-        function style(feature) {
-            return {
-                weight: 2,
-                opacity: 1,
-                color: 'white',
-                dashArray: '3',
-                fillOpacity: 0.7,
-                fillColor: color[feature.properties.NAMOBJ]
-            };
-
-        }
-        //memunculkan highlight pada peta
-        function highlightFeature(e) {
-            var layer = e.target;
-
-            layer.setStyle({
-                weight: 5,
-                color: '#666',
-                dashArray: '',
-                fillOpacity: 0.7
-            });
-
-            if (!L.Browser.ie && !L.Browser.opera) {
-                layer.bringToFront();
-            }
-
-            info.update(layer.feature.properties);
-        }
         for (var i = 0; i < datamap.length; i++) {
             marker = new L.marker([datamap[i][1], datamap[i][2]])
                 .bindPopup(datamap[i][0])
                 .addTo(map);
         }
-        var geojson;
-
-        function resetHighlight(e) {
-            geojsonLayer.resetStyle(e.target);
-            info.update();
-        }
-
-        function zoomToFeature(e) {
-            map.fitBounds(e.target.getBounds());
-        }
-
-        function onEachFeature(feature, layer) {
-            layer.on({
-                mouseover: highlightFeature,
-                mouseout: resetHighlight,
-                click: zoomToFeature
-            });
-        }
-        var geojsonLayer = new L.GeoJSON.AJAX({!! json_encode($geofile) !!}, {
-            style: style,
-            onEachFeature: onEachFeature
-        });
-        geojsonLayer.addTo(map);
-
-        var legend = L.control({
-            position: 'bottomright'
-        });
-
-        //pemanggilan legend
-        legend.onAdd = function(map) {
-
-            var div = L.DomUtil.create('div', 'info legend'),
-                grades = [0, 12, 25, 37, 50, 62, 75, 87], //pretty break untuk 8
-                labels = [],
-                from, to;
-
-            for (var i = 0; i < grades.length; i++) {
-                from = grades[i];
-                to = grades[i + 1];
-
-                labels.push(
-                    '<i style="background:' + getColor(from + 1) + '"></i> ' +
-                    from + (to ? '&ndash;' + to : '+'));
-            }
-
-            div.innerHTML = '<h4>Legenda:</h4><br>' + labels.join('<br>');
-            return div;
+       var dataMap = {
+            data: coor
+        };
+        /*radius*/
+        var cfg = {
+            "radius":0.001,
+            "maxOpacity": .8,
+            "scaleRadius": true,
+            "useLocalExtrema": true,
+            latField: 'lat',
+            lngField: 'lng',
+            valueField: 'count'
         };
 
-        legend.addTo(map);
+
+        var heatmapLayer = new HeatmapOverlay(cfg);
+        heatmapLayer.setData(dataMap);
+        heatmapLayer.addTo(map);
     </script>
 @endpush
