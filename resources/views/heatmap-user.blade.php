@@ -236,7 +236,7 @@ http://www.tooplate.com/view/2091-ziggy
 
     .info {
         padding: 6px 8px;
-        font: 14px/16px Arial, Helvetica, sans-serif;
+        font: 12px Arial, Helvetica, sans-serif;
         background: white;
         background: rgba(255, 255, 255, 0.8);
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -264,7 +264,7 @@ http://www.tooplate.com/view/2091-ziggy
 
     /* ukuran legenda */
     .leaflet-control {
-        max-height: 14rem;
+        max-height: 10rem;
         overflow-y: auto
     }
 </style>
@@ -465,7 +465,7 @@ http://www.tooplate.com/view/2091-ziggy
                 '<i style="background:' + color[kecamatan[i]] + '"></i> - ' + kecamatan[i]);
         }
 
-        div.innerHTML = '<h4>Legenda:</h4>' + labels.join('<br>');
+        div.innerHTML = '<h5>Legenda:</h5>' + labels.join('<br>');
         return div;
     };
 

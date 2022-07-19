@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div>
-                <p>Opacity Tematik</p>
+                <p>Opacity Batas</p>
                 <div class="d-block w-50 tematik">
                     <input id="opacity2" type="range" class="form-control w-100 " min="0" max="1"
                         value="0.5" step="0.1" list="tickmarks2">
@@ -146,7 +146,7 @@
 
         .info {
             padding: 6px 8px;
-            font: 14px/16px Arial, Helvetica, sans-serif;
+            font: 12px Arial, Helvetica, sans-serif;
             background: white;
             background: rgba(255, 255, 255, 0.8);
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -174,7 +174,7 @@
 
         /* ukuran legenda */
         .leaflet-control {
-            max-height: 14rem;
+            max-height: 10rem;
             overflow-y: auto
         }
     </style>
@@ -353,7 +353,7 @@
             });
         });
         var btn_tematik = document.getElementById('btn_tematik');
-        btn_tematik.innerHTML = 'Tampilkan Tematik';
+        btn_tematik.innerHTML = 'Tampilkan Batas';
         var state = false;
         var opacity = document.getElementById('opacity2').value;
         $('#btn_tematik').click(function() {
@@ -361,14 +361,14 @@
                 geojsonLayer.setStyle({
                     fillOpacity: 0
                 });
-                btn_tematik.innerHTML = 'Tampilkan Tematik';
+                btn_tematik.innerHTML = 'Tampilkan Batas';
             state = false;
             
             } else {
                 geojsonLayer.setStyle({
                     fillOpacity: opacity
                 });
-                btn_tematik.innerHTML = 'Sembunyikan Tematik';
+                btn_tematik.innerHTML = 'Sembunyikan Batas';
             state = true;
             }
         });
@@ -388,7 +388,7 @@
                     '<i style="background:' + color[kecamatan[i]] + '"></i> - ' + kecamatan[i]);
             }
 
-            div.innerHTML = '<h4>Legenda:</h4>' + labels.join('<br>');
+            div.innerHTML = '<h5>Legenda:</h5>' + labels.join('<br>');
             return div;
         };
 

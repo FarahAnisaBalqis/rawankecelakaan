@@ -169,7 +169,7 @@
 
                                         <li class="nav-item w-100">
                                             <a class="dropdown-item {{ request()->route()->getName() == 'halaman data'? 'text-white bg-info': '' }}"
-                                                href="{{ route('halaman data') }}">Data Lokasi Rawan kecelakaan</a>
+                                                href="{{ route('halaman data') }}">Data Rawan kecelakaan</a>
                                         </li>
                                         <li class="nav-item  w-100">
                                             <a class="dropdown-item {{ request()->route()->getName() == 'halaman tematik'? 'text-white bg-info': '' }}"
