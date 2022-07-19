@@ -237,11 +237,6 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        for (var i = 0; i < datamap.length; i++) {
-            marker = new L.marker([datamap[i][1], datamap[i][2]])
-                .bindPopup(datamap[i][0])
-                .addTo(map);
-        }
        var dataMap = {
             data: coor
         };
