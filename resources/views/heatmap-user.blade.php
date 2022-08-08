@@ -106,13 +106,13 @@ http://www.tooplate.com/view/2091-ziggy
                             @if (!$show)
                                 @if ($tahun)
                                     <a href="{{ route('heatmap user', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
-                                        class="btn btn-primary">Sembunyikan Titik</a>
+                                        class="btn btn-primary">Tutup Titik</a>
                                 @elseif($radius)
                                     <a href="{{ route('heatmap user', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
-                                        class="btn btn-primary">Sembunyikan Titik</a>
+                                        class="btn btn-primary">Tutup Titik</a>
                                 @else
                                     <a href="{{ route('heatmap user', ['show' => 1]) }}"
-                                        class="btn btn-primary">Sembunyikan
+                                        class="btn btn-primary">Tutup
                                         Titik</a>
                                 @endif
                             @else
@@ -451,7 +451,7 @@ http://www.tooplate.com/view/2091-ziggy
                 fillOpacity: 1
             });
             document.getElementById('opacity2').value = 1
-            btn_tematik.innerHTML = 'Sembunyikan Tematik';
+            btn_tematik.innerHTML = 'Tutup Tematik';
             state = true;
         }
     });

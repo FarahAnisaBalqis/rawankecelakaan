@@ -41,12 +41,12 @@
                         @if (!$show)
                             @if ($tahun)
                                 <a href="{{ route('heatmap', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
-                                    class="btn btn-primary">Sembunyikan Titik</a>
+                                    class="btn btn-primary">Tutup Titik</a>
                             @elseif($radius)
                                 <a href="{{ route('heatmap', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
-                                    class="btn btn-primary">Sembunyikan Titik</a>
+                                    class="btn btn-primary">Tutup Titik</a>
                             @else
-                                <a href="{{ route('heatmap', ['show' => 1]) }}" class="btn btn-primary">Sembunyikan
+                                <a href="{{ route('heatmap', ['show' => 1]) }}" class="btn btn-primary">Tutup
                                     Titik</a>
                             @endif
                         @else
@@ -368,7 +368,7 @@
                     fillOpacity: 1
                 });
                 document.getElementById('opacity2').value = 1
-                btn_tematik.innerHTML = 'Sembunyikan Batas';
+                btn_tematik.innerHTML = 'Tutup Batas';
                 state = true;
             }
         });
