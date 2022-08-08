@@ -230,6 +230,7 @@
         var coor = {!! json_encode($coor2) !!}
         var map = L.map('map').setView(
             s, 12
+
         );
 
 

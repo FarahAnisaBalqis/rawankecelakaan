@@ -31,6 +31,7 @@ Route::get('/delete-data/{id}', [App\Http\Controllers\HalamanData::class, 'destr
 Route::get('/tambah-data', [App\Http\Controllers\HalamanData::class, 'create'])->name('tambah data');
 Route::get('/detail-map/{id}', [App\Http\Controllers\HalamanData::class, 'show'])->name('detail map');
 Route::get('/halaman-tematik', [App\Http\Controllers\TematikController::class, 'index'])->name('halaman tematik');
+Route::get('/export', [App\Http\Controllers\HalamanData::class, 'export'])->name('export');
 Route::get('/tambah-tematik', [App\Http\Controllers\TematikController::class, 'create'])->name('tambah tematik');
 Route::post('/input-tematik', [App\Http\Controllers\TematikController::class, 'store'])->name('data tematik');
 Route::get('/edit-tematik/{id}', [ App\Http\Controllers\TematikController::class, 'edit'])->name('edit tematik');

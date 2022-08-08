@@ -13,6 +13,7 @@
                             <h2>Data <b>Rawan </b><b>Kecelakaan</b></h2>
                         </div>
                         <div class="col-sm-6">
+                             <a href="{{ route('export') }}" class="btn btn-primary">Print</a>
                             <a href="{{ route('tambah data') }}"class="btn btn-success"><i
                                     class="material-icons">&#xE147;</i> <span>Masukkan Data Baru</span></a>
                         </div>
@@ -47,7 +48,7 @@
                                 <td class="w-25">
 
                                     <form action="{{ route('delete data', ['id' => $item->id]) }}" method="get">
-                                        <a href="{{ route('detail map', ['id' => $item->id]) }}" class="edit"><i
+                                        <a href="{{ route('detail map', ['id' => $item->id]) }}" class="edit" data-toggle="tooltip" title="Detail"><i
                                                 class="fas fa-map-marker-alt text-danger"></i></a>
                                         <a href="{{ route('edit data', ['id' => $item->id]) }}" class="edit"><i
                                                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -89,10 +90,6 @@
         $(document).ready(function() {
             $('#table').DataTable({
                 fixedHeader: true,
-                dom: 'Bfrtip',
-                buttons: [
-                    'excel'
-                ],
                 pageLength: 100
             });
         });

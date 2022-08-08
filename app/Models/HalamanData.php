@@ -13,4 +13,8 @@ class HalamanData extends Model
     function tematik(){
         return $this->belongsTo(Tematik::class,'tematik_id','id');
     }
+    function korban()
+    {
+        return $this->hasMany(Korban::class);
+    }
 }

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Kecelakaan;
 use App\Models\HalamanData as ModelsHalamanData;
 use App\Models\Korban;
 use App\Models\Tematik;
 use CreateHalamanDataTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Maatwebsite\Excel\Facades\Excel;
 
 class HalamanData extends Controller
 {
@@ -35,7 +37,10 @@ class HalamanData extends Controller
         $tematik = Tematik::all();
         return view('tambah-data',['tematik'=>$tematik]);
     }
-
+    public function export()
+    {
+        return Excel::download(new Kecelakaan, 'rekap.xlsx');
+    }
     /**
      * Store a newly created resource in storage.
      *

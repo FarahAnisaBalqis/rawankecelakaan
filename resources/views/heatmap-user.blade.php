@@ -165,17 +165,17 @@ http://www.tooplate.com/view/2091-ziggy
                         <input id="opacity2" type="range" class="form-control w-100 " min="0"
                             max="1" value="1" step="0.1" list="tickmarks2">
                         <datalist id="tickmarks2" class="w-100">
-                            <option value="1" label="1"></option>
-                            <option value="0.9" label="0.9"></option>
-                            <option value="0.8" label="0.8"></option>
-                            <option value="0.7" label="0.7"></option>
-                            <option value="0.6" label="0.6"></option>
-                            <option value="0.5" label="0.5"></option>
-                            <option value="0.4" label="0.4"></option>
-                            <option value="0.3" label="0.3"></option>
-                            <option value="0.2" label="0.2"></option>
-                            <option value="0.1" label="0.1"></option>
                             <option value="0" label="0"></option>
+                            <option value="0.1" label="0.1"></option>
+                            <option value="0.2" label="0.2"></option>
+                            <option value="0.3" label="0.3"></option>
+                            <option value="0.4" label="0.4"></option>
+                            <option value="0.5" label="0.5"></option>
+                            <option value="0.6" label="0.6"></option>
+                            <option value="0.7" label="0.7"></option>
+                            <option value="0.8" label="0.8"></option>
+                            <option value="0.9" label="0.9"></option>
+                            <option value="1" label="1"></option>
                         </datalist>
                     </div>
                 </div>
