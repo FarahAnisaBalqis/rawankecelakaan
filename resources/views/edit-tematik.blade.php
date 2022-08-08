@@ -18,7 +18,7 @@
                         </div>
                         <div class="form-group">
                             <label>GeoJson</label>
-                            <input name="geojson" type="file" class="form-control" required>
+                            <input name="geojson" type="file" class="form-control" >
                             <input name="geojson_lama" type="hidden" value="{{$data->geojson}}">
                         </div>
                     </div>
