@@ -75,7 +75,7 @@
                     <p style="font-size: 13px">Opacity Heatmap</p>
                     <div class="heatmap d-flex h-100">
                         <input id="opacity" type="range" class="form-control h-50 " min="0" max="1"
-                            value="0" step="0.1" list="tickmarks">
+                            value="1" step="0.1" list="tickmarks">
                         <datalist id="tickmarks" class="h-50">
                             <option value="1" label="1"></option>
                             <option value="0.9" label="0.9"></option>
