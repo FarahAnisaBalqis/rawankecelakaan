@@ -34,8 +34,8 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-md-5">
-                    <div class="text-end">
+                <div class="col-md-5 pt-3">
+                    <div class="text-end mt-6">
                         <button id="btn_tematik" class="btn btn-primary"></button>
                         <!--sembunyikan titik pada heatmap-->
                         @if (!$show)
