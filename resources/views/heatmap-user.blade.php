@@ -440,6 +440,7 @@ http://www.tooplate.com/view/2091-ziggy
             geojsonLayer.setStyle({
                 fillOpacity: 0
             });
+            document.getElementById('opacity2').value = 0
             btn_tematik.innerHTML = 'Tampilkan Tematik';
             state = false;
 
@@ -447,6 +448,7 @@ http://www.tooplate.com/view/2091-ziggy
             geojsonLayer.setStyle({
                 fillOpacity: 1
             });
+            document.getElementById('opacity2').value = 1
             btn_tematik.innerHTML = 'Sembunyikan Tematik';
             state = true;
         }
