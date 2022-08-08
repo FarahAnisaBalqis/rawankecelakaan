@@ -34,7 +34,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="text-end">
                         <button id="btn_tematik" class="btn btn-primary"></button>
                         <!--sembunyikan titik pada heatmap-->
@@ -98,17 +98,17 @@
                     <input id="opacity2" type="range" class="form-control w-100 " min="0" max="1"
                         value="1" step="0.1" list="tickmarks2">
                     <datalist id="tickmarks2" class="w-100">
-                        <option value="1" label="1"></option>
-                        <option value="0.9" label="0.9"></option>
-                        <option value="0.8" label="0.8"></option>
-                        <option value="0.7" label="0.7"></option>
-                        <option value="0.6" label="0.6"></option>
-                        <option value="0.5" label="0.5"></option>
-                        <option value="0.4" label="0.4"></option>
-                        <option value="0.3" label="0.3"></option>
-                        <option value="0.2" label="0.2"></option>
-                        <option value="0.1" label="0.1"></option>
                         <option value="0" label="0"></option>
+                        <option value="0.1" label="0.1"></option>
+                        <option value="0.2" label="0.2"></option>
+                        <option value="0.3" label="0.3"></option>
+                        <option value="0.4" label="0.4"></option>
+                        <option value="0.5" label="0.5"></option>
+                        <option value="0.6" label="0.6"></option>
+                        <option value="0.7" label="0.7"></option>
+                        <option value="0.8" label="0.8"></option>
+                        <option value="0.9" label="0.9"></option>
+                        <option value="1" label="1"></option>
                     </datalist>
                 </div>
             </div>
@@ -121,9 +121,10 @@
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
     <style>
-        .leaflet-zoom-hide{
+        .leaflet-zoom-hide {
             z-index: 600;
         }
+
         .tematik datalist {
             display: flex;
             justify-content: space-between;
@@ -207,7 +208,6 @@
     <script src="{{ asset('storage/js/heatmap/build/heatmap.min.js') }}"></script>
     <script src="{{ asset('storage/js/leaflet-heatmap.js') }}"></script>
     <script type="text/javascript">
-        
         var s = [5.554630942893766, 95.31709742351293];
         var color = {!! json_encode($color) !!};
         var data = {!! json_encode($data) !!}
@@ -362,14 +362,14 @@
                     fillOpacity: 0
                 });
                 btn_tematik.innerHTML = 'Tampilkan Batas';
-            state = false;
-            
+                state = false;
+
             } else {
                 geojsonLayer.setStyle({
                     fillOpacity: opacity
                 });
                 btn_tematik.innerHTML = 'Sembunyikan Batas';
-            state = true;
+                state = true;
             }
         });
         var legend = L.control({
