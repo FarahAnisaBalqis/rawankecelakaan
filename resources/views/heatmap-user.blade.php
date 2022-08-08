@@ -445,7 +445,7 @@ http://www.tooplate.com/view/2091-ziggy
 
         } else {
             geojsonLayer.setStyle({
-                fillOpacity: opacity
+                fillOpacity: 1
             });
             btn_tematik.innerHTML = 'Sembunyikan Tematik';
             state = true;
