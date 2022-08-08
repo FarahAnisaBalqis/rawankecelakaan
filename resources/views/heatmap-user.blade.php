@@ -106,13 +106,13 @@ http://www.tooplate.com/view/2091-ziggy
                             @if (!$show)
                                 @if ($tahun)
                                     <a href="{{ route('heatmap user', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
-                                        class="btn btn-primary">Tutup Titik</a>
+                                        class="btn btn-primary">Sembunyikan Titik</a>
                                 @elseif($radius)
                                     <a href="{{ route('heatmap user', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
-                                        class="btn btn-primary">Tutup Titik</a>
+                                        class="btn btn-primary">Sembunyikan Titik</a>
                                 @else
                                     <a href="{{ route('heatmap user', ['show' => 1]) }}"
-                                        class="btn btn-primary">Tutup
+                                        class="btn btn-primary">Sembunyikan
                                         Titik</a>
                                 @endif
                             @else
@@ -134,6 +134,7 @@ http://www.tooplate.com/view/2091-ziggy
                 <div class="row">
                     <div class="col-lg-11">
 
+                        {{--membuat elemen untuk maps, id dibutuhkan untuk hubungkan ke js --}}
                         <div id="map"></div>
                     </div>
                     <div class="col-lg-1">
@@ -209,12 +210,15 @@ http://www.tooplate.com/view/2091-ziggy
             .value;
     });
 </script>
+{{-- mengatur tampilan maps agar tidak hancur --}}
 <!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin="" />
 <style>
- 
+    .leaflet-zoom-hide {
+        z-index: 600;
+    }
 
     .tematik datalist {
         display: flex;
@@ -268,23 +272,25 @@ http://www.tooplate.com/view/2091-ziggy
         overflow-y: auto
     }
 </style>
-
+{{-- library yang mendukung leaflet yaitu jquery --}}
 <script src="https://www.jqueryscript.net/demo/jQuery-Plugin-To-Print-Any-Part-Of-Your-Page-Print/jQuery.print.js">
 </script>
 
 <!-- Leaflet JavaScript -->
 <!-- Make sure you put this AFTER Leaflet's CSS -->
+{{-- deklar library leaflet --}}
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"
     integrity="sha512-Abr21JO2YqcJ03XGZRPuZSWKBhJpUAR6+2wH5zBeO4wAw4oksr8PRdF+BKIRsxvCdq+Mv4670rZ+dLnIyabbGw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
-
+{{-- plugin leaflet untuk tambahan heatmap --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
 <script src="{{ asset('storage/js/heatmap/build/heatmap.min.js') }}"></script>
 <script src="{{ asset('storage/js/leaflet-heatmap.js') }}"></script>
 <script type="text/javascript">
+// menagtur titik awal map
     var s = [5.554630942893766, 95.31709742351293];
     var color = {!! json_encode($color) !!};
     var data = {!! json_encode($data) !!}
@@ -294,9 +300,8 @@ http://www.tooplate.com/view/2091-ziggy
     var map = L.map('map').setView(
         s, 11
     );
-    var opacity = document.getElementById('opacity2').value;
-    console.log(opacity)
 
+// memanggil maps dari open street maps
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         maxZoom: 18
@@ -313,9 +318,47 @@ http://www.tooplate.com/view/2091-ziggy
     //menampilkan pop up info tematik
     info.update = function(props) {
         this._div.innerHTML = '<h4>Kecamatan</h4>' + (props ?
-            '<b>' + props.NAMOBJ + '</b>':'');
+            '<b>' + props.NAMOBJ + '</b><br />' + props.MhsSIF + ' orang' :
+            'Gerakkan mouse Anda');
     };
-    info.addTo(map);
+
+    // tampilan tematik
+    function style(feature) {
+        return {
+            weight: 2,
+            opacity: 1,
+            color: 'white',
+            dashArray: '3',
+            fillOpacity: 0,
+            fillColor: color[feature.properties.NAMOBJ]
+        };
+
+    }
+    // simpan data titik heatmap sebagai list
+    var dataMap = {
+        data: coor
+    };
+    /*radius heatmap*/
+    var cfg = {
+        "radius": {!! json_encode($radius) !!},
+        "maxOpacity": .8,
+        "scaleRadius": true,
+        "useLocalExtrema": true,
+        latField: 'lat',
+        lngField: 'lng',
+        valueField: 'count'
+    };
+
+
+    var heatmapLayer = new HeatmapOverlay(cfg);
+    // tambah data heatmap ke dalam map
+    heatmapLayer.setData(dataMap);
+    // menampilkan heatmap ke map
+    heatmapLayer.addTo(map);
+    // opacity heatmap dengan memanggil elemen opcity
+    $('#opacity').change(function() {
+        $(".heatmap-canvas").css("opacity", this.value);
+    });
     //memunculkan highlight pada peta
     function highlightFeature(e) {
         var layer = e.target;
@@ -333,40 +376,6 @@ http://www.tooplate.com/view/2091-ziggy
 
         info.update(layer.feature.properties);
     }
-
-    function style(feature) {
-        return {
-            weight: 2,
-            opacity: 1,
-            color: 'white',
-            dashArray: '3',
-            fillOpacity: document.getElementById('opacity2').value,
-            fillColor: color[feature.properties.NAMOBJ]
-        };
-
-    }
-    var dataMap = {
-        data: coor
-    };
-    /*radius*/
-    var cfg = {
-        "radius": {!! json_encode($radius) !!},
-        "maxOpacity": .8,
-        "scaleRadius": true,
-        "useLocalExtrema": true,
-        latField: 'lat',
-        lngField: 'lng',
-        valueField: 'count'
-    };
-
-
-    var heatmapLayer = new HeatmapOverlay(cfg);
-    heatmapLayer.setData(dataMap);
-    heatmapLayer.addTo(map);
-    $('#opacity').change(function() {
-        $(".heatmap-canvas").css("opacity", this.value);
-    });
-
 
     if (show != 1) {
         for (var i = 0; i < data.length; i++) {
@@ -389,10 +398,11 @@ http://www.tooplate.com/view/2091-ziggy
     }
 
 
-    //simpan titik saat refresh
+    //simpan titik saat refresh saat map ke zoom
     map.on('zoomend', function(e) {
         localStorage.theZoom = map.getZoom();
     });
+      //simpan titik saat refresh saat map di geser
     map.on('moveend', function(e) {
         localStorage.mapCenterLat = map.getCenter().lat;
         localStorage.mapCenterLng = map.getCenter().lng;
@@ -417,16 +427,15 @@ http://www.tooplate.com/view/2091-ziggy
 
     function onEachFeature(feature, layer) {
         layer.on({
-            mouseover: highlightFeature,
-            mouseout: resetHighlight,
             click: zoomToFeature
         });
     }
+    // memanggil data file geojson ke map
     var geojsonLayer = new L.GeoJSON.AJAX({!! json_encode($geofile) !!}, {
         style: style,
         onEachFeature: onEachFeature
     });
-    //pemanggilan maps
+    //menampilkan geojson ke maps
     geojsonLayer.addTo(map);
     $('#opacity2').change(function() {
         geojsonLayer.setStyle({
@@ -436,20 +445,19 @@ http://www.tooplate.com/view/2091-ziggy
     var btn_tematik = document.getElementById('btn_tematik');
     btn_tematik.innerHTML = 'Tampilkan Tematik';
     var state = false;
+    var opacity = document.getElementById('opacity2').value;
     $('#btn_tematik').click(function() {
         if (state) {
             geojsonLayer.setStyle({
                 fillOpacity: 0
             });
-            document.getElementById('opacity2').value = 0
             btn_tematik.innerHTML = 'Tampilkan Tematik';
             state = false;
 
         } else {
             geojsonLayer.setStyle({
-                fillOpacity: 1
+                fillOpacity: opacity
             });
-            document.getElementById('opacity2').value = 1
             btn_tematik.innerHTML = 'Tutup Tematik';
             state = true;
         }

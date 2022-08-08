@@ -77,6 +77,7 @@ class UserController extends Controller
             $color[$item->kecamatan] = $item->warna;
         }
         $index = 0;
+        // inisialisasi lokasi heatmap pada map
         foreach ($data as $item) {
             $coor['lat'] = $item->lat;
             $coor['lng'] = $item->long;
