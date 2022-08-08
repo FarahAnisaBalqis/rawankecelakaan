@@ -95,8 +95,7 @@ http://www.tooplate.com/view/2091-ziggy
                         <select class="form-control float-right m-2" id="tahun">
                             <option value="">--Lihat Semua--</option>
                             @foreach ($tahunList as $item)
-                                <option value="{{ $item->tanggal }}"
-                                    {{ $tahun == $item->tanggal ? 'selected' : '' }}>
+                                <option value="{{ $item->tanggal }}" {{ $tahun == $item->tanggal ? 'selected' : '' }}>
                                     {{ $item->tanggal }}</option>
                             @endforeach
                         </select>
@@ -124,8 +123,7 @@ http://www.tooplate.com/view/2091-ziggy
                                     <a href="{{ route('heatmap user', ['show' => 0, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                         class="btn btn-primary">Tampil Titik</a>
                                 @else
-                                    <a href="{{ route('heatmap user', ['show' => 0]) }}"
-                                        class="btn btn-primary">Tampil
+                                    <a href="{{ route('heatmap user', ['show' => 0]) }}" class="btn btn-primary">Tampil
                                         Titik</a>
                                 @endif
                             @endif
@@ -164,7 +162,7 @@ http://www.tooplate.com/view/2091-ziggy
                     <div class="d-block w-50 tematik">
                         <input id="opacity2" type="range" class="form-control w-100 " min="0"
                             max="1" value="1" step="0.1" list="tickmarks2">
-                        <datalist id="tickmarks2" class="w-100">
+                        <datalist id="tickmarks2" class="w-100 ">
                             <option value="0" label="0"></option>
                             <option value="0.1" label="0.1"></option>
                             <option value="0.2" label="0.2"></option>
@@ -223,13 +221,13 @@ http://www.tooplate.com/view/2091-ziggy
     .tematik datalist {
         display: flex;
         justify-content: space-between;
-        color: red;
     }
-.heatmap datalist {
-            display: grid;
-            justify-content: space-between;
-            color: red;
-        }
+
+    .heatmap datalist {
+        display: grid;
+        justify-content: space-between;
+    }
+
     #map {
         min-height: 500px;
     }

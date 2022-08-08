@@ -128,13 +128,11 @@
         .tematik datalist {
             display: flex;
             justify-content: space-between;
-            color: red;
         }
 
         .heatmap datalist {
             display: grid;
             justify-content: space-between;
-            color: red;
         }
 
         #map {
