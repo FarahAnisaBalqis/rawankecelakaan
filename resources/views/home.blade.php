@@ -229,7 +229,7 @@
         var datamap = {!! json_encode($data) !!}
         var coor = {!! json_encode($coor2) !!}
         var map = L.map('map').setView(
-            s, 11
+            s, 12
         );
 
 
