@@ -96,7 +96,7 @@
                 <p>Opacity Batas</p>
                 <div class="d-block w-50 tematik">
                     <input id="opacity2" type="range" class="form-control w-100 " min="0" max="1"
-                        value="1" step="0.1" list="tickmarks2">
+                        value="0" step="0.1" list="tickmarks2">
                     <datalist id="tickmarks2" class="w-100">
                         <option value="0" label="0"></option>
                         <option value="0.1" label="0.1"></option>
@@ -121,10 +121,6 @@
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
     <style>
-        .leaflet-zoom-hide {
-            z-index: 600;
-        }
-
         .tematik datalist {
             display: flex;
             justify-content: space-between;
@@ -236,6 +232,7 @@
                 '<b>' + props.NAMOBJ + '</b><br />' + props.MhsSIF + ' orang' :
                 'Gerakkan mouse Anda');
         };
+        info.addTo(map);
 
         function style(feature) {
             return {
@@ -243,10 +240,27 @@
                 opacity: 1,
                 color: 'white',
                 dashArray: '3',
-                fillOpacity: 0,
+                fillOpacity: document.getElementById('opacity2').value,
                 fillColor: color[feature.properties.NAMOBJ]
             };
 
+        }
+        //memunculkan highlight pada peta
+        function highlightFeature(e) {
+            var layer = e.target;
+
+            layer.setStyle({
+                weight: 5,
+                color: '#666',
+                dashArray: '',
+                fillOpacity: 0.7
+            });
+
+            if (!L.Browser.ie && !L.Browser.opera) {
+                layer.bringToFront();
+            }
+
+            info.update(layer.feature.properties);
         }
         var dataMap = {
             data: coor
@@ -269,23 +283,7 @@
         $('#opacity').change(function() {
             $(".heatmap-canvas").css("opacity", this.value);
         });
-        //memunculkan highlight pada peta
-        function highlightFeature(e) {
-            var layer = e.target;
 
-            layer.setStyle({
-                weight: 5,
-                color: '#666',
-                dashArray: '',
-                fillOpacity: 0.7
-            });
-
-            if (!L.Browser.ie && !L.Browser.opera) {
-                layer.bringToFront();
-            }
-
-            info.update(layer.feature.properties);
-        }
 
         if (show != 1) {
             for (var i = 0; i < data.length; i++) {
@@ -336,6 +334,8 @@
 
         function onEachFeature(feature, layer) {
             layer.on({
+                mouseover: highlightFeature,
+                mouseout: resetHighlight,
                 click: zoomToFeature
             });
         }
@@ -359,13 +359,15 @@
                 geojsonLayer.setStyle({
                     fillOpacity: 0
                 });
+                document.getElementById('opacity2').value = 0
                 btn_tematik.innerHTML = 'Tampilkan Batas';
                 state = false;
 
             } else {
                 geojsonLayer.setStyle({
-                    fillOpacity: opacity
+                    fillOpacity: 1
                 });
+                document.getElementById('opacity2').value = 1
                 btn_tematik.innerHTML = 'Sembunyikan Batas';
                 state = true;
             }

@@ -214,9 +214,7 @@ http://www.tooplate.com/view/2091-ziggy
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin="" />
 <style>
-    .leaflet-zoom-hide {
-        z-index: 600;
-    }
+ 
 
     .tematik datalist {
         display: flex;
@@ -296,7 +294,8 @@ http://www.tooplate.com/view/2091-ziggy
     var map = L.map('map').setView(
         s, 11
     );
-
+    var opacity = document.getElementById('opacity2').value;
+    console.log(opacity)
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -317,6 +316,24 @@ http://www.tooplate.com/view/2091-ziggy
             '<b>' + props.NAMOBJ + '</b><br />' + props.MhsSIF + ' orang' :
             'Gerakkan mouse Anda');
     };
+    info.addTo(map);
+    //memunculkan highlight pada peta
+    function highlightFeature(e) {
+        var layer = e.target;
+
+        layer.setStyle({
+            weight: 5,
+            color: '#666',
+            dashArray: '',
+            fillOpacity: 0.7
+        });
+
+        if (!L.Browser.ie && !L.Browser.opera) {
+            layer.bringToFront();
+        }
+
+        info.update(layer.feature.properties);
+    }
 
     function style(feature) {
         return {
@@ -324,7 +341,7 @@ http://www.tooplate.com/view/2091-ziggy
             opacity: 1,
             color: 'white',
             dashArray: '3',
-            fillOpacity: 0,
+            fillOpacity: document.getElementById('opacity2').value,
             fillColor: color[feature.properties.NAMOBJ]
         };
 
@@ -350,23 +367,7 @@ http://www.tooplate.com/view/2091-ziggy
     $('#opacity').change(function() {
         $(".heatmap-canvas").css("opacity", this.value);
     });
-    //memunculkan highlight pada peta
-    function highlightFeature(e) {
-        var layer = e.target;
 
-        layer.setStyle({
-            weight: 5,
-            color: '#666',
-            dashArray: '',
-            fillOpacity: 0.7
-        });
-
-        if (!L.Browser.ie && !L.Browser.opera) {
-            layer.bringToFront();
-        }
-
-        info.update(layer.feature.properties);
-    }
 
     if (show != 1) {
         for (var i = 0; i < data.length; i++) {
@@ -417,6 +418,8 @@ http://www.tooplate.com/view/2091-ziggy
 
     function onEachFeature(feature, layer) {
         layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight,
             click: zoomToFeature
         });
     }
@@ -434,7 +437,6 @@ http://www.tooplate.com/view/2091-ziggy
     var btn_tematik = document.getElementById('btn_tematik');
     btn_tematik.innerHTML = 'Tampilkan Tematik';
     var state = false;
-    var opacity = document.getElementById('opacity2').value;
     $('#btn_tematik').click(function() {
         if (state) {
             geojsonLayer.setStyle({
