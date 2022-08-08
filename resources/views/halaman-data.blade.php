@@ -12,6 +12,7 @@
                         <div class="col-sm-6">
                             <h2>Data <b>Rawan </b><b>Kecelakaan</b></h2>
                         </div>
+                        {{-- button untuk print --}}
                         <div class="col-sm-6">
                              <a href="{{ route('export') }}" class="btn btn-primary">Print</a>
                             <a href="{{ route('tambah data') }}"class="btn btn-success"><i

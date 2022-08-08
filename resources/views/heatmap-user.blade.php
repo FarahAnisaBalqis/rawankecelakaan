@@ -99,6 +99,7 @@ http://www.tooplate.com/view/2091-ziggy
                                     {{ $item->tanggal }}</option>
                             @endforeach
                         </select>
+                        {{-- button untuk tampil dan tutup titik --}}
                     </div>
                     <div class="col-md-5 pt-4">
                         <div class="text-end mt-6">
@@ -106,13 +107,13 @@ http://www.tooplate.com/view/2091-ziggy
                             @if (!$show)
                                 @if ($tahun)
                                     <a href="{{ route('heatmap user', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
-                                        class="btn btn-primary">Sembunyikan Titik</a>
+                                        class="btn btn-primary">Tutup Titik</a>
                                 @elseif($radius)
                                     <a href="{{ route('heatmap user', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
-                                        class="btn btn-primary">Sembunyikan Titik</a>
+                                        class="btn btn-primary">Tutup Titik</a>
                                 @else
                                     <a href="{{ route('heatmap user', ['show' => 1]) }}"
-                                        class="btn btn-primary">Sembunyikan
+                                        class="btn btn-primary">Tutup
                                         Titik</a>
                                 @endif
                             @else
@@ -285,8 +286,9 @@ http://www.tooplate.com/view/2091-ziggy
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"
     integrity="sha512-Abr21JO2YqcJ03XGZRPuZSWKBhJpUAR6+2wH5zBeO4wAw4oksr8PRdF+BKIRsxvCdq+Mv4670rZ+dLnIyabbGw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-{{-- plugin leaflet untuk tambahan heatmap --}}
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+    {{-- plugin leaflet untuk tambahan heatmap di download terlebih dahulu --}}
 <script src="{{ asset('storage/js/heatmap/build/heatmap.min.js') }}"></script>
 <script src="{{ asset('storage/js/leaflet-heatmap.js') }}"></script>
 <script type="text/javascript">
@@ -442,6 +444,7 @@ http://www.tooplate.com/view/2091-ziggy
             fillOpacity: this.value
         });
     });
+    // button untuk menampilkan dan tutup tematik (di Js karena ringan)
     var btn_tematik = document.getElementById('btn_tematik');
     btn_tematik.innerHTML = 'Tampilkan Tematik';
     var state = false;
@@ -469,9 +472,7 @@ http://www.tooplate.com/view/2091-ziggy
     //pemanggilan legend
     legend.onAdd = function(map) {
 
-        var div = L.DomUtil.create('div', 'info legend'),
-            grades = [0, 12, 25, 37, 50, 62, 75, 87], //pretty break untuk 8
-            from, to;
+        var div = L.DomUtil.create('div', 'info legend')
         labels = []
         for (var i = 0; i < kecamatan.length; i++) {
             labels.push(
