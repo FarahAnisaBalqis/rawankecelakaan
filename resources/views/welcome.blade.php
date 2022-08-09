@@ -109,18 +109,21 @@ http://www.tooplate.com/view/2091-ziggy
                         <img src="{{ asset('storage/img/left-image.png') }}" alt="">
                     </div>
                     <div class="right-text col-md-8">
-                        <h4><em>Integer suscipit</em><br>Nullam volutpat mi vel</h4>
-                        <p>Nulla tempor lectus at mauris bibendum porttitor. Aenean ultrices orci id nibh sodales, vel
-                            suscipit arcu vulputate. Pellentesque hendrerit diam quis leo dignissim, lacinia interdum
-                            nunc volutpat. Morbi lobortis mattis lectus, a dictum augue lobortis non. Fusce eu nulla
-                            sagittis, scelerisque eros fringilla, commodo dolor.</p>
+                        <h4>Tips Berkendara Aman di Jalan Raya</h4>
+                        <p>1. Sebelum Pergi Selalu Periksa Kendaraan Anda <br>2. Selalu Gunakan Sabuk Pengaman <br>
+                            3. Jangan Pernah Melawan Arus <br>
+                            4. Mematuhi Kecepatan Berkendara <br>
+                            5. Dilarang Menyalip dari Bahu Jalan <br>
+                            6. Dilarang Bermain Handphone <br>
+                            7. Jangan Lupa Istirahat Ketika Mengantuk</p>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="fivth-section">
+    {{-- <section class="fivth-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
@@ -137,7 +140,7 @@ http://www.tooplate.com/view/2091-ziggy
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="sixth-section">
         <div class="container">
@@ -148,9 +151,10 @@ http://www.tooplate.com/view/2091-ziggy
                 <div class="col-md-5">
                     <div class="right-info">
                         <ul>
-                            <li><a href="#"><i class="fa fa-envelope"></i>hello@company.com</a></li>
-                            <li><a href="#"><i class="fa fa-phone"></i>050 060 0780 / 050 060 0110</a></li>
-                            <li><a href="#"><i class="fa fa-map-marker"></i>1186 New Street, ST 10990</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i>aceh@jasaraharja.co.id</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>(0651) 41441</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker"></i>Jl. Teuku Umar No.350, Seutui, </a></li>
+                                        
                         </ul>
                     </div>
                 </div>
@@ -162,16 +166,16 @@ http://www.tooplate.com/view/2091-ziggy
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <ul>
+                    {{-- <ul>
                         <li><a href="https://www.facebook.com/tooplate"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                         <li><a href="#"><i class="fa fa-rss"></i></a></li>
                         <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    </ul>
-                    <p>Copyright &copy; 2017 Company Name
+                    </ul> --}}
+                    <p>Copyright &copy; 2022 Jasa Raharja
 
-                        | Design: <a href="https://www.facebook.com/tooplate" target="_parent">Tooplate</a></p>
+                        {{-- | Design: <a href="https://www.facebook.com/tooplate" target="_parent">Tooplate</a></p> --}}
                 </div>
             </div>
         </div>
