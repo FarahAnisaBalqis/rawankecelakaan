@@ -112,8 +112,7 @@ http://www.tooplate.com/view/2091-ziggy
                                     <a href="{{ route('heatmap user', ['show' => 1, 'tahun' => $tahun, 'radius' => $radius]) }}"
                                         class="btn btn-primary">Tutup Titik</a>
                                 @else
-                                    <a href="{{ route('heatmap user', ['show' => 1]) }}"
-                                        class="btn btn-primary">Tutup
+                                    <a href="{{ route('heatmap user', ['show' => 1]) }}" class="btn btn-primary">Tutup
                                         Titik</a>
                                 @endif
                             @else
@@ -135,7 +134,7 @@ http://www.tooplate.com/view/2091-ziggy
                 <div class="row">
                     <div class="col-lg-11">
 
-                        {{--membuat elemen untuk maps, id dibutuhkan untuk hubungkan ke js --}}
+                        {{-- membuat elemen untuk maps, id dibutuhkan untuk hubungkan ke js --}}
                         <div id="map"></div>
                     </div>
                     <div class="col-lg-1">
@@ -217,9 +216,7 @@ http://www.tooplate.com/view/2091-ziggy
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin="" />
 <style>
-    .leaflet-zoom-hide {
-        z-index: 600;
-    }
+
 
     .tematik datalist {
         display: flex;
@@ -287,12 +284,12 @@ http://www.tooplate.com/view/2091-ziggy
     integrity="sha512-Abr21JO2YqcJ03XGZRPuZSWKBhJpUAR6+2wH5zBeO4wAw4oksr8PRdF+BKIRsxvCdq+Mv4670rZ+dLnIyabbGw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
-    {{-- plugin leaflet untuk tambahan heatmap di download terlebih dahulu --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+{{-- plugin leaflet untuk tambahan heatmap di download terlebih dahulu --}}
 <script src="{{ asset('storage/js/heatmap/build/heatmap.min.js') }}"></script>
 <script src="{{ asset('storage/js/leaflet-heatmap.js') }}"></script>
 <script type="text/javascript">
-// menagtur titik awal map
+    // menagtur titik awal map
     var s = [5.554630942893766, 95.31709742351293];
     var color = {!! json_encode($color) !!};
     var data = {!! json_encode($data) !!}
@@ -303,7 +300,7 @@ http://www.tooplate.com/view/2091-ziggy
         s, 11
     );
 
-// memanggil maps dari open street maps
+    // memanggil maps dari open street maps
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         maxZoom: 18
@@ -404,7 +401,7 @@ http://www.tooplate.com/view/2091-ziggy
     map.on('zoomend', function(e) {
         localStorage.theZoom = map.getZoom();
     });
-      //simpan titik saat refresh saat map di geser
+    //simpan titik saat refresh saat map di geser
     map.on('moveend', function(e) {
         localStorage.mapCenterLat = map.getCenter().lat;
         localStorage.mapCenterLng = map.getCenter().lng;
@@ -454,13 +451,15 @@ http://www.tooplate.com/view/2091-ziggy
             geojsonLayer.setStyle({
                 fillOpacity: 0
             });
+            document.getElementById('opacity2').value = 0
             btn_tematik.innerHTML = 'Tampilkan Tematik';
             state = false;
 
         } else {
             geojsonLayer.setStyle({
-                fillOpacity: opacity
+                fillOpacity: 1
             });
+            document.getElementById('opacity2').value = 1
             btn_tematik.innerHTML = 'Tutup Tematik';
             state = true;
         }
