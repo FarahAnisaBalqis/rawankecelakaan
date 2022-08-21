@@ -174,8 +174,8 @@ http://www.tooplate.com/view/2091-ziggy
         labels: labels,
         datasets: [{
             label: 'Jumlah Kecelakaan',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: 'rgb(43, 51, 63)',
+            borderColor: 'rgb(43, 51, 63)',
             data: {!! json_encode($kasus) !!},
 
         }],
@@ -208,8 +208,8 @@ http://www.tooplate.com/view/2091-ziggy
         labels: labels2,
         datasets: [{
             label: 'Jumlah Kecelakaan',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: 'rgb(43, 51, 63)',
+            borderColor: 'rgb(43, 51, 63)',
             data: {!! json_encode($jumlah) !!},
 
         }],

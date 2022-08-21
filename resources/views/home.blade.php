@@ -84,7 +84,7 @@
                 </div>
             </section>
             <section class="col-lg-5 connectedSortable">
-                <div class="card bg-gradient-primary">
+                <div class="card bg-gradient-dark">
                     <div class="card-header border-0">
                         <h3 class="card-title">
                             <i class="fas fa-map-marker-alt mr-1"></i>
@@ -151,8 +151,8 @@
             labels: labels,
             datasets: [{
                 label: 'Jumlah Kecelakaan',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: 'rgb(43, 51, 63)',
+                borderColor: 'rgb(43, 51, 63)',
                 data: {!! json_encode($kasus) !!},
 
             }],
@@ -185,8 +185,8 @@
             labels: labels2,
             datasets: [{
                 label: 'Jumlah Kecelakaan',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: 'rgb(43, 51, 63)',
+                borderColor: 'rgb(43, 51, 63)',
                 data: {!! json_encode($jumlah) !!},
 
             }],

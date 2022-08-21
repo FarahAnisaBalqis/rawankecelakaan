@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div>
-                <p>Opacity Batas</p>
+                <p>Opacity Tematik</p>
                 <div class="d-block w-50 tematik">
                     <input id="opacity2" type="range" class="form-control w-100 " min="0" max="1"
                         value="0" step="0.1" list="tickmarks2">
@@ -350,7 +350,7 @@
             });
         });
         var btn_tematik = document.getElementById('btn_tematik');
-        btn_tematik.innerHTML = 'Tampilkan Batas';
+        btn_tematik.innerHTML = 'Tampil Tematik';
         var state = false;
         var opacity = document.getElementById('opacity2').value;
         $('#btn_tematik').click(function() {
@@ -359,7 +359,7 @@
                     fillOpacity: 0
                 });
                 document.getElementById('opacity2').value = 0
-                btn_tematik.innerHTML = 'Tampilkan Batas';
+                btn_tematik.innerHTML = 'Tampil Tematik';
                 state = false;
 
             } else {
@@ -367,7 +367,7 @@
                     fillOpacity: 1
                 });
                 document.getElementById('opacity2').value = 1
-                btn_tematik.innerHTML = 'Tutup Batas';
+                btn_tematik.innerHTML = 'Tutup Tematik';
                 state = true;
             }
         });

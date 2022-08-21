@@ -15,7 +15,7 @@
                         {{-- button untuk print --}}
                         <div class="col-sm-6">
                              <a href="{{ route('export') }}" class="btn btn-primary">Print</a>
-                            <a href="{{ route('tambah data') }}"class="btn btn-success"><i
+                            <a href="{{ route('tambah data') }}"class="btn btn-primary"><i
                                     class="material-icons">&#xE147;</i> <span>Masukkan Data Baru</span></a>
                         </div>
                     </div>

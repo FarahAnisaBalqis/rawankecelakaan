@@ -124,7 +124,7 @@
                             data-accordion="false">
                             <li class="nav-item">
                                 <a href="{{ route('home') }}"
-                                    class="nav-link {{ request()->route()->getName() == 'home'? 'text-white bg-info': '' }} text-white text-start w-100">
+                                    class="nav-link {{ request()->route()->getName() == 'home'? 'text-white bg-primary': '' }} text-white text-start w-100">
                                     <i class="nav-icon fas fa-th"></i>
                                     <p>
                                         Dashboard
@@ -143,7 +143,7 @@
                             <!--nilai awal radius-->
                             <li class="nav-item">
                                 <a href="{{ route('heatmap', ['show' => 1, 'radius' => 0.001]) }}"
-                                    class="nav-link {{ request()->route()->getName() == 'heatmap'? 'text-white bg-info': '' }} text-white text-start w-100">
+                                    class="nav-link {{ request()->route()->getName() == 'heatmap'? 'text-white bg-primary': '' }} text-white text-start w-100">
                                     <i class="nav-icon fa-solid fa-map"></i>
                                     <p>
                                          Map
@@ -168,11 +168,11 @@
                                         </li> --}}
 
                                         <li class="nav-item w-100">
-                                            <a class="dropdown-item {{ request()->route()->getName() == 'halaman data'? 'text-white bg-info': '' }}"
+                                            <a class="dropdown-item {{ request()->route()->getName() == 'halaman data'? 'text-white bg-primary': '' }}"
                                                 href="{{ route('halaman data') }}">Data Rawan kecelakaan</a>
                                         </li>
                                         <li class="nav-item  w-100">
-                                            <a class="dropdown-item {{ request()->route()->getName() == 'halaman tematik'? 'text-white bg-info': '' }}"
+                                            <a class="dropdown-item {{ request()->route()->getName() == 'halaman tematik'? 'text-white bg-primary': '' }}"
                                                 href="{{ route('halaman tematik') }}">Pengaturan Warna Tematik</a>
                                         </li>
 
@@ -182,7 +182,7 @@
 
                             <li class="nav-item">
                                 <a href="{{ route('panduan') }}"
-                                    class="nav-link {{ request()->route()->getName() == 'panduan'? 'text-white bg-info': '' }} text-white text-start w-100">
+                                    class="nav-link {{ request()->route()->getName() == 'panduan'? 'text-white bg-primary': '' }} text-white text-start w-100">
                                     <i class="nav-icon fa-solid fa-book"></i>
                                     <p>
                                         Panduan

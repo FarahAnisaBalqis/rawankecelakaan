@@ -67,8 +67,7 @@ http://www.tooplate.com/view/2091-ziggy
                                 <i class="fa-solid fa-map-location h1"></i>
                             </div>
                             <h4>Maps</h4>
-                            <p>Sed pulvinar ipsum id leo volutpat, in convallis lectus molestie. Aliquam nisi sapien,
-                                faucibus eu consequat id, egestas vitae augue.</p>
+                            <p>Maps adalah fitur yang akan menampilkan peta rawan kecelakaan, selain itu fitur maps juga memiliki fitur pendukung lainnya</p>
                         </div>
                     </a>
                 </div>
@@ -79,8 +78,7 @@ http://www.tooplate.com/view/2091-ziggy
                                 <i class="fa-solid fa-database h1"></i>
                             </div>
                             <h4>Data</h4>
-                            <p>Sed pulvinar ipsum id leo volutpat, in convallis lectus molestie. Aliquam nisi sapien,
-                                faucibus eu consequat id, egestas vitae augue.</p>
+                            <p>Fitur data adalah fitur yang menampilkan informasi - infromasi umum mengenai rawan kecelakaan, selain itu fitur ini juga dilengkapi dengan informasi grafik </p>
                         </div>
                     </a>
                 </div>
@@ -91,8 +89,7 @@ http://www.tooplate.com/view/2091-ziggy
                                 <i class="fa-solid fa-book h1"></i>
                             </div>
                             <h4>Panduan</h4>
-                            <p>Aliquam ex velit, viverra eu tristique vel, rhoncus nec ligula. In vel massa sed dolor
-                                pharetra interdum vitae posuere.</p>
+                            <p>Panduan adalah halaman menampilkan tata cara mengenai tata cara penggunaan fitur - fitur WebGIS ini</p>
                         </div>
                     </a>
                 </div>
