@@ -151,6 +151,9 @@ class HalamanData extends Controller
         $data = ModelsHalamanData::find($id);
         $file_path = storage_path('app/public/' . $data->gambar);
         if (File::exists($file_path)) File::delete($file_path);
+        foreach ($data->korban as $item) {
+            $item->delete();
+        }
         $data->delete();
         return back();
     }
