@@ -317,9 +317,9 @@ http://www.tooplate.com/view/2091-ziggy
     //menampilkan pop up info tematik
     info.update = function(props) {
         this._div.innerHTML = '<h4>Kecamatan</h4>' + (props ?
-                '<b>' + props.NAMOBJ + '</b>':'');
+            '<b>' + props.NAMOBJ + '</b><br />' + props.MhsSIF + ' orang' :
+            'Gerakkan mouse Anda');
     };
-    info.addTo(map);
 
     // tampilan tematik
     function style(feature) {
@@ -426,8 +426,6 @@ http://www.tooplate.com/view/2091-ziggy
 
     function onEachFeature(feature, layer) {
         layer.on({
-            mouseover: highlightFeature,
-            mouseout: resetHighlight,
             click: zoomToFeature
         });
     }
@@ -445,7 +443,7 @@ http://www.tooplate.com/view/2091-ziggy
     });
     // button untuk menampilkan dan tutup tematik (di Js karena ringan)
     var btn_tematik = document.getElementById('btn_tematik');
-    btn_tematik.innerHTML = 'Tampil Tematik';
+    btn_tematik.innerHTML = 'Tampilkan Tematik';
     var state = false;
     var opacity = document.getElementById('opacity2').value;
     $('#btn_tematik').click(function() {
@@ -454,7 +452,7 @@ http://www.tooplate.com/view/2091-ziggy
                 fillOpacity: 0
             });
             document.getElementById('opacity2').value = 0
-            btn_tematik.innerHTML = 'Tampil Tematik';
+            btn_tematik.innerHTML = 'Tampilkan Tematik';
             state = false;
 
         } else {
