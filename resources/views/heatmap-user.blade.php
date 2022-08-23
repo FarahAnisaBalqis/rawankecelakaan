@@ -289,201 +289,197 @@ http://www.tooplate.com/view/2091-ziggy
 <script src="{{ asset('storage/js/heatmap/build/heatmap.min.js') }}"></script>
 <script src="{{ asset('storage/js/leaflet-heatmap.js') }}"></script>
 <script type="text/javascript">
-    // menagtur titik awal map
-    var s = [5.554630942893766, 95.31709742351293];
-    var color = {!! json_encode($color) !!};
-    var data = {!! json_encode($data) !!}
-    var coor = {!! json_encode($coor) !!}
-    var show = {!! json_encode($show) !!}
-    var kecamatan = {!! json_encode($kecamatan) !!}
-    var map = L.map('map').setView(
-        s, 11
-    );
-
-    // memanggil maps dari open street maps
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        maxZoom: 18
-    }).addTo(map);
+        var s = [5.554630942893766, 95.31709742351293];
+        var color = {!! json_encode($color) !!};
+        var data = {!! json_encode($data) !!}
+        var coor = {!! json_encode($coor) !!}
+        var show = {!! json_encode($show) !!}
+        var kecamatan = {!! json_encode($kecamatan) !!}
+        var map = L.map('map').setView(
+            s, 11
+        );
 
 
-    var info = L.control();
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 18
+        }).addTo(map);
 
-    info.onAdd = function(map) {
-        this._div = L.DomUtil.create('div', 'info');
-        this.update();
-        return this._div;
-    };
-    //menampilkan pop up info tematik
-    info.update = function(props) {
-        this._div.innerHTML = '<h4>Kecamatan</h4>' + (props ?
-            '<b>' + props.NAMOBJ + '</b><br />' + props.MhsSIF + ' orang' :
-            'Gerakkan mouse Anda');
-    };
 
-    // tampilan tematik
-    function style(feature) {
-        return {
-            weight: 2,
-            opacity: 1,
-            color: 'white',
-            dashArray: '3',
-            fillOpacity: 0,
-            fillColor: color[feature.properties.NAMOBJ]
+        var info = L.control();
+
+        info.onAdd = function(map) {
+            this._div = L.DomUtil.create('div', 'info');
+            this.update();
+            return this._div;
+        };
+        //menampilkan pop up info tematik
+        info.update = function(props) {
+            this._div.innerHTML = '<h4>Kecamatan</h4>' + (props ?
+                '<b>' + props.NAMOBJ + '</b>':'');
+        };
+        info.addTo(map);
+
+        function style(feature) {
+            return {
+                weight: 2,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: document.getElementById('opacity2').value,
+                fillColor: color[feature.properties.NAMOBJ]
+            };
+
+        }
+        //memunculkan highlight pada peta
+        function highlightFeature(e) {
+            var layer = e.target;
+
+            layer.setStyle({
+                weight: 5,
+                color: '#666',
+                dashArray: '',
+                fillOpacity: 0.7
+            });
+
+            if (!L.Browser.ie && !L.Browser.opera) {
+                layer.bringToFront();
+            }
+
+            info.update(layer.feature.properties);
+        }
+        var dataMap = {
+            data: coor
+        };
+        /*radius*/
+        var cfg = {
+            "radius": {!! json_encode($radius) !!},
+            "maxOpacity": .8,
+            "scaleRadius": true,
+            "useLocalExtrema": true,
+            latField: 'lat',
+            lngField: 'lng',
+            valueField: 'count'
         };
 
-    }
-    // simpan data titik heatmap sebagai list
-    var dataMap = {
-        data: coor
-    };
-    /*radius heatmap*/
-    var cfg = {
-        "radius": {!! json_encode($radius) !!},
-        "maxOpacity": .8,
-        "scaleRadius": true,
-        "useLocalExtrema": true,
-        latField: 'lat',
-        lngField: 'lng',
-        valueField: 'count'
-    };
 
-
-    var heatmapLayer = new HeatmapOverlay(cfg);
-    // tambah data heatmap ke dalam map
-    heatmapLayer.setData(dataMap);
-    // menampilkan heatmap ke map
-    heatmapLayer.addTo(map);
-    // opacity heatmap dengan memanggil elemen opcity
-    $('#opacity').change(function() {
-        $(".heatmap-canvas").css("opacity", this.value);
-    });
-    //memunculkan highlight pada peta
-    function highlightFeature(e) {
-        var layer = e.target;
-
-        layer.setStyle({
-            weight: 5,
-            color: '#666',
-            dashArray: '',
-            fillOpacity: 0.7
+        var heatmapLayer = new HeatmapOverlay(cfg);
+        heatmapLayer.setData(dataMap);
+        heatmapLayer.addTo(map);
+        $('#opacity').change(function() {
+            $(".heatmap-canvas").css("opacity", this.value);
         });
 
-        if (!L.Browser.ie && !L.Browser.opera) {
-            layer.bringToFront();
+
+        if (show != 1) {
+            for (var i = 0; i < data.length; i++) {
+                marker = new L.marker([data[i][1], data[i][2]])
+                    .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4] + "<br> Tahun " + data[
+                        i][
+                        5
+                    ])
+                    .addTo(map);
+
+            }
         }
 
-        info.update(layer.feature.properties);
-    }
-
-    if (show != 1) {
-        for (var i = 0; i < data.length; i++) {
-            marker = new L.marker([data[i][1], data[i][2]])
-                .bindPopup(data[i][3] + "<br>" + data[i][0] + "<br> Jumlah Korban " + data[i][4] + "<br> Tahun " + data[
-                    i][
-                    5
-                ])
-                .addTo(map);
-
+        var mapZoomLevel = localStorage.theZoom;
+        var mapCenterLat = localStorage.mapCenterLat;
+        var mapCenterLng = localStorage.mapCenterLng;
+        console.log(mapCenterLng)
+        if (isNaN(mapZoomLevel)) {
+            mapZoomLevel = 12;
         }
-    }
-
-    var mapZoomLevel = localStorage.theZoom;
-    var mapCenterLat = localStorage.mapCenterLat;
-    var mapCenterLng = localStorage.mapCenterLng;
-    console.log(mapCenterLng)
-    if (isNaN(mapZoomLevel)) {
-        mapZoomLevel = 12;
-    }
 
 
-    //simpan titik saat refresh saat map ke zoom
-    map.on('zoomend', function(e) {
-        localStorage.theZoom = map.getZoom();
-    });
-    //simpan titik saat refresh saat map di geser
-    map.on('moveend', function(e) {
-        localStorage.mapCenterLat = map.getCenter().lat;
-        localStorage.mapCenterLng = map.getCenter().lng;
-    });
-    map.setZoom(mapZoomLevel);
-    map.panTo(new L.LatLng(mapCenterLat, mapCenterLng));
-
-    function zoomToFeature(e) {
-        map.fitBounds(e.target.getBounds());
-    }
-
-    var geojson;
-
-    function resetHighlight(e) {
-        geojsonLayer.resetStyle(e.target);
-        info.update();
-    }
-
-    function zoomToFeature(e) {
-        map.fitBounds(e.target.getBounds());
-    }
-
-    function onEachFeature(feature, layer) {
-        layer.on({
-            click: zoomToFeature
+        //simpan titik saat refresh
+        map.on('zoomend', function(e) {
+            localStorage.theZoom = map.getZoom();
         });
-    }
-    // memanggil data file geojson ke map
-    var geojsonLayer = new L.GeoJSON.AJAX({!! json_encode($geofile) !!}, {
-        style: style,
-        onEachFeature: onEachFeature
-    });
-    //menampilkan geojson ke maps
-    geojsonLayer.addTo(map);
-    $('#opacity2').change(function() {
-        geojsonLayer.setStyle({
-            fillOpacity: this.value
+        map.on('moveend', function(e) {
+            localStorage.mapCenterLat = map.getCenter().lat;
+            localStorage.mapCenterLng = map.getCenter().lng;
         });
-    });
-    // button untuk menampilkan dan tutup tematik (di Js karena ringan)
-    var btn_tematik = document.getElementById('btn_tematik');
-    btn_tematik.innerHTML = 'Tampilkan Tematik';
-    var state = false;
-    var opacity = document.getElementById('opacity2').value;
-    $('#btn_tematik').click(function() {
-        if (state) {
-            geojsonLayer.setStyle({
-                fillOpacity: 0
+        map.setZoom(mapZoomLevel);
+        map.panTo(new L.LatLng(mapCenterLat, mapCenterLng));
+
+        function zoomToFeature(e) {
+            map.fitBounds(e.target.getBounds());
+        }
+
+        var geojson;
+
+        function resetHighlight(e) {
+            geojsonLayer.resetStyle(e.target);
+            info.update();
+        }
+
+        function zoomToFeature(e) {
+            map.fitBounds(e.target.getBounds());
+        }
+
+        function onEachFeature(feature, layer) {
+            layer.on({
+                mouseover: highlightFeature,
+                mouseout: resetHighlight,
+                click: zoomToFeature
             });
-            document.getElementById('opacity2').value = 0
-            btn_tematik.innerHTML = 'Tampilkan Tematik';
-            state = false;
-
-        } else {
+        }
+        var geojsonLayer = new L.GeoJSON.AJAX({!! json_encode($geofile) !!}, {
+            style: style,
+            onEachFeature: onEachFeature
+        });
+        //pemanggilan maps
+        geojsonLayer.addTo(map);
+        $('#opacity2').change(function() {
             geojsonLayer.setStyle({
-                fillOpacity: 1
+                fillOpacity: this.value
             });
-            document.getElementById('opacity2').value = 1
-            btn_tematik.innerHTML = 'Tutup Tematik';
-            state = true;
-        }
-    });
-    var legend = L.control({
-        position: 'bottomright'
-    });
+        });
+        var btn_tematik = document.getElementById('btn_tematik');
+        btn_tematik.innerHTML = 'Tampil Tematik';
+        var state = false;
+        var opacity = document.getElementById('opacity2').value;
+        $('#btn_tematik').click(function() {
+            if (state) {
+                geojsonLayer.setStyle({
+                    fillOpacity: 0
+                });
+                document.getElementById('opacity2').value = 0
+                btn_tematik.innerHTML = 'Tampil Tematik';
+                state = false;
 
-    //pemanggilan legend
-    legend.onAdd = function(map) {
+            } else {
+                geojsonLayer.setStyle({
+                    fillOpacity: 1
+                });
+                document.getElementById('opacity2').value = 1
+                btn_tematik.innerHTML = 'Tutup Tematik';
+                state = true;
+            }
+        });
+        var legend = L.control({
+            position: 'bottomright'
+        });
 
-        var div = L.DomUtil.create('div', 'info legend')
-        labels = []
-        for (var i = 0; i < kecamatan.length; i++) {
-            labels.push(
-                '<i style="background:' + color[kecamatan[i]] + '"></i> - ' + kecamatan[i]);
-        }
+        //pemanggilan legend
+        legend.onAdd = function(map) {
 
-        div.innerHTML = '<h5>Legenda:</h5>' + labels.join('<br>');
-        return div;
-    };
+            var div = L.DomUtil.create('div', 'info legend'),
+                grades = [0, 12, 25, 37, 50, 62, 75, 87], //pretty break untuk 8
+                from, to;
+            labels = []
+            for (var i = 0; i < kecamatan.length; i++) {
+                labels.push(
+                    '<i style="background:' + color[kecamatan[i]] + '"></i> - ' + kecamatan[i]);
+            }
 
-    legend.addTo(map);
-    $("#printBtn").click(function() {
-        window.print();
-    });
-</script>
+            div.innerHTML = '<h5>Legenda:</h5>' + labels.join('<br>');
+            return div;
+        };
+
+        legend.addTo(map);
+        $("#printBtn").click(function() {
+            window.print();
+        });
+    </script>
